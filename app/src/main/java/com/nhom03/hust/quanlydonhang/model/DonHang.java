@@ -13,9 +13,13 @@ public class DonHang {
     private long cuocPhi;
     private String diaChi;
     private KhachHang khachHang;
-    private ArrayList<ChiTietHoaDon> dsHang;
+    private ArrayList<ChiTietDonHang> dsHang;
 
-    public DonHang(int id, Date ngayGio, long cuocPhi, String diaChi, KhachHang khachHang, ArrayList<ChiTietHoaDon> dsHang) {
+    public DonHang() {
+
+    }
+
+    public DonHang(int id, Date ngayGio, long cuocPhi, String diaChi, KhachHang khachHang, ArrayList<ChiTietDonHang> dsHang) {
         this.id = id;
         this.ngayGio = ngayGio;
         this.cuocPhi = cuocPhi;
@@ -64,11 +68,11 @@ public class DonHang {
         this.khachHang = khachHang;
     }
 
-    public ArrayList<ChiTietHoaDon> getDsHang() {
+    public ArrayList<ChiTietDonHang> getDsHang() {
         return dsHang;
     }
 
-    public void setDsHang(ArrayList<ChiTietHoaDon> dsHang) {
+    public void setDsHang(ArrayList<ChiTietDonHang> dsHang) {
         this.dsHang = dsHang;
     }
 }
