@@ -9,6 +9,10 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="chi tiet khach hang"/>
         </android.support.v7.widget.Toolbar>
     <ScrollView
         android:layout_width="match_parent"
