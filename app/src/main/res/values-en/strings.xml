@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Manage Order</string>
+    <string name="don_hang">Order</string>
+    <string name="hang_hoa">Product</string>
+    <string name="khach_hang">Customer</string>
+    <string name="xin_chao">Hello</string>
+</resources>
