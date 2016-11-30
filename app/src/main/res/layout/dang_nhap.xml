@@ -70,5 +70,5 @@
         android:text="Copyright @2014 MISA"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="100dp"/>
 </LinearLayout>
