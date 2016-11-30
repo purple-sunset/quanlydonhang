@@ -10,8 +10,38 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nhom03.hust.quanlydonhang.MainActivity">
 
-    <Button
+    <TextView
+        android:id="@+id/txt_xin_chao"
+        android:text="@string/xin_chao"
+        style="@style/Header"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="100dp" />
+
+    <Button
+        android:id="@+id/btn_don_hang"
+        android:text="@string/don_hang"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/txt_xin_chao"
+        />
+
+    <Button
+        android:id="@+id/btn_khach_hang"
+        android:text="@string/khach_hang"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/btn_don_hang"
+        />
+
+    <Button
+        android:id="@+id/btn_hang_hoa"
+        android:text="@string/hang_hoa"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/btn_khach_hang"
+        android:layout_marginTop="20dp" />
+
 
 </RelativeLayout>
