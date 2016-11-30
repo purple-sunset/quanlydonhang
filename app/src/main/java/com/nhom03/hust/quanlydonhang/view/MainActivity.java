@@ -1,7 +1,9 @@
-package com.nhom03.hust.quanlydonhang;
+package com.nhom03.hust.quanlydonhang.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.nhom03.hust.quanlydonhang.R;
 
 public class MainActivity extends AppCompatActivity {
 
