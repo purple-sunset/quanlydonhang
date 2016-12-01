@@ -13,6 +13,8 @@ public class HangHoa {
     private int slDat;
     private String chiTiet;
 
+    public HangHoa(){}
+
     public HangHoa(int id, String ten, boolean huyBan, long donGia,
                    int slTon, int slDat, String chiTiet) {
         this.id = id;

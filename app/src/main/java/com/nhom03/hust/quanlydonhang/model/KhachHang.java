@@ -17,6 +17,8 @@ public class KhachHang {
     private String fax;
     private String maBuuChinh;
 
+    public KhachHang(){}
+
     public KhachHang(String id, String tenKH, String tenCT, String tieuDe, String diaChi, String thanhPho,
                      String vung, String quocGia, String sdt, String fax, String maBuuChinh) {
         this.id = id;
