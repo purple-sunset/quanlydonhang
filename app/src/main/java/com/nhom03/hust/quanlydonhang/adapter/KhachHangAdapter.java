@@ -1,8 +1,89 @@
 package com.nhom03.hust.quanlydonhang.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.provider.SyncStateContract;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.nhom03.hust.quanlydonhang.R;
+import com.nhom03.hust.quanlydonhang.model.KhachHang;
+import com.nhom03.hust.quanlydonhang.view.XemChiTietKhachHangActivity;
+
+import java.util.List;
+
 /**
  * Created by sakura on 01/12/2016.
  */
 
-public class KhachHangAdapter {
+public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.KhachHangwHolder>{
+
+    private List<KhachHang> khachHangList;
+    private int rowLayout;
+    private Context context;
+
+    public KhachHangAdapter(List<KhachHang> khachHangList, int rowLayout, Context context) {
+        this.khachHangList = khachHangList;
+        this.rowLayout = rowLayout;
+        this.context = context;
+    }
+
+    @Override
+    public KhachHangwHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
+        return new KhachHangwHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(KhachHangwHolder holder, final int position) {
+        holder.name_customer.setText(khachHangList.get(position).getTenKH());
+        holder.address_customer.setText(khachHangList.get(position).getDiaChi());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                KhachHang khachHang = khachHangList.get(position);
+                String id= khachHang.getId();
+                Intent intent = new Intent(view.getContext(), XemChiTietKhachHangActivity.class);
+                intent.putExtra("id", id);
+                view.getContext().startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return khachHangList.size();
+    }
+
+    public class KhachHangwHolder extends RecyclerView.ViewHolder{
+        LinearLayout customerLayout;
+        TextView name_customer;
+        TextView address_customer;
+
+
+        public KhachHangwHolder(View v) {
+            super(v);
+            //customerLayout = (LinearLayout) v.findViewById(R.id.movies_layout);
+            name_customer = (TextView) v.findViewById(R.id.name_customer);
+            address_customer = (TextView) v.findViewById(R.id.address_customer);
+//            v.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Toast.makeText(context, "ddddd", Toast.LENGTH_LONG).show();
+//                }
+//            });
+
+        }
+    }
+
+
 }
