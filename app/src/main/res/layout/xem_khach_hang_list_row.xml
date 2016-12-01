@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/address"
+                android:id="@+id/address_customer"
                 android:text="dia chi so 12 ha noi thanh pho ho chi minh dfva
                 dfs dfs"
                 android:layout_weight="6"/>
