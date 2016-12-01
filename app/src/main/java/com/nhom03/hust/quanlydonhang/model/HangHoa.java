@@ -12,11 +12,12 @@ public class HangHoa {
     private int slTon;
     private int slDat;
     private String chiTiet;
+    private TheLoai theLoai;
 
     public HangHoa(){}
 
     public HangHoa(int id, String ten, boolean huyBan, long donGia,
-                   int slTon, int slDat, String chiTiet) {
+                   int slTon, int slDat, String chiTiet, TheLoai theLoai) {
         this.id = id;
         this.ten = ten;
         this.huyBan = huyBan;
@@ -24,6 +25,7 @@ public class HangHoa {
         this.slTon = slTon;
         this.slDat = slDat;
         this.chiTiet = chiTiet;
+        this.theLoai = theLoai;
     }
 
     public int getId() {
@@ -80,6 +82,14 @@ public class HangHoa {
 
     public void setChiTiet(String chiTiet) {
         this.chiTiet = chiTiet;
+    }
+
+    public TheLoai getTheLoai() {
+        return theLoai;
+    }
+
+    public void setTheLoai(TheLoai theLoai) {
+        this.theLoai = theLoai;
     }
 }
 
