@@ -16,6 +16,11 @@
             android:gravity="center"
             />
     </android.support.v7.widget.Toolbar>>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="390dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp">
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_ma_san_pham"
                 android:text="Ma SP: "
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
@@ -36,7 +41,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
                 android:text=""
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="20"/>
 
@@ -50,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_ten_san_pham"
                 android:text="Ten SP: "
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
@@ -58,7 +63,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:text=""
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="20"/>
 
@@ -72,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_don_gia"
                 android:text="Don gia: "
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
@@ -80,7 +85,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:text=""
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="20"/>
         </TableRow>
@@ -92,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_chi_tiet"
                 android:text="Chi tiet "
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
@@ -100,7 +105,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:text=""
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="20"/>
         </TableRow>
@@ -112,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_so_luong_ton"
                 android:text="So luong ton: "
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
@@ -120,7 +125,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:text=""
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="20"/>
 
@@ -134,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_so_luong_da_dat"
                 android:text="So luong da dat: "
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
@@ -142,17 +147,17 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:text=""
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:layout_weight="20"/>
 
 
         </TableRow>
     </TableLayout>
-
+    </ScrollView>>
     <Button
         android:id="@+id/BT_them_moi_hang_hoa"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Them"
         android:layout_gravity="center"

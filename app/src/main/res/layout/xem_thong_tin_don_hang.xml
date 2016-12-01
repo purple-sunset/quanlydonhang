@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Xem thong tin don hang"
+            android:textSize="25sp"
+            android:gravity="center"
+            />
+    </android.support.v7.widget.Toolbar>>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+    <TableRow
+        android:id="@+id/TableRow1"
+        android:layout_width="match_parent">
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/TV_ten_khach_hang"
+            android:text="Khach hang: "
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_weight="20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+        <EditText
+            android:id="@+id/ET_ten_khach_hang"
+            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:text=" Cong ty co phan Misa"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_weight="20"/>
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="123"/>
+        </LinearLayout>>
+    </TableRow>
+        <TableRow
+            android:id="@+id/TableRow2"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/TV_ngay_thang"
+                android:text="Ngay dat hang: "
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_weight="1"/>
+            <EditText
+                android:id="@+id/ET_ngay_thang"
+                android:layout_height="match_parent"
+                android:layout_width="fill_parent"
+                android:text=" 07/11/2016"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_weight="20"/>
+        </TableRow>
+        <TableRow
+            android:id="@+id/TableRow3"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:id="@+id/TV_dia_chi_giao_hang"
+                android:text="Ngay dat hang: "
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_weight="1"/>
+            <EditText
+                android:id="@+id/ET_dia_chi_giao_hang"
+                android:layout_height="match_parent"
+                android:layout_width="fill_parent"
+                android:text=" VIet Nam"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_weight="20"/>
+        </TableRow>
+    </TableLayout>>
+    <Button
+        android:id="@+id/BT_xem_hang_hoa_cua_don_hang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thong tin hang hoa"/>
+    <Button
+        android:id="@+id/BT_xoa_don_hang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:text="Xoa"
+        />
+</LinearLayout>
