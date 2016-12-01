@@ -5,12 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Admin on 30/11/2016.
@@ -164,10 +166,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<Note> getAllNotes() {
+    public List<ContactsContract.CommonDataKinds.Note> getAllNotes() {
         Log.i(TAG, "MyDatabaseHelper.getAllNotes ... " );
 
-        List<Note> noteList = new ArrayList<Note>();
+        List<ContactsContract.CommonDataKinds.Note> noteList = new ArrayList<Note>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_NOTE;
 
