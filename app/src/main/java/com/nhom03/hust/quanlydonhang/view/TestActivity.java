@@ -36,10 +36,10 @@ public class TestActivity extends AppCompatActivity {
 
         //
 
-        HangHoa hh1 = new HangHoa(1, "abc", false, 50000, 50, 2, "chi tiet");
-        HangHoa hh2 = new HangHoa(2, "xyz", true, 10000, 20, 3, "chi");
-        db.themHangHoa(hh1);
-        db.themHangHoa(hh2);
+       // HangHoa hh1 = new HangHoa(1, "abc", false, 50000, 50, 2, "chi tiet");
+        //HangHoa hh2 = new HangHoa(2, "xyz", true, 10000, 20, 3, "chi");
+        //db.themHangHoa(hh1);
+       // db.themHangHoa(hh2);
 
         dsHang = db.layDSHangHoa();
         ds = new ArrayList<String>();
