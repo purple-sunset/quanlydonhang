@@ -2,6 +2,7 @@ package com.nhom03.hust.quanlydonhang.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -30,17 +31,19 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.Khac
 
     @Override
     public KhachHangwHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
+        return new KhachHangwHolder(view);
     }
 
     @Override
     public void onBindViewHolder(KhachHangwHolder holder, int position) {
-
+        holder.name_customer.setText(khachHangList.get(position).getTenKH());
+        holder.address_customer.setText(khachHangList.get(position).getDiaChi());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return khachHangList.size();
     }
 
     public static class KhachHangwHolder extends RecyclerView.ViewHolder {

@@ -12,7 +12,7 @@ import retrofit2.http.GET;
 public interface ApiInterface {
     //danh dacc khach hang
     @GET("GetAllCustomer")
-    Call<ListKhachHang> getTopRatedMovies();
+    Call<ListKhachHang> getListCustomer();
 
 
 }
