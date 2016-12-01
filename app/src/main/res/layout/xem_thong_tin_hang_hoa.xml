@@ -155,17 +155,4 @@
             </TableRow>
         </TableLayout>
     </ScrollView>>
-    <Button
-        android:id="@+id/BT_sua_thong_tin_hang_hoa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sua"
-        android:layout_gravity="center"
-        />
-    <Button
-        android:id="@+id/BT_xoa_hang_hoa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Xoa"
-        android:layout_gravity="center"/>
 </LinearLayout>
