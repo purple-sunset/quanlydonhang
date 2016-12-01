@@ -16,16 +16,10 @@
             android:gravity="center"
             />
     </android.support.v7.widget.Toolbar>>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="390dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp">
-
-        <TableLayout
+    <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_margin="10dp">
             <TableRow
                 android:id="@+id/TableRow1"
                 android:layout_width="match_parent">
@@ -35,14 +29,16 @@
                     android:id="@+id/TV_ma_san_pham"
                     android:text="Ma SP: "
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/ET_ma_san_pham"
                     android:layout_height="match_parent"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:text="1"
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="20"/>
 
 
             </TableRow>
@@ -55,14 +51,16 @@
                     android:id="@+id/TV_ten_san_pham"
                     android:text="Ten SP: "
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/ET_ten_san_pham"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:text="@string/ten_hang_hoa"
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="20"/>
 
 
             </TableRow>
@@ -75,14 +73,16 @@
                     android:id="@+id/TV_don_gia"
                     android:text="Don gia: "
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/ET_don_gia"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:text="@string/don_gia"
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="20"/>
             </TableRow>
             <TableRow
                 android:id="@+id/TableRow4"
@@ -93,14 +93,16 @@
                     android:id="@+id/TV_chi_tiet"
                     android:text="Chi tiet "
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/ET_chi_tiet"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:text="10 hộp x 20 túi"
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="20"/>
             </TableRow>
             <TableRow
                 android:id="@+id/TableRow5"
@@ -109,17 +111,18 @@
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:id="@+id/TV_so_luong_ton"
-                    android:text="So luong
-ton: "
+                    android:text="So luong ton: "
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/ET_so_luong_ton"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:text="39"
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="20"/>
 
 
             </TableRow>
@@ -130,22 +133,22 @@ ton: "
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:id="@+id/TV_so_luong_da_dat"
-                    android:text="So luong
-da dat: "
+                    android:text="So luong da dat: "
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/ET_so_luong_da_dat"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:text="0"
                     android:textSize="25sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:layout_weight="20"/>
 
 
             </TableRow>
         </TableLayout>
-    </ScrollView>
 
     <Button
         android:id="@+id/BT_sua_thong_tin_hang_hoa"
