@@ -10,6 +10,8 @@ public class ChiTietDonHang {
     private int soLuong;
     private long donGia;
 
+    public ChiTietDonHang(){}
+
     public ChiTietDonHang(int id, String ten, int soLuong, long donGia) {
         this.id = id;
         this.ten = ten;
