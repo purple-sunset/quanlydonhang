@@ -75,6 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String taoBangDH = "CREATE TABLE " + TABLE_DH + "("
                 + COLUMN_ID_DH + " INT PRIMARY KEY," + COLUMN_NG + " TEXT NOT NULL,"
                 + COLUMN_CP + " TEXT NOT NULL," + COLUMN_DC + " TEXT,"
+                + COLUMN_ID_KH + " TEXT NOT NULL,"
                 +" FOREIGN KEY ("+ COLUMN_ID_KH +") REFERENCES "+ TABLE_KH +"("+ COLUMN_ID_KH + ") )";
 
         String taoBangKH = "CREATE TABLE " + TABLE_KH + "("
@@ -84,14 +85,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_SDT + " TEXT NOT NULL," + COLUMN_F + " TEXT," + COLUMN_MBC + " TEXT" + ")";
 
         String taoBangHH = "CREATE TABLE " + TABLE_HH + "("
-                + COLUMN_ID_HH + " INTEGER PRIMARY KEY," + COLUMN_TH + " TEXT NOT NULL,"
+                + COLUMN_ID_HH + " INT PRIMARY KEY," + COLUMN_TH + " TEXT NOT NULL,"
                 + COLUMN_HB + " BOOLEAN NOT NULL," + COLUMN_DG + " BIGINT NOT NULL," + COLUMN_SLT + " INT NOT NULL,"
                 + COLUMN_SLD + " INT NOT NULL," + COLUMN_CT + " TEXT" + ")";
 
         String taoBangCTDH = "CREATE TABLE " + TABLE_CTDH + "("
+                + COLUMN_ID_DH + " INT NOT NULL," + COLUMN_ID_HH + " INT NOT NULL," + COLUMN_SL + " INT NOT NULL,"
                 + "FOREIGN KEY ("+ COLUMN_ID_DH +") REFERENCES "+ TABLE_DH +"("+ COLUMN_ID_DH + "),"
-                + "FOREIGN KEY ("+ COLUMN_ID_HH +") REFERENCES "+ TABLE_HH +"("+ COLUMN_ID_HH + "),"
-                + COLUMN_SL + " INT NOT NULL" + ")";
+                + "FOREIGN KEY ("+ COLUMN_ID_HH +") REFERENCES "+ TABLE_HH +"("+ COLUMN_ID_HH + ") )";
 
         // Chạy lệnh tạo bảng.
         db.execSQL(taoBangKH);
@@ -453,7 +454,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.i(TAG, "DatabaseHelper.xoaHangHoa ... " + hh.getId() );
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_KH, COLUMN_ID_HH + " = ?",
+        db.delete(TABLE_HH, COLUMN_ID_HH + " = ?",
                 new String[] { String.valueOf(hh.getId()) });
         db.close();
     }

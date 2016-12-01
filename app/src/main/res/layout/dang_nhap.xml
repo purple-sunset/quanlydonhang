@@ -60,7 +60,7 @@
         android:gravity="center"
         android:textColor="#0440f4"
         android:background="#04f4bc"
-
+        android:onClick="logIn"
         />
 
 
