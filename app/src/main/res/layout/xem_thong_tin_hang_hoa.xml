@@ -13,6 +13,8 @@
             android:layout_height="match_parent"
             android:text="Xem thong tin hang hoa"
             android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
             android:gravity="center"
             />
     </android.support.v7.widget.Toolbar>>
@@ -35,6 +37,7 @@
                     android:text="Ma SP: "
                     android:textSize="20sp"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/ET_ma_san_pham"
@@ -52,6 +55,8 @@
                 android:layout_width="match_parent">
                 <TextView
                     android:layout_height="match_parent"
+
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:id="@+id/TV_ten_san_pham"
                     android:text="Ten SP: "
@@ -75,6 +80,7 @@
                 <TextView
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
+                    android:textStyle="bold"
                     android:id="@+id/TV_don_gia"
                     android:text="Don gia: "
                     android:textSize="20sp"
@@ -98,6 +104,7 @@
                     android:id="@+id/TV_chi_tiet"
                     android:text="Chi tiet "
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <EditText
@@ -119,6 +126,7 @@
                     android:text="So luong ton: "
                     android:textSize="20sp"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:layout_weight="1"/>
                 <EditText
                     android:id="@+id/ET_so_luong_ton"
@@ -140,6 +148,7 @@
                     android:id="@+id/TV_so_luong_da_dat"
                     android:text="So luong da dat: "
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     android:gravity="center"
                     android:layout_weight="1"/>
                 <EditText
