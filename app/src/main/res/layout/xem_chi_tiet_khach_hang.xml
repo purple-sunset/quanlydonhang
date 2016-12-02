@@ -13,9 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Chi tiet khach hang"
-            android:textSize="25sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
+            style="@style/Tieu_de_1"
             android:gravity="center"/>
         </android.support.v7.widget.Toolbar>
     <ScrollView
@@ -35,8 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Địa Chỉ:"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
@@ -44,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical">
 
@@ -56,8 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Thành Phố:"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     />
@@ -66,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Stjshdjkahdkakhsdkahskd"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"
                     ></EditText>
@@ -77,8 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tên liên lạc:"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
@@ -86,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
@@ -96,8 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Thông tin liên lạc:"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    style="@style/Tieu_de_2"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"/>
                 <EditText
@@ -105,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="10"/>
             </TableRow>
@@ -114,8 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Quốc gia:"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
@@ -123,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
@@ -132,8 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ID Khách hàng:"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
@@ -141,7 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
 
@@ -151,8 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fax:"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
@@ -160,7 +151,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
@@ -169,8 +160,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Số điện thoại:"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
+                    style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
@@ -178,7 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
@@ -223,22 +213,23 @@
 
     </ScrollView>
     <Button
+        android:id="@+id/BT_sua_thong_tin_khach_hang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/btn_sua_khach_hang"
         android:text="Sua"
         android:textSize="20sp"
         android:layout_weight="5"
-        android:drawableLeft="@drawable/edit"
+        android:drawableLeft="@drawable/edit1"
         android:background="@color/button"
         />
     <Button
+        android:id="@+id/BT_xoa_thong_tin_khach_hang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Xoa"
         android:textSize="20sp"
         android:layout_weight="5"
-        android:drawableLeft="@drawable/delete"
+        android:drawableLeft="@drawable/delete1"
         android:background="@color/button"/>
 
 </LinearLayout>

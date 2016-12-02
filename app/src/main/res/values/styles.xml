@@ -12,4 +12,20 @@
         <item name="android:textSize">30sp</item>
 
     </style>
+    <style name="Tieu_de_1">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">#511F90</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Tieu_de_2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="thuong">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
 </resources>

@@ -107,7 +107,7 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:text="Thong tin hang hoa"
-        android:drawableLeft="@drawable/shopping"
+        android:drawableLeft="@drawable/shopping1"
         android:background="@color/button"/>
     <Button
         android:id="@+id/BT_xoa_don_hang"
@@ -119,5 +119,6 @@
         android:textStyle="bold"
         android:layout_marginBottom="10dp"
         android:background="@color/button"
+        android:drawableLeft="@drawable/delete1"
         />
 </LinearLayout>
