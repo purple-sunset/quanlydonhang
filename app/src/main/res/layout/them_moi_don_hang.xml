@@ -10,7 +10,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Xem thong tin don hang"
+            android:text="Them don hang"
             android:textSize="25sp"
             android:gravity="center"
             android:textStyle="bold"
@@ -21,37 +21,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp">
-    <TableRow
-        android:id="@+id/TableRow1"
-        android:layout_width="match_parent">
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:id="@+id/TV_ten_khach_hang"
-            android:text="Khach hang: "
-            android:textSize="20sp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
-        <LinearLayout
-            android:layout_weight="20"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-        <EditText
-            android:id="@+id/ET_ten_khach_hang"
-            android:layout_height="match_parent"
-            android:layout_width="fill_parent"
-            android:text=" Cong ty co phan Misa"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:layout_weight="20"/>
-            <Button
-                android:layout_width="50dp"
+        <TableRow
+            android:id="@+id/TableRow1"
+            android:layout_width="match_parent">
+            <TextView
                 android:layout_height="match_parent"
-                android:text="123"/>
-        </LinearLayout>>
-    </TableRow>
+                android:layout_width="match_parent"
+                android:id="@+id/TV_ten_khach_hang"
+                android:text="Khach hang: "
+                android:textSize="20sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
+            <LinearLayout
+                android:layout_weight="20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/ET_ten_khach_hang"
+                    android:layout_height="match_parent"
+                    android:layout_width="fill_parent"
+                    android:text=" Cong ty co phan Misa"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_weight="20"/>
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:text="123"/>
+            </LinearLayout>>
+        </TableRow>
         <TableRow
             android:id="@+id/TableRow2"
             android:layout_width="match_parent">
@@ -103,11 +103,11 @@
         android:textSize="20sp"
         android:text="Thong tin hang hoa"/>
     <Button
-        android:id="@+id/BT_xoa_don_hang"
+        android:id="@+id/BT_them_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:text="Xoa"
+        android:text="Them"
         android:textSize="20sp"
         android:textStyle="bold"
         />

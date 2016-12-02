@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+        <TableRow
+            android:id="@+id/TableRow1"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Khach hang: "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/ten_hang_hoa"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_weight="4"
+                android:text="Misa "
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+        </TableRow>
+        <TableRow
+            android:id="@+id/TableRow2"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Ngay dat hang: "
+                android:textSize="20sp"
+
+                />
+            <TextView
+                android:id="@+id/ngay_dat_hang"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_weight="4"
+                android:text="07/10/2016"
+                android:textSize="20sp"/>
+        </TableRow>
+        <TableRow
+            android:id="@+id/TableRow3"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="Tong tien hang: "
+                android:textSize="20sp"
+                />
+            <TextView
+                android:id="@+id/tong_tien_hang"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_weight="4"
+                android:text="10.000.000 "
+                android:textSize="20sp"/>
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

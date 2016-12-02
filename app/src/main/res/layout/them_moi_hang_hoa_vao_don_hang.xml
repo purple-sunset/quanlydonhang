@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Thong tin hang hoa"
+            android:textSize="25sp"
+            android:gravity="center"
+            />
+
+    </android.support.v7.widget.Toolbar>>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <TableRow
+            android:id="@+id/TableRow1"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Ten hang"
+                android:textSize="20sp"
+                android:gravity="center"/>
+            <Button
+                android:id="@+id/BT_xem_danh_sach_hang_hoa"
+                android:layout_height="match_parent"
+                android:text="Ao so mi nam"
+                android:textSize="20sp"
+                android:layout_weight="5"/>
+        </TableRow>
+        <TableRow
+            android:id="@+id/TableRow2"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="So luong"
+                android:textSize="20sp"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/ET_so_luong"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="10"
+                android:textSize="20sp"
+                android:gravity="right"/>
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/TableRow3"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Don gia"
+                android:textSize="20sp"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/ET_don_gia"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="18.000"
+                android:textSize="20sp"
+                android:gravity="right"/>
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/TableRow4"
+            android:layout_width="match_parent">
+            <TextView
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Thanh tien"
+                android:textSize="20sp"
+                android:gravity="center"
+                />
+            <EditText
+                android:id="@+id/ET_thanh_tien"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="180.000"
+                android:textSize="20sp"
+                android:gravity="right"/>
+
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/BT_them_moi_hang_hoa_vao_don_hang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cat"
+        android:textSize="20sp"/>
+</LinearLayout>
