@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#1230ef</color>
     <color name="colorAccent">#fffafa</color>
     <color name="suong_mat_ong">#d9fad9</color>
+    <color name="button">#b6f17b</color>
 </resources>
