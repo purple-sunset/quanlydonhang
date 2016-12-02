@@ -1,11 +1,14 @@
 package com.nhom03.hust.quanlydonhang.model;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import com.nhom03.hust.quanlydonhang.MyApplication;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,10 +22,12 @@ import java.util.Date;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    private static DatabaseHelper instan = null;
+
     //Cơ sở dữ liệu
     private static final String TAG = "SQLite";
     private static final int DB_VERSION = 1;
-    private static final String DB_NAME = "Hang_hoa";
+    private static final String DB_NAME = "Quan_ly_don_hang";
 
     //Tên các bảng
     private static final String TABLE_DH = "Don_hang";
@@ -67,9 +72,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_SL = "so_luong";
 
 
-    public DatabaseHelper(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+    public static DatabaseHelper getInstance(){
+        if(instan == null){
+            instan = new DatabaseHelper();
+        }
+        return instan;
     }
+
+    public DatabaseHelper() {
+        super(MyApplication.getAppContext(), DB_NAME, null, DB_VERSION);
+    }
+
+
 
     // Tạo các bảng.
     @Override
@@ -107,9 +121,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Chạy lệnh tạo bảng.
         db.execSQL(taoBangKH);
-        db.execSQL(taoBangDH);
         db.execSQL(taoBangTL);
         db.execSQL(taoBangHH);
+        db.execSQL(taoBangDH);
         db.execSQL(taoBangCTDH);
     }
 

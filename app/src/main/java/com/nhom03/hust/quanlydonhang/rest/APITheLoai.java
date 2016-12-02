@@ -36,19 +36,19 @@ public class APITheLoai {
     public static ArrayList<TheLoai> layDSTheLoai() {
         final ArrayList<TheLoai> dsKhachHang = new ArrayList<TheLoai>();
         ApiInterface apiService = APITheLoai.getListTheLoai().create(ApiInterface.class);
-        Call<ArrayList<TheLoai>> call = apiService.getListCategory();
-        call.enqueue(new Callback<ArrayList<TheLoai>>() {
+        Call<ListTheLoai> call = apiService.getListCategory();
+        call.enqueue(new Callback<ListTheLoai>() {
             @Override
-            public void onResponse(Call<ArrayList<TheLoai>> call, Response<ArrayList<TheLoai>> response) {
+            public void onResponse(Call<ListTheLoai> call, Response<ListTheLoai> response) {
                 int statusCode = response.code();
-                for (TheLoai tl: response.body()
+                for (TheLoai tl: response.body().getTheLoaiList()
                      ) {
                     dsKhachHang.add(tl);
                 }
             }
 
             @Override
-            public void onFailure(Call<ArrayList<TheLoai>> call, Throwable t) {
+            public void onFailure(Call<ListTheLoai> call, Throwable t) {
 
             }
         });

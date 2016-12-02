@@ -21,14 +21,14 @@ import java.net.URL;
  * Created by Admin on 02/12/2016.
  */
 
-public class AsyncDeleteCustomer extends AsyncTask<String, Void, Void> {
+public class AsyncDeleteCustomer extends AsyncTask<Void, Void, String> {
 
     @Override
-    protected Void doInBackground(String... strings) {
+    protected String doInBackground(Void... voids) {
         try {
             URL url = new URL("http://daotao.misa.com.vn/services/OrderService.svc/rest/DeleteOrder");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestProperty ("Cookie", strings[0]);
+            httpURLConnection.setRequestProperty ("Cookie", MainActivity.COOKIE);
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
@@ -51,7 +51,7 @@ public class AsyncDeleteCustomer extends AsyncTask<String, Void, Void> {
                 sb.append(line + "\n");
             }
 
-            Log.d("Response", sb.toString());
+            return (sb.toString());
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -63,4 +63,6 @@ public class AsyncDeleteCustomer extends AsyncTask<String, Void, Void> {
 
         return null;
     }
+
+
 }

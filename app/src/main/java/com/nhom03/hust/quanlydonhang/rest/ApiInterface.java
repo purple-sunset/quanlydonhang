@@ -22,7 +22,7 @@ public interface ApiInterface {
     Call<ListKhachHang> getListCustomer();
 
     @GET("GetAllCategory")
-    Call<ArrayList<TheLoai>> getListCategory();
+    Call<ListTheLoai> getListCategory();
 
     //them khach hang
     @POST("AddCustomer")

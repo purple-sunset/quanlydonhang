@@ -23,7 +23,6 @@ public class TestActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private ArrayList<HangHoa> dsHang;
     private ArrayList<String> ds;
-    private DatabaseHelper db = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,7 @@ public class TestActivity extends AppCompatActivity {
         //db.themHangHoa(hh1);
        // db.themHangHoa(hh2);
 
-        dsHang = db.layDSHangHoa();
+        dsHang = DatabaseHelper.getInstance().layDSHangHoa();
         ds = new ArrayList<String>();
         for (HangHoa hang:dsHang
              ) {
@@ -53,8 +52,8 @@ public class TestActivity extends AppCompatActivity {
     }
 
     public void onClick(View view){
-        db.xoaHangHoa(dsHang.get(0));
-        dsHang = db.layDSHangHoa();
+        DatabaseHelper.getInstance().xoaHangHoa(dsHang.get(0));
+        dsHang = DatabaseHelper.getInstance().layDSHangHoa();
         ds = new ArrayList<String>();
         for (HangHoa hang:dsHang
                 ) {

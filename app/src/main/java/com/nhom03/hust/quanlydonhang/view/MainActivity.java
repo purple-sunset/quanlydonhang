@@ -10,11 +10,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
+import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
+import com.nhom03.hust.quanlydonhang.model.HangHoa;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
 import com.nhom03.hust.quanlydonhang.model.TheLoai;
 import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
 import com.nhom03.hust.quanlydonhang.rest.ApiInterface;
 import com.nhom03.hust.quanlydonhang.rest.AsyncDeleteCustomer;
+import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllCategory;
+import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllProduct;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
@@ -26,6 +30,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private NguoiDung nguoiDung;
     public static String COOKIE;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +53,14 @@ public class MainActivity extends AppCompatActivity {
         txtUserName.setText(nguoiDung.getTen());
         COOKIE = nguoiDung.getCookie();
 
+
+
     }
 
     public void testLogin(View view){
         if(checkLogin()){
             AsyncDeleteCustomer asyncT = new AsyncDeleteCustomer();
-            asyncT.execute(nguoiDung.getCookie());
+            asyncT.execute();
         }
 
     }
@@ -107,21 +115,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void layDSKhachHang(View view){
-        ApiInterface apiService = APITheLoai.getListTheLoai().create(ApiInterface.class);
-        Call<ArrayList<TheLoai>> call = apiService.getListCategory();
-        call.enqueue(new Callback<ArrayList<TheLoai>>() {
-            @Override
-            public void onResponse(Call<ArrayList<TheLoai>> call, Response<ArrayList<TheLoai>> response) {
-                int statusCode = response.code();
-                ArrayList<TheLoai> ds = response.body();
-                Log.d("Response", "success");
-            }
+        try {
+            AsyncGetAllCategory asyncT = new AsyncGetAllCategory();
+            ArrayList<TheLoai> dsTheLoai = asyncT.execute().get();
 
-            @Override
-            public void onFailure(Call<ArrayList<TheLoai>> call, Throwable t) {
+            AsyncGetAllProduct asyncT2 = new AsyncGetAllProduct();
+            ArrayList<HangHoa> dsHangHoa = asyncT2.execute().get();
 
-            }
-        });
-        Log.d("Response", "success");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<HangHoa> ds = DatabaseHelper.getInstance().layDSHangHoa();
+        Log.d("Hang Hoa", ds.get(0).getTen());
     }
 }
