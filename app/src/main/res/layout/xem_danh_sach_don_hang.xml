@@ -9,9 +9,7 @@
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="50dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="25sp"
-        android:textStyle="normal"
+        style="@style/Tieu_de_1"
         android:text="Danh sach don hang"/>
 
 

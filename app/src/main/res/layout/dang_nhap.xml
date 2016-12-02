@@ -56,9 +56,8 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@color/button"
+        style="@style/button"
         android:onClick="logIn"
-        style="@style/Tieu_de_2"
         />
 
 

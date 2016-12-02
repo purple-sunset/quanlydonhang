@@ -18,8 +18,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/name_customer"
                 android:text="Misa_TRieu van dung hahaha"
-                android:textStyle="bold"
-                android:textSize="16dp"
+                style="@style/Tieu_de_2"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -27,6 +26,7 @@
                 android:id="@+id/address_customer"
                 android:text="dia chi so 12 ha noi thanh pho ho chi minh dfva
                 dfs dfs"
+                style="@style/thuong"
                 android:layout_weight="6"/>
         </LinearLayout>
         <ImageView

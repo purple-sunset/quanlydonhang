@@ -8,12 +8,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quan ao"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        style="@style/Tieu_de_2"/>
     <TextView
         android:id="@+id/TV_mo_ta_danh_muc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Quan ao dung de mac."
-        android:textSize="20sp"/>
+        style="@style/thuong"/>
 </LinearLayout>

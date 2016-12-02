@@ -217,19 +217,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Sua"
-        android:textSize="20sp"
+        style="@style/button"
         android:layout_weight="5"
         android:drawableLeft="@drawable/edit1"
-        android:background="@color/button"
         />
     <Button
         android:id="@+id/btn_xoa_thong_tin_khach_hang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Xoa"
-        android:textSize="20sp"
+        style="@style/button"
         android:layout_weight="5"
         android:drawableLeft="@drawable/delete1"
-        android:background="@color/button"/>
+        />
 
 </LinearLayout>

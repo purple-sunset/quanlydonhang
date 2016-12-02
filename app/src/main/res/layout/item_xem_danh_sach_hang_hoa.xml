@@ -7,11 +7,13 @@
         android:id="@+id/ten_hang_hoa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ten_hang_hoa"/>
+        android:text="@string/ten_hang_hoa"
+        style="@style/Tieu_de_2"/>
     <TextView
         android:id="@+id/don_gia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/don_gia"
+        style="@style/thuong"
         />
 </LinearLayout>
