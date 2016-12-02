@@ -224,6 +224,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/btn_sua_khach_hang"
         android:text="Sua"
         android:textSize="20sp"
         android:layout_weight="5"
