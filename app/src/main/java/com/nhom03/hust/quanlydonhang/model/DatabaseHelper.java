@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by Admin on 30/11/2016.
@@ -23,10 +24,11 @@ import java.util.Date;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static DatabaseHelper instan = null;
+    DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a", Locale.US);
 
     //Cơ sở dữ liệu
     private static final String TAG = "SQLite";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 42;
     private static final String DB_NAME = "Quan_ly_don_hang";
 
     //Tên các bảng
@@ -40,13 +42,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ID_DH = "id_don_hang";
     private static final String COLUMN_NG = "ngay_gio";
     private static final String COLUMN_CP = "cuoc_phi";
-    private static final String COLUMN_DC = "dia_chi";
+    private static final String COLUMN_TCH = "ten_chuyen_hang";
 
     //Các trường của bảng Khach_hang
     private static final String COLUMN_ID_KH = "id_khach_hang";
     private static final String COLUMN_TKH = "ten_khach_hang";
     private static final String COLUMN_TCT = "ten_cong_ty";
     private static final String COLUMN_TD = "tieu_de";
+    private static final String COLUMN_DC = "dia_chi";
     private static final String COLUMN_TP = "thanh_pho";
     private static final String COLUMN_V = "vung";
     private static final String COLUMN_QG = "quoc_gia";
@@ -70,7 +73,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Các trường của bảng Chi_tiet_don_hang
     private static final String COLUMN_SL = "so_luong";
-
+    private static final String COLUMN_GG = "giam_gia";
 
     public static DatabaseHelper getInstance(){
         if(instan == null){
@@ -94,7 +97,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Script tạo bảng.
         String taoBangDH = "CREATE TABLE " + TABLE_DH + "("
                 + COLUMN_ID_DH + " INT PRIMARY KEY," + COLUMN_NG + " TEXT NOT NULL,"
-                + COLUMN_CP + " TEXT NOT NULL," + COLUMN_DC + " TEXT,"
+                + COLUMN_CP + " TEXT NOT NULL," + COLUMN_TCH + " TEXT,"
                 + COLUMN_ID_KH + " TEXT NOT NULL,"
                 +" FOREIGN KEY ("+ COLUMN_ID_KH +") REFERENCES "+ TABLE_KH +"("+ COLUMN_ID_KH + ") )";
 
@@ -112,6 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String taoBangCTDH = "CREATE TABLE " + TABLE_CTDH + "("
                 + COLUMN_ID_DH + " INT NOT NULL," + COLUMN_ID_HH + " INT NOT NULL," + COLUMN_SL + " INT NOT NULL,"
+                + COLUMN_GG + " FLOAT," + COLUMN_DG + " BIGINT NOT NULL,"
                 + "FOREIGN KEY ("+ COLUMN_ID_DH +") REFERENCES "+ TABLE_DH +"("+ COLUMN_ID_DH + "),"
                 + "FOREIGN KEY ("+ COLUMN_ID_HH +") REFERENCES "+ TABLE_HH +"("+ COLUMN_ID_HH + ") )";
 
@@ -152,9 +156,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID_DH, dh.getId());
-        values.put(COLUMN_NG, dh.getNgayGio().toString());
+        values.put(COLUMN_NG, df.format(dh.getNgayGio()));
         values.put(COLUMN_CP, dh.getCuocPhi());
-        values.put(COLUMN_DC, dh.getDiaChi());
+        values.put(COLUMN_TCH, dh.getTenChuyenHang());
         values.put(COLUMN_ID_KH, dh.getKhachHang().getId());
 
         // Trèn một dòng dữ liệu vào bảng.
@@ -170,7 +174,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor c = db.query(TABLE_DH, new String[] { COLUMN_ID_DH,
-                        COLUMN_NG, COLUMN_CP, COLUMN_DC, COLUMN_ID_KH }, COLUMN_ID_DH + "=?",
+                        COLUMN_NG, COLUMN_CP, COLUMN_TCH, COLUMN_ID_KH }, COLUMN_ID_DH + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (c != null)
             c.moveToFirst();
@@ -178,14 +182,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         DonHang dh = new DonHang();
         dh.setId(c.getInt(c.getColumnIndex(COLUMN_ID_DH)));
         try {
-            DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy");
             Date d = df.parse(c.getString(c.getColumnIndex(COLUMN_NG)));
             dh.setNgayGio(d);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         dh.setCuocPhi(c.getLong(c.getColumnIndex(COLUMN_CP)));
-        dh.setDiaChi(c.getString(c.getColumnIndex(COLUMN_DC)));
+        dh.setTenChuyenHang(c.getString(c.getColumnIndex(COLUMN_TCH)));
         dh.setKhachHang(layKhachHang(c.getString(c.getColumnIndex(COLUMN_ID_KH))));
         dh.setDsHang(layDSChiTietDonHang(dh.getId()));
 
@@ -210,14 +213,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 DonHang dh = new DonHang();
                 dh.setId(c.getInt(c.getColumnIndex(COLUMN_ID_DH)));
                 try {
-                    DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy");
                     Date d = df.parse(c.getString(c.getColumnIndex(COLUMN_NG)));
                     dh.setNgayGio(d);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
                 dh.setCuocPhi(c.getLong(c.getColumnIndex(COLUMN_CP)));
-                dh.setDiaChi(c.getString(c.getColumnIndex(COLUMN_DC)));
+                dh.setTenChuyenHang(c.getString(c.getColumnIndex(COLUMN_TCH)));
                 dh.setKhachHang(layKhachHang(c.getString(c.getColumnIndex(COLUMN_ID_KH))));
                 dh.setDsHang(layDSChiTietDonHang(dh.getId()));
 
@@ -236,9 +238,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_NG, dh.getNgayGio().toString());
+        values.put(COLUMN_NG, df.format(dh.getNgayGio()));
         values.put(COLUMN_CP, dh.getCuocPhi());
-        values.put(COLUMN_DC, dh.getDiaChi());
+        values.put(COLUMN_TCH, dh.getTenChuyenHang());
         values.put(COLUMN_ID_KH, dh.getKhachHang().getId());
 
         // updating row
@@ -501,6 +503,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_ID_DH, id);
         values.put(COLUMN_ID_HH, ct.getId());
         values.put(COLUMN_SL, ct.getSoLuong());
+        values.put(COLUMN_DG, ct.getDonGia());
+        values.put(COLUMN_GG, ct.getGiamGia());
 
         // Trèn một dòng dữ liệu vào bảng.
         db.insert(TABLE_CTDH, null, values);
@@ -513,9 +517,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public ChiTietDonHang layChiTietDonHang(int idDh, int idHH) {
         Log.i(TAG, "DatabaseHelper.layChiTietDonHang ... " + idDh);
 
-        String selectQuery = "SELECT " + COLUMN_ID_HH + ", " + COLUMN_TH + ", " + COLUMN_SL + ", " + COLUMN_DG
-                + "FROM " + TABLE_CTDH + ", " + TABLE_HH + "WHERE " + TABLE_CTDH + "." + COLUMN_ID_DH + "=" + idDh
-                + "AND " + TABLE_HH + "." + COLUMN_ID_HH + "=" + idHH;
+        String selectQuery = "SELECT " + TABLE_CTDH + "." + COLUMN_ID_HH + ", " + COLUMN_TH + ", " + COLUMN_SL + ", " + TABLE_CTDH + "." + COLUMN_DG + ", " + COLUMN_GG
+                + " FROM " + TABLE_CTDH + ", " + TABLE_HH + " WHERE " + TABLE_CTDH + "." + COLUMN_ID_DH + "=" + idDh
+                + " AND " + TABLE_HH + "." + COLUMN_ID_HH + "=" + idHH;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -524,10 +528,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             c.moveToFirst();
 
         ChiTietDonHang ct = new ChiTietDonHang();
-        ct.setId(c.getInt(c.getColumnIndex(COLUMN_ID_HH)));
+        ct.setId(c.getInt(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_ID_HH)));
         ct.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
         ct.setSoLuong(c.getInt(c.getColumnIndex(COLUMN_SL)));
-        ct.setDonGia(c.getLong(c.getColumnIndex(COLUMN_DG)));
+        ct.setDonGia(c.getLong(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_DG)));
+        ct.setGiamGia(c.getFloat(c.getColumnIndex(COLUMN_GG)));
 
         // return Chi Tiet Don Hang
         return ct;
@@ -539,9 +544,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ArrayList<ChiTietDonHang> dsChiTietDonHang = new ArrayList<ChiTietDonHang>();
         // Select All Query
-        String selectQuery = "SELECT " + COLUMN_ID_HH + ", " + COLUMN_TH + ", " + COLUMN_SL + ", " + COLUMN_DG
-                + "FROM " + TABLE_CTDH + ", " + TABLE_HH + "WHERE " + TABLE_CTDH + "." + COLUMN_ID_DH + "=" + id
-                + "AND " + TABLE_HH + "." + COLUMN_ID_HH + "=" + TABLE_CTDH + "." + COLUMN_ID_HH;
+        String selectQuery = "SELECT " + TABLE_CTDH + "." + COLUMN_ID_HH + ", " + COLUMN_TH + ", " + COLUMN_SL + ", " + TABLE_CTDH + "." + COLUMN_DG + ", " + COLUMN_GG
+                + " FROM " + TABLE_CTDH + ", " + TABLE_HH + " WHERE " + TABLE_CTDH + "." + COLUMN_ID_DH + "=" + id
+                + " AND " + TABLE_HH + "." + COLUMN_ID_HH + "=" + TABLE_CTDH + "." + COLUMN_ID_HH;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
@@ -551,10 +556,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 ChiTietDonHang ct = new ChiTietDonHang();
-                ct.setId(c.getInt(c.getColumnIndex(COLUMN_ID_HH)));
+                ct.setId(c.getInt(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_ID_HH)));
                 ct.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
                 ct.setSoLuong(c.getInt(c.getColumnIndex(COLUMN_SL)));
-                ct.setDonGia(c.getLong(c.getColumnIndex(COLUMN_DG)));
+                ct.setDonGia(c.getLong(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_DG)));
+                ct.setGiamGia(c.getFloat(c.getColumnIndex(COLUMN_GG)));
 
                 // Thêm vào danh sách.
                 dsChiTietDonHang.add(ct);
@@ -572,7 +578,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_SL, ct.getSoLuong());
-
+        values.put(COLUMN_DG, ct.getDonGia())
+;        values.put(COLUMN_GG, ct.getGiamGia());
 
         // updating row
         return db.update(TABLE_CTDH, values, COLUMN_ID_DH + " = ?" + "AND " + COLUMN_ID_HH + " =?",
@@ -583,7 +590,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.i(TAG, "DatabaseHelper.xoaChiTietDonHang ... " + id );
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CTDH, COLUMN_ID_DH + " = ?" + "AND " + COLUMN_ID_HH + " =?",
+        db.delete(TABLE_CTDH, COLUMN_ID_DH + " = ?" + "AND " + COLUMN_ID_HH + " = ?",
                 new String[]{String.valueOf(id), String.valueOf(ct.getId())});
         db.close();
     }

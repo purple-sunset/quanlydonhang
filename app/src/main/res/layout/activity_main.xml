@@ -32,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/txt_xin_chao"
+        android:onClick="layDSDonHang"
         />
 
     <Button
@@ -41,6 +42,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_below="@id/btn_don_hang"
+        android:onClick="layDSKhachHang"
         />
 
     <Button
@@ -50,7 +52,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/btn_khach_hang"
         android:layout_marginTop="20dp"
-        android:onClick="layDSKhachHang"/>
+        android:onClick="layDSHangHoa"/>
 
     <Button
         android:id="@+id/btn_test_login"

@@ -70,7 +70,7 @@ public class XemChiTietKhachHangActivity extends AppCompatActivity {
         maBuuChinh = (EditText) findViewById(R.id.ET_ma_buu_chinh);
         khuVuc = (EditText) findViewById(R.id.ET_khu_vuc);
 
-        suaKhachHang = (Button) findViewById(R.id.btn_sua_khach_hang);
+        suaKhachHang = (Button) findViewById(R.id.btn_sua_thong_tin_khach_hang);
 
     }
 

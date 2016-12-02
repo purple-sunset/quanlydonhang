@@ -1,6 +1,7 @@
 package com.nhom03.hust.quanlydonhang.rest;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.HangHoa;
@@ -22,10 +23,9 @@ import java.util.ArrayList;
  * Created by Admin on 02/12/2016.
  */
 
-public class AsyncGetAllProduct extends AsyncTask<Void, Void, ArrayList<HangHoa>> {
+public class AsyncGetAllProduct extends AsyncTask<Void, Void, Boolean> {
     @Override
-    protected ArrayList<HangHoa> doInBackground(Void... voids) {
-        ArrayList<HangHoa> dsHangHoa = new ArrayList<>();
+    protected Boolean doInBackground(Void... voids) {
         try {
             URL url = new URL("http://daotao.misa.com.vn/Services/OrderService.svc/rest/GetAllProduct");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -40,7 +40,14 @@ public class AsyncGetAllProduct extends AsyncTask<Void, Void, ArrayList<HangHoa>
                 sb.append(line + "\n");
             }
 
-            return parseJSON(sb.toString());
+            parseJSON(sb.toString());
+
+            int code = httpURLConnection.getResponseCode();
+            if(code == HttpURLConnection.HTTP_OK)
+                return true;
+            else
+                return false;
+
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -50,9 +57,7 @@ public class AsyncGetAllProduct extends AsyncTask<Void, Void, ArrayList<HangHoa>
         return null;
     }
 
-    private ArrayList<HangHoa> parseJSON(String result) {
-
-        ArrayList<HangHoa> dsHangHoa = new ArrayList<>();
+    private void parseJSON(String result) {
         try {
             JSONObject o = new JSONObject(result);
             JSONArray temp = o.getJSONArray("GetAllProductResult");
@@ -60,12 +65,18 @@ public class AsyncGetAllProduct extends AsyncTask<Void, Void, ArrayList<HangHoa>
                 JSONObject c = temp.getJSONObject(i);
                 HangHoa hh = new HangHoa(c.getInt("ProductID"), c.getString("ProductName"), c.getBoolean("Discontinued"), c.getLong("UnitPrice"), c.getInt("UnitsInStock"), c.getInt("UnitsOnOrder"), c.getString("QuantityPerUnit"), DatabaseHelper.getInstance().layTheLoai(c.getInt("CategoryID")));
                 DatabaseHelper.getInstance().themHangHoa(hh);
-                dsHangHoa.add(hh);
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return dsHangHoa;
+    }
+
+    @Override
+    protected void onPostExecute(Boolean result){
+        Log.d("AsyncGetAllProduct ", " Finished");
+        AsyncGetAllCustomer asyncT3 = new AsyncGetAllCustomer();
+        asyncT3.execute();
     }
 
 }

@@ -1,19 +1,16 @@
 package com.nhom03.hust.quanlydonhang.rest;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
+import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.model.TheLoai;
-import com.nhom03.hust.quanlydonhang.view.MainActivity;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -25,16 +22,14 @@ import java.util.ArrayList;
  * Created by Admin on 02/12/2016.
  */
 
-public class AsyncGetAllCategory extends AsyncTask<Void, Void, Boolean > {
-
+public class AsyncGetAllCustomer extends AsyncTask<Void, Void, Boolean> {
     @Override
     protected Boolean doInBackground(Void... voids) {
         try {
-            URL url = new URL("http://daotao.misa.com.vn/services/OrderService.svc/rest/GetAllCategory");
+            URL url = new URL("http://daotao.misa.com.vn/services/CustomerService.svc/rest/GetAllCustomer");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.connect();
-            int code = httpURLConnection.getResponseCode();
             StringBuilder sb = new StringBuilder();
             BufferedReader reader = new BufferedReader(new InputStreamReader(
                     httpURLConnection.getInputStream()));
@@ -46,6 +41,7 @@ public class AsyncGetAllCategory extends AsyncTask<Void, Void, Boolean > {
 
             parseJSON(sb.toString());
 
+            int code = httpURLConnection.getResponseCode();
             if(code == HttpURLConnection.HTTP_OK)
                 return true;
             else
@@ -56,31 +52,30 @@ public class AsyncGetAllCategory extends AsyncTask<Void, Void, Boolean > {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
-
 
     private void parseJSON(String result) {
         try {
             JSONObject o = new JSONObject(result);
-            JSONArray temp = o.getJSONArray("GetAllCategoryResult");
+            JSONArray temp = o.getJSONArray("GetAllCustomerResult");
             for (int i = 0; i < temp.length(); i++) {
                 JSONObject c = temp.getJSONObject(i);
-                TheLoai tl = new TheLoai(c.getInt("CategoryID"), c.getString("CategoryName"), c.getString("Description"));
-                DatabaseHelper.getInstance().themTheLoai(tl);
-
+                KhachHang kh = new KhachHang(c.getString("CustomerID"), c.getString("ContactName")
+                        , c.getString("CompanyName"), c.getString("ContactTitle"), c.getString("Address")
+                        , c.getString("City"),c.getString("Region"), c.getString("Country"), c.getString("Phone")
+                        , c.getString("Fax"), c.getString("PostalCode"));
+                DatabaseHelper.getInstance().themKhachHang(kh);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     protected void onPostExecute(Boolean result){
-        Log.d("AsyncGetAllCategory ", " Finished");
-        AsyncGetAllProduct asyncT2 = new AsyncGetAllProduct();
-        asyncT2.execute();
+        Log.d("AsyncGetAllCustomer ", " Finished");
+        AsyncGetAllOrder asyncT4 = new AsyncGetAllOrder();
+        asyncT4.execute();
     }
-
 }

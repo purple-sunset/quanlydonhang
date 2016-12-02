@@ -9,14 +9,16 @@ public class ChiTietDonHang {
     private String ten;
     private int soLuong;
     private long donGia;
+    private float giamGia;
 
     public ChiTietDonHang(){}
 
-    public ChiTietDonHang(int id, String ten, int soLuong, long donGia) {
+    public ChiTietDonHang(int id, String ten, int soLuong, long donGia, float giamGia) {
         this.id = id;
         this.ten = ten;
         this.soLuong = soLuong;
         this.donGia = donGia;
+        this.giamGia = giamGia;
     }
 
     public int getId() {
@@ -49,5 +51,13 @@ public class ChiTietDonHang {
 
     public void setDonGia(long donGia) {
         this.donGia = donGia;
+    }
+
+    public float getGiamGia() {
+        return giamGia;
+    }
+
+    public void setGiamGia(float giamGia) {
+        this.giamGia = giamGia;
     }
 }

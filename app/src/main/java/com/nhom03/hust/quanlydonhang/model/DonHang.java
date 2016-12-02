@@ -11,7 +11,7 @@ public class DonHang {
     private int id;
     private Date ngayGio;
     private long cuocPhi;
-    private String diaChi;
+    private String tenChuyenHang;
     private KhachHang khachHang;
     private ArrayList<ChiTietDonHang> dsHang;
 
@@ -19,11 +19,11 @@ public class DonHang {
 
     }
 
-    public DonHang(int id, Date ngayGio, long cuocPhi, String diaChi, KhachHang khachHang, ArrayList<ChiTietDonHang> dsHang) {
+    public DonHang(int id, Date ngayGio, long cuocPhi, String tenChuyenHang, KhachHang khachHang, ArrayList<ChiTietDonHang> dsHang) {
         this.id = id;
         this.ngayGio = ngayGio;
         this.cuocPhi = cuocPhi;
-        this.diaChi = diaChi;
+        this.tenChuyenHang = tenChuyenHang;
         this.khachHang = khachHang;
         this.dsHang = dsHang;
     }
@@ -52,12 +52,12 @@ public class DonHang {
         this.cuocPhi = cuocPhi;
     }
 
-    public String getDiaChi() {
-        return diaChi;
+    public String getTenChuyenHang() {
+        return tenChuyenHang;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setTenChuyenHang(String tenChuyenHang) {
+        this.tenChuyenHang = tenChuyenHang;
     }
 
     public KhachHang getKhachHang() {

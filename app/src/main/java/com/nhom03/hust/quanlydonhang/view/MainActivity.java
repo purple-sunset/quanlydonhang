@@ -5,20 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
+import com.nhom03.hust.quanlydonhang.model.DonHang;
 import com.nhom03.hust.quanlydonhang.model.HangHoa;
+import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
 import com.nhom03.hust.quanlydonhang.model.TheLoai;
-import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
-import com.nhom03.hust.quanlydonhang.rest.ApiInterface;
 import com.nhom03.hust.quanlydonhang.rest.AsyncDeleteCustomer;
 import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllCategory;
+import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllCustomer;
+import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllOrder;
+import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllOrderDetail;
 import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllProduct;
+import com.nhom03.hust.quanlydonhang.rest.GetAll;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
@@ -30,11 +32,6 @@ import org.ksoap2.transport.HttpTransportSE;
 import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -114,13 +111,39 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
+    public void layDSDonHang(View view){
+        try {
+            AsyncGetAllCategory asyncT1 = new AsyncGetAllCategory();
+            asyncT1.execute();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void layDSKhachHang(View view){
         try {
+
+            AsyncGetAllCustomer asyncT = new AsyncGetAllCustomer();
+            asyncT.execute();
+            Log.d("Result", "a");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<KhachHang> ds = DatabaseHelper.getInstance().layDSKhachHang();
+        Log.d("Khach Hang", ds.get(0).getTenKH());
+    }
+
+    public void layDSHangHoa(View view){
+        try {
             AsyncGetAllCategory asyncT = new AsyncGetAllCategory();
-            ArrayList<TheLoai> dsTheLoai = asyncT.execute().get();
+            asyncT.execute();
 
             AsyncGetAllProduct asyncT2 = new AsyncGetAllProduct();
-            ArrayList<HangHoa> dsHangHoa = asyncT2.execute().get();
+            asyncT2.execute();
 
 
         } catch (Exception e) {
