@@ -230,7 +230,7 @@
         android:background="@color/button"
         android:layout_gravity="center"
         android:layout_weight="10"
-        android:drawableLeft="@drawable/add"/>
+        android:drawableLeft="@drawable/add1"/>
 
 
 </LinearLayout>

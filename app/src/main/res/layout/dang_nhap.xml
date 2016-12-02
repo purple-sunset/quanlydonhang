@@ -22,7 +22,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/user"/>
+            android:src="@drawable/user1"/>
         <EditText
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/password"/>
+            android:src="@drawable/password1"/>
         <EditText
             android:layout_width="250dp"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
         android:layout_height="50dp"
         android:id="@+id/login"
         android:text="Đăng Nhập"
-        android:drawableLeft="@drawable/login"
+        android:drawableLeft="@drawable/login1"
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:gravity="center"

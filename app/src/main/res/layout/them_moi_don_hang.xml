@@ -48,10 +48,10 @@
                     android:gravity="center"
                     android:layout_weight="20"/>
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/button"
-                    android:drawableRight="@drawable/next"/>
+                    android:background="@color/suong_mat_ong"
+                    android:drawableRight="@drawable/next1"/>
             </LinearLayout>>
         </TableRow>
         <TableRow
@@ -104,7 +104,7 @@
         android:textStyle="bold"
         android:textSize="20sp"
         android:background="@color/button"
-        android:drawableLeft="@drawable/shopping"
+        android:drawableLeft="@drawable/shopping1"
         android:text="Thong tin hang hoa"/>
     <Button
         android:id="@+id/BT_them_don_hang"
@@ -113,7 +113,7 @@
         android:text="Them"
         android:background="@color/button"
         android:textSize="20sp"
-        android:drawableLeft="@drawable/add"
+        android:drawableLeft="@drawable/add1"
         android:textStyle="bold"
         />
 </LinearLayout>
