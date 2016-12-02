@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/suong_mat_ong"
     >
         <TextView
             android:layout_width="wrap_content"
@@ -12,7 +12,7 @@
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textSize="25dp"
-            android:textColor="#07f437"
+
             />
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,6 +28,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/username"
+            android:textSize="20sp"
             android:hint="Nhập tên đăng nhập"
 
             />
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/password"
             android:hint="Nhập mật khẩu"
+            android:textSize="20sp"
             android:layout_marginTop="10px"/>
     </LinearLayout>
     <Button
@@ -58,6 +60,7 @@
         android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:gravity="center"
+        android:textSize="20sp"
         android:textColor="#0440f4"
         android:background="#04f4bc"
         android:onClick="logIn"
