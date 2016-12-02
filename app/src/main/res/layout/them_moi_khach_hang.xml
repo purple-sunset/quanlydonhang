@@ -4,26 +4,26 @@
     android:layout_height="match_parent">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Chi tiet khach hang"
-            android:textSize="20sp"
-            android:textColor="@color/colorPrimaryDark"
+            android:text="Them moi khach hang"
+            android:textSize="25sp"
             android:textStyle="bold"
-            android:gravity="center"/>
-        </android.support.v7.widget.Toolbar>
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center"
+            />
+    </android.support.v7.widget.Toolbar>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
-        android:layout_weight="1"
-        android:visibility="visible">
+        android:layout_weight="1">
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -224,15 +224,10 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Sua"
+        android:text="Them"
         android:textSize="20sp"
-        android:layout_weight="5"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Xoa"
-        android:textSize="20sp"
-        android:layout_weight="5"/>
+        android:layout_gravity="center"
+        android:layout_weight="10"/>
+
 
 </LinearLayout>
