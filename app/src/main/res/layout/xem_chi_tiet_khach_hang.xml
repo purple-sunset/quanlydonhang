@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/suong_mat_ong">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:minHeight="?attr/actionBarSize"
@@ -12,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Chi tiet khach hang"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
             android:gravity="center"/>
@@ -227,12 +228,16 @@
         android:text="Sua"
         android:textSize="20sp"
         android:layout_weight="5"
+        android:drawableLeft="@drawable/edit"
+        android:background="@color/button"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Xoa"
         android:textSize="20sp"
-        android:layout_weight="5"/>
+        android:layout_weight="5"
+        android:drawableLeft="@drawable/delete"
+        android:background="@color/button"/>
 
 </LinearLayout>

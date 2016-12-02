@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/suong_mat_ong">
     <TextView
         android:id="@+id/xem_danh_sach_hang_hoa"
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_height="50dp"
-        android:background="@color/colorAccent"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25sp"
         android:textStyle="normal"
