@@ -1,6 +1,9 @@
 package com.nhom03.hust.quanlydonhang.rest;
 
 import com.nhom03.hust.quanlydonhang.model.ListKhachHang;
+import com.nhom03.hust.quanlydonhang.model.TheLoai;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,5 +18,7 @@ public interface ApiInterface {
     @GET("GetAllCustomer")
     Call<ListKhachHang> getListCustomer();
 
+    @GET("GetAllCategory")
+    Call<ArrayList<TheLoai>> getListCategory();
 
 }
