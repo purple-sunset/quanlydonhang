@@ -1,5 +1,6 @@
 package com.nhom03.hust.quanlydonhang.view;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
 
+import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.KvmSerializable;
 import org.ksoap2.serialization.PropertyInfo;
@@ -22,6 +24,8 @@ import org.kxml2.kdom.Element;
 import org.kxml2.kdom.Node;
 
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DangNhapActivity extends AppCompatActivity {
 
@@ -45,8 +49,8 @@ public class DangNhapActivity extends AppCompatActivity {
         }
 
         //Tạo các thành phần
-        textTen = (EditText) findViewById(R.id.username);
-        textMatKhau = (EditText) findViewById(R.id.password);
+        textTen = (EditText) findViewById(R.id.ten_nguoi_dung);
+        textMatKhau = (EditText) findViewById(R.id.mat_khau);
         btnDangNhap = (Button) findViewById(R.id.login);
 
     }
@@ -55,31 +59,43 @@ public class DangNhapActivity extends AppCompatActivity {
         String userName = textTen.getText().toString();
         String passWord = textMatKhau.getText().toString();
         boolean result = false;
-
+        NguoiDung nd = new NguoiDung("demo", "12345678");
 
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
 
-        request.addProperty("username", "demo");
-        request.addProperty("password","12345678");
+        request.addProperty("username", nd.getTen());
+        request.addProperty("password", nd.getMatKhau());
         request.addProperty("customCredential"," ");
         request.addProperty("isPersistent","true");
+
+        //Element[] header = new Element[1];
+        //header[0] = new Element().createElement(NAMESPACE, "Set-Cookie");
+        List<HeaderProperty> headerIn = new ArrayList<HeaderProperty>();
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         envelope.dotNet = true;
         envelope.setOutputSoapObject(request);
+        //envelope.headerOut = header;
 
         System.out.println(request);
 
         HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
         try {
-            androidHttpTransport.call(SOAP_ACTION, envelope);
+            List headerOut = androidHttpTransport.call(SOAP_ACTION, envelope, headerIn);
             SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+
             Log.i("myApp", response.toString());
             System.out.println("response " + response);
 
             if(response.toString().equalsIgnoreCase("true"))
             {
                 result = true;
+                for (int i = 0; i < headerOut.size(); i++) {
+                    HeaderProperty hp = (HeaderProperty) headerOut.get(i);
+                    Log.d("Header", "Header"+ i +"="+hp.getKey()+" / "+hp.getValue());
+                }
+                nd.setCookie(((HeaderProperty) headerOut.get(7)).getValue());
+
             }
 
 
@@ -94,7 +110,14 @@ public class DangNhapActivity extends AppCompatActivity {
         }
 
         if(result)
+        {
             Log.d("Login", "Success");
+            Log.d("Login", nd.getCookie());
+            Intent dangNhap = new Intent(this, MainActivity.class);
+            dangNhap.putExtra("NGUOI_DUNG", nd);
+            startActivity(dangNhap);
+        }
+
         else
             Log.d("Login", "Fail");
 

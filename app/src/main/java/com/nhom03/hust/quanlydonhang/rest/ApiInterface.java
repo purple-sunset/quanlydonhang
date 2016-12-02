@@ -4,6 +4,7 @@ import com.nhom03.hust.quanlydonhang.model.ListKhachHang;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 /**
  * Created by sakura on 01/12/2016.

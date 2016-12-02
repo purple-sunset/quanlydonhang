@@ -27,7 +27,7 @@
         <EditText
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:id="@+id/username"
+            android:id="@+id/ten_nguoi_dung"
             android:hint="Nhập tên đăng nhập"
 
             />
@@ -45,7 +45,7 @@
         <EditText
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
+            android:id="@+id/mat_khau"
             android:hint="Nhập mật khẩu"
             android:layout_marginTop="10px"/>
     </LinearLayout>

@@ -15,8 +15,16 @@
         android:text="@string/xin_chao"
         style="@style/Header"
         android:gravity="center"
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/txt_user"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        style="@style/Header"
+        android:gravity="center"
+        android:layout_toEndOf="@+id/txt_xin_chao" />
 
     <Button
         android:id="@+id/btn_don_hang"
@@ -42,6 +50,16 @@
         android:layout_height="50dp"
         android:layout_below="@id/btn_khach_hang"
         android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btn_test_login"
+        android:text="Test login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/btn_hang_hoa"
+        android:layout_marginTop="20dp"
+        android:onClick="testLogin"
+        />
 
 
 </RelativeLayout>

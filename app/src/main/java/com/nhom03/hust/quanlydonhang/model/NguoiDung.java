@@ -1,26 +1,30 @@
 package com.nhom03.hust.quanlydonhang.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Admin on 30/11/2016.
  */
 
-public class NguoiDung {
-    private int id;
+public class NguoiDung implements Serializable {
     private String ten;
     private String matKhau;
 
-    public NguoiDung(int id, String ten, String matKhau) {
-        this.id = id;
+    public String getCookie() {
+        return cookie;
+    }
+
+    public void setCookie(String cookie) {
+        this.cookie = cookie;
+    }
+
+    private String cookie;
+
+    public NguoiDung(){}
+
+    public NguoiDung(String ten, String matKhau) {
         this.ten = ten;
         this.matKhau = matKhau;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTen() {
