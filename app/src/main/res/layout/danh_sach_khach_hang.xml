@@ -11,7 +11,7 @@
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:text="Danh sach khach hang"
-            android:textSize="25dp"
+            style="@style/Tieu_de_1"
             android:gravity="center"/>
     </android.support.v7.widget.Toolbar>
     <android.support.v7.widget.RecyclerView

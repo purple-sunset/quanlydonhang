@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.nhom03.hust.quanlydonhang.view.MainActivity">
+    tools:context="com.nhom03.hust.quanlydonhang.view.MainActivity"
+    android:background="@color/suong_mat_ong">
 
     <TextView
         android:id="@+id/txt_xin_chao"
@@ -16,7 +17,8 @@
         style="@style/Header"
         android:gravity="center"
         android:layout_width="150dp"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        />
 
     <TextView
         android:id="@+id/txt_user"

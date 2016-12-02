@@ -13,8 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Thong tin hang hoa"
-            android:textSize="25sp"
-            android:textStyle="bold"
+            style="@style/Tieu_de_1"
             android:gravity="center"
             />
 
@@ -28,17 +27,15 @@
             android:layout_width="match_parent">
             <TextView
                 android:layout_weight="1"
-                android:textStyle="bold"
+                style="@style/Tieu_de_2"
                 android:layout_height="match_parent"
                 android:text="Ten hang"
-                android:textSize="20sp"
                 android:gravity="center"/>
             <Button
                 android:id="@+id/BT_xem_danh_sach_hang_hoa"
                 android:layout_height="match_parent"
                 android:text="Ao so mi nam"
-                android:background="@color/button"
-                android:textSize="20sp"
+                style="@style/button"
                 android:layout_weight="5"
                 />
         </TableRow>
@@ -47,17 +44,16 @@
             android:layout_width="match_parent">
             <TextView
                 android:layout_weight="1"
-                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:text="So luong"
-                android:textSize="20sp"
+                style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <EditText
                 android:id="@+id/ET_so_luong"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
                 android:text="10"
-                android:textSize="20sp"
+                style="@style/thuong"
                 android:gravity="right"/>
 
         </TableRow>
@@ -66,17 +62,17 @@
             android:layout_width="match_parent">
             <TextView
                 android:layout_weight="1"
-                android:textStyle="bold"
+
                 android:layout_height="match_parent"
                 android:text="Don gia"
-                android:textSize="20sp"
+                style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <EditText
                 android:id="@+id/ET_don_gia"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
                 android:text="18.000"
-                android:textSize="20sp"
+                style="@style/thuong"
                 android:gravity="right"/>
 
         </TableRow>
@@ -85,17 +81,16 @@
             android:layout_width="match_parent">
             <TextView
                 android:layout_weight="1"
-                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:text="Thanh tien"
-                android:textSize="20sp"
+                style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <EditText
                 android:id="@+id/ET_thanh_tien"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
                 android:text="180.000"
-                android:textSize="20sp"
+                style="@style/thuong"
                 android:gravity="right"/>
 
         </TableRow>

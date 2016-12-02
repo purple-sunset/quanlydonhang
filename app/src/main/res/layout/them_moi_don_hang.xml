@@ -12,10 +12,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Them don hang"
-            android:textSize="25sp"
             android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimaryDark"
+            style="@style/Tieu_de_1"
             />
     </android.support.v7.widget.Toolbar>>
     <TableLayout
@@ -30,9 +28,8 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_ten_khach_hang"
                 android:text="Khach hang: "
-                android:textSize="20sp"
                 android:gravity="center"
-                android:textStyle="bold"
+                style="@style/Tieu_de_2"
                 android:layout_weight="1"/>
             <LinearLayout
                 android:layout_weight="20"
@@ -44,7 +41,7 @@
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
                     android:text=" Cong ty co phan Misa"
-                    android:textSize="20sp"
+                    style="@style/thuong"
                     android:gravity="center"
                     android:layout_weight="20"/>
                 <Button
@@ -62,8 +59,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_ngay_thang"
                 android:text="Ngay dat hang: "
-                android:textStyle="bold"
-                android:textSize="20sp"
+                style="@style/Tieu_de_2"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
@@ -71,7 +67,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
                 android:text=" 07/11/2016"
-                android:textSize="20sp"
+                style="@style/thuong"
                 android:gravity="center"
                 android:layout_weight="20"/>
         </TableRow>
@@ -83,16 +79,15 @@
                 android:layout_width="match_parent"
                 android:id="@+id/TV_dia_chi_giao_hang"
                 android:text="Dia chi giao hang: "
-                android:textSize="20sp"
+                style="@style/Tieu_de_2"
                 android:gravity="center"
-                android:textStyle="bold"
                 android:layout_weight="1"/>
             <EditText
                 android:id="@+id/ET_dia_chi_giao_hang"
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
                 android:text=" VIet Nam"
-                android:textSize="20sp"
+                style="@style/thuong"
                 android:gravity="center"
                 android:layout_weight="20"/>
         </TableRow>
@@ -101,19 +96,16 @@
         android:id="@+id/BT_xem_hang_hoa_cua_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:background="@color/button"
+        style="@style/button"
         android:drawableLeft="@drawable/shopping1"
         android:text="Thong tin hang hoa"/>
     <Button
+        android:layout_marginTop="250dp"
         android:id="@+id/BT_them_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Them"
-        android:background="@color/button"
-        android:textSize="20sp"
+        style="@style/button"
         android:drawableLeft="@drawable/add1"
-        android:textStyle="bold"
         />
 </LinearLayout>
