@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/suong_mat_ong">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Thong tin hang hoa"
+            android:textStyle="bold"
             android:textSize="25sp"
             android:gravity="center"
             />
@@ -26,6 +28,7 @@
             android:layout_width="match_parent">
             <TextView
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:text="Ten hang"
                 android:textSize="20sp"
@@ -34,6 +37,7 @@
                 android:id="@+id/BT_xem_danh_sach_hang_hoa"
                 android:layout_height="match_parent"
                 android:text="Ao so mi nam"
+                android:background="@color/button"
                 android:textSize="20sp"
                 android:layout_weight="5"/>
         </TableRow>
@@ -42,6 +46,7 @@
             android:layout_width="match_parent">
             <TextView
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:text="So luong"
                 android:textSize="20sp"
@@ -61,6 +66,7 @@
             android:layout_width="match_parent">
             <TextView
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:text="Don gia"
                 android:textSize="20sp"
@@ -80,6 +86,7 @@
             android:layout_width="match_parent">
             <TextView
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:text="Thanh tien"
                 android:textSize="20sp"
@@ -100,5 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cat"
+        android:background="@color/button"
+        android:drawableLeft="@drawable/save"
         android:textSize="20sp"/>
 </LinearLayout>

@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
+import com.nhom03.hust.quanlydonhang.model.TheLoai;
+import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
+import com.nhom03.hust.quanlydonhang.rest.ApiInterface;
 import com.nhom03.hust.quanlydonhang.rest.AsyncDeleteCustomer;
 
 import org.ksoap2.HeaderProperty;
@@ -24,10 +27,14 @@ import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     private NguoiDung nguoiDung;
-
+    public static String COOKIE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         Intent dangNhap = getIntent();
         nguoiDung = (NguoiDung) dangNhap.getExtras().getSerializable("NGUOI_DUNG");
         txtUserName.setText(nguoiDung.getTen());
-
+        COOKIE = nguoiDung.getCookie();
 
     }
 
@@ -97,5 +104,24 @@ public class MainActivity extends AppCompatActivity {
         else
             Log.d("Login", "Fail");
         return result;
+    }
+
+    public void layDSKhachHang(View view){
+        ApiInterface apiService = APITheLoai.getListTheLoai().create(ApiInterface.class);
+        Call<ArrayList<TheLoai>> call = apiService.getListCategory();
+        call.enqueue(new Callback<ArrayList<TheLoai>>() {
+            @Override
+            public void onResponse(Call<ArrayList<TheLoai>> call, Response<ArrayList<TheLoai>> response) {
+                int statusCode = response.code();
+                ArrayList<TheLoai> ds = response.body();
+                Log.d("Response", "success");
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<TheLoai>> call, Throwable t) {
+
+            }
+        });
+        Log.d("Response", "success");
     }
 }

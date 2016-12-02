@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" android:orientation="vertical">
+    android:layout_height="match_parent" android:orientation="vertical"
+    android:background="@color/suong_mat_ong"
+    >
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,11 +47,14 @@
             android:text=" Cong ty co phan Misa"
             android:textSize="20sp"
             android:gravity="center"
+            android:layout_gravity="bottom"
             android:layout_weight="20"/>
             <Button
                 android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:text="123"/>
+                android:layout_height="50dp"
+                android:layout_weight="40"
+                android:layout_gravity="bottom"
+                android:background="@drawable/next"/>
         </LinearLayout>>
     </TableRow>
         <TableRow
@@ -101,14 +106,18 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:text="Thong tin hang hoa"/>
+        android:text="Thong tin hang hoa"
+        android:drawableLeft="@drawable/shopping"
+        android:background="@color/button"/>
     <Button
         android:id="@+id/BT_xoa_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:text="Xoa"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        android:background="@color/button"
         />
 </LinearLayout>
