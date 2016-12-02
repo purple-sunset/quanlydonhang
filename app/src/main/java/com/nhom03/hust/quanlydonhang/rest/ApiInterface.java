@@ -1,10 +1,16 @@
 package com.nhom03.hust.quanlydonhang.rest;
 
+import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.model.ListKhachHang;
+import com.nhom03.hust.quanlydonhang.model.TheLoai;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by sakura on 01/12/2016.
