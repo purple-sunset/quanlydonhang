@@ -7,26 +7,37 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class KhachHang {
+
     @SerializedName("CustomerID")
     private String id;
+
     @SerializedName("ContactName")
     private String tenKH;
+
     @SerializedName("CompanyName")
     private String tenCT;
+
     @SerializedName("ContactTitle")
     private String tieuDe;
+
     @SerializedName("Address")
     private String diaChi;
+
     @SerializedName("City")
     private String thanhPho;
+
     @SerializedName("Region")
     private String vung;
+
     @SerializedName("Country")
     private String quocGia;
+
     @SerializedName("Phone")
     private String sdt;
+
     @SerializedName("Fax")
     private String fax;
+
     @SerializedName("PostalCode")
     private String maBuuChinh;
 

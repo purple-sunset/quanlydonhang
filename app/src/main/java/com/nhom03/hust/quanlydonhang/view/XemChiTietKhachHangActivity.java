@@ -7,14 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.nhom03.hust.quanlydonhang.R;
-import com.nhom03.hust.quanlydonhang.adapter.KhachHangAdapter;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
-import com.nhom03.hust.quanlydonhang.model.ListKhachHang;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
-import com.nhom03.hust.quanlydonhang.rest.ApiInterface;
-import com.nhom03.hust.quanlydonhang.rest.ApiKhachHang;
-
-import java.util.List;
+import com.nhom03.hust.quanlydonhang.rest.APIInterface;
+import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -76,7 +72,7 @@ public class XemChiTietKhachHangActivity extends AppCompatActivity {
 
     private void suaKhachHang() {
         KhachHang khachHang1 = getKhachHang();
-        ApiInterface apiService = ApiKhachHang.getListKhachHang().create(ApiInterface.class);
+        APIInterface apiService = APIKhachHang.get().create(APIInterface.class);
 
         Call<String> call = apiService.suaKhacHang(nguoiDung.getCookie(),khachHang1);
 

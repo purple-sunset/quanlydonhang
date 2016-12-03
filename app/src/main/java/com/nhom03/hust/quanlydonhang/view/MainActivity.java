@@ -8,19 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
-import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
-import com.nhom03.hust.quanlydonhang.model.DonHang;
-import com.nhom03.hust.quanlydonhang.model.HangHoa;
-import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
-import com.nhom03.hust.quanlydonhang.model.TheLoai;
+import com.nhom03.hust.quanlydonhang.rest.APIChiTietDonHang;
+import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
+import com.nhom03.hust.quanlydonhang.rest.APIHangHoa;
+import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
+import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
 import com.nhom03.hust.quanlydonhang.rest.AsyncDeleteCustomer;
-import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllCategory;
-import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllCustomer;
-import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllOrder;
-import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllOrderDetail;
-import com.nhom03.hust.quanlydonhang.rest.AsyncGetAllProduct;
-import com.nhom03.hust.quanlydonhang.rest.GetAll;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
@@ -112,45 +106,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void layDSDonHang(View view){
-        try {
-            AsyncGetAllCategory asyncT1 = new AsyncGetAllCategory();
-            asyncT1.execute();
 
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
 
     public void layDSKhachHang(View view){
-        try {
 
-            AsyncGetAllCustomer asyncT = new AsyncGetAllCustomer();
-            asyncT.execute();
-            Log.d("Result", "a");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<KhachHang> ds = DatabaseHelper.getInstance().layDSKhachHang();
-        Log.d("Khach Hang", ds.get(0).getTenKH());
     }
 
     public void layDSHangHoa(View view){
-        try {
-            AsyncGetAllCategory asyncT = new AsyncGetAllCategory();
-            asyncT.execute();
+        APIKhachHang.layDSKhachHang();
+        APITheLoai.layDSTheLoai();
+        APIHangHoa.layDSHangHoa();
+        APIDonHang.layDSDonHang();
+        //APIChiTietDonHang.layDSChiTietDonHang(10287);
+        Log.d("Test", "OK");
 
-            AsyncGetAllProduct asyncT2 = new AsyncGetAllProduct();
-            asyncT2.execute();
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        ArrayList<HangHoa> ds = DatabaseHelper.getInstance().layDSHangHoa();
-        Log.d("Hang Hoa", ds.get(0).getTen());
     }
 }

@@ -1,10 +1,6 @@
 package com.nhom03.hust.quanlydonhang.rest;
 
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
-import com.nhom03.hust.quanlydonhang.model.ListKhachHang;
-import com.nhom03.hust.quanlydonhang.model.TheLoai;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -16,7 +12,7 @@ import retrofit2.http.Query;
  * Created by sakura on 01/12/2016.
  */
 
-public interface ApiInterface {
+public interface APIInterface {
     //danh dacc khach hang
     @GET("GetAllCustomer")
     Call<ListKhachHang> getListCustomer();
@@ -24,7 +20,19 @@ public interface ApiInterface {
     @GET("GetAllCategory")
     Call<ListTheLoai> getListCategory();
 
+    @GET("GetAllProduct")
+    Call<ListHangHoa> getListProduct();
+
+    @GET("GetAllOrder")
+    Call<ListDonHang> getListOrder();
+
+    @GET("GetAllOrderDetail")
+    Call<ListChiTietDonHang> getListDetail(@Query("orderId") int id);
+
+
     //them khach hang
     @POST("AddCustomer")
     Call<String> suaKhacHang(@Header("Cookie") String cookie, @Query("customer") KhachHang khachHang);
+
 }
+

@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Cơ sở dữ liệu
     private static final String TAG = "SQLite";
-    private static final int DB_VERSION = 42;
+    private static final int DB_VERSION = 62;
     private static final String DB_NAME = "Quan_ly_don_hang";
 
     //Tên các bảng
@@ -40,9 +40,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Các trường của bảng Don_hang
     private static final String COLUMN_ID_DH = "id_don_hang";
+    private static final String COLUMN_ID_NV = "id_nhan_vien";
     private static final String COLUMN_NG = "ngay_gio";
     private static final String COLUMN_CP = "cuoc_phi";
     private static final String COLUMN_TCH = "ten_chuyen_hang";
+    private static final String COLUMN_SV = "ship_via";
 
     //Các trường của bảng Khach_hang
     private static final String COLUMN_ID_KH = "id_khach_hang";
@@ -61,10 +63,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ID_HH = "id_hang_hoa";
     private static final String COLUMN_TH = "ten_hang";
     private static final String COLUMN_HB = "huy_ban";
+    private static final String COLUMN_ROL = "re_order_level";
     private static final String COLUMN_DG = "don_gia";
     private static final String COLUMN_SLT = "so_luong_ton";
     private static final String COLUMN_SLD = "so_luong_da_dat";
     private static final String COLUMN_CT = "chi_tiet";
+    private static final String COLUMN_SP_ID = "id_supplier";
 
     //Các trường của bảng The_loai
     private static final String COLUMN_ID_TL = "id_the_loai";
@@ -96,26 +100,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Script tạo bảng.
         String taoBangDH = "CREATE TABLE " + TABLE_DH + "("
-                + COLUMN_ID_DH + " INT PRIMARY KEY," + COLUMN_NG + " TEXT NOT NULL,"
-                + COLUMN_CP + " TEXT NOT NULL," + COLUMN_TCH + " TEXT,"
-                + COLUMN_ID_KH + " TEXT NOT NULL,"
+                + COLUMN_ID_DH + " INT PRIMARY KEY," + COLUMN_ID_NV + " INT NOT NULL," + COLUMN_NG + " TEXT NOT NULL,"
+                + COLUMN_CP + " FLOAT NOT NULL," + COLUMN_TCH + " TEXT," +  COLUMN_DC + " TEXT,"
+                + COLUMN_TP + " TEXT," + COLUMN_V + " TEXT," + COLUMN_QG + " TEXT," + COLUMN_MBC + " TEXT,"
+                + COLUMN_ID_KH + " TEXT NOT NULL," + COLUMN_SV + " INT NOT NULL,"
                 +" FOREIGN KEY ("+ COLUMN_ID_KH +") REFERENCES "+ TABLE_KH +"("+ COLUMN_ID_KH + ") )";
 
         String taoBangKH = "CREATE TABLE " + TABLE_KH + "("
                 + COLUMN_ID_KH + " TEXT PRIMARY KEY," + COLUMN_TKH + " TEXT NOT NULL,"
                 + COLUMN_TCT + " TEXT," + COLUMN_TD + " TEXT," + COLUMN_DC + " TEXT NOT NULL,"
-                + COLUMN_TP + " TEXT NOT NULL," + COLUMN_V + " TEXT NOT NULL," + COLUMN_QG + " TEXT NOT NULL,"
+                + COLUMN_TP + " TEXT," + COLUMN_V + " TEXT," + COLUMN_QG + " TEXT,"
                 + COLUMN_SDT + " TEXT NOT NULL," + COLUMN_F + " TEXT," + COLUMN_MBC + " TEXT" + ")";
 
         String taoBangHH = "CREATE TABLE " + TABLE_HH + "("
                 + COLUMN_ID_HH + " INT PRIMARY KEY," + COLUMN_TH + " TEXT NOT NULL,"
-                + COLUMN_HB + " BOOLEAN NOT NULL," + COLUMN_DG + " BIGINT NOT NULL," + COLUMN_SLT + " INT NOT NULL,"
-                + COLUMN_SLD + " INT NOT NULL," + COLUMN_CT + " TEXT,"
+                + COLUMN_HB + " BOOLEAN NOT NULL," + COLUMN_ROL + " INT NOT NULL," + COLUMN_DG + " FLOAT NOT NULL," + COLUMN_SLT + " INT NOT NULL,"
+                + COLUMN_SLD + " INT NOT NULL," + COLUMN_CT + " TEXT," + COLUMN_SP_ID + " INT NOT NULL,"
                 + COLUMN_ID_TL + " INT NOT NULL," + "FOREIGN KEY ("+ COLUMN_ID_TL +") REFERENCES "+ TABLE_TL +"("+ COLUMN_ID_TL + ") )";
 
         String taoBangCTDH = "CREATE TABLE " + TABLE_CTDH + "("
                 + COLUMN_ID_DH + " INT NOT NULL," + COLUMN_ID_HH + " INT NOT NULL," + COLUMN_SL + " INT NOT NULL,"
-                + COLUMN_GG + " FLOAT," + COLUMN_DG + " BIGINT NOT NULL,"
+                + COLUMN_GG + " FLOAT," + COLUMN_DG + " FLOAT NOT NULL,"
                 + "FOREIGN KEY ("+ COLUMN_ID_DH +") REFERENCES "+ TABLE_DH +"("+ COLUMN_ID_DH + "),"
                 + "FOREIGN KEY ("+ COLUMN_ID_HH +") REFERENCES "+ TABLE_HH +"("+ COLUMN_ID_HH + ") )";
 
@@ -156,10 +161,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID_DH, dh.getId());
+        values.put(COLUMN_ID_NV, dh.getIdNhanVien());
         values.put(COLUMN_NG, df.format(dh.getNgayGio()));
         values.put(COLUMN_CP, dh.getCuocPhi());
         values.put(COLUMN_TCH, dh.getTenChuyenHang());
-        values.put(COLUMN_ID_KH, dh.getKhachHang().getId());
+        values.put(COLUMN_DC, dh.getDiaChiGiaoHang());
+        values.put(COLUMN_TP, dh.getThanhPhoGiaoHang());
+        values.put(COLUMN_V, dh.getVungGiaoHang());
+        values.put(COLUMN_QG, dh.getQuocGiaGiaoHang());
+        values.put(COLUMN_MBC, dh.getMbcGiaoHang());
+        values.put(COLUMN_ID_KH, dh.getIdKhachHang());
+        values.put(COLUMN_SV, dh.getShipVia());
 
         // Trèn một dòng dữ liệu vào bảng.
         db.insert(TABLE_DH, null, values);
@@ -187,10 +199,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        dh.setCuocPhi(c.getLong(c.getColumnIndex(COLUMN_CP)));
+        dh.setIdNhanVien(c.getInt(c.getColumnIndex(COLUMN_ID_NV)));
+        dh.setCuocPhi(c.getFloat(c.getColumnIndex(COLUMN_CP)));
         dh.setTenChuyenHang(c.getString(c.getColumnIndex(COLUMN_TCH)));
+        dh.setDiaChiGiaoHang(c.getString(c.getColumnIndex(COLUMN_DC)));
+        dh.setThanhPhoGiaoHang(c.getString(c.getColumnIndex(COLUMN_TP)));
+        dh.setVungGiaoHang(c.getString(c.getColumnIndex(COLUMN_V)));
+        dh.setQuocGiaGiaoHang(c.getString(c.getColumnIndex(COLUMN_QG)));
+        dh.setMbcGiaoHang(c.getString(c.getColumnIndex(COLUMN_MBC)));
         dh.setKhachHang(layKhachHang(c.getString(c.getColumnIndex(COLUMN_ID_KH))));
         dh.setDsHang(layDSChiTietDonHang(dh.getId()));
+        dh.setShipVia(c.getInt(c.getColumnIndex(COLUMN_SV)));
 
         // return Don Hang
         return dh;
@@ -218,10 +237,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                dh.setCuocPhi(c.getLong(c.getColumnIndex(COLUMN_CP)));
+                dh.setIdNhanVien(c.getInt(c.getColumnIndex(COLUMN_ID_NV)));
+                dh.setCuocPhi(c.getFloat(c.getColumnIndex(COLUMN_CP)));
                 dh.setTenChuyenHang(c.getString(c.getColumnIndex(COLUMN_TCH)));
+                dh.setDiaChiGiaoHang(c.getString(c.getColumnIndex(COLUMN_DC)));
+                dh.setThanhPhoGiaoHang(c.getString(c.getColumnIndex(COLUMN_TP)));
+                dh.setVungGiaoHang(c.getString(c.getColumnIndex(COLUMN_V)));
+                dh.setQuocGiaGiaoHang(c.getString(c.getColumnIndex(COLUMN_QG)));
+                dh.setMbcGiaoHang(c.getString(c.getColumnIndex(COLUMN_MBC)));
                 dh.setKhachHang(layKhachHang(c.getString(c.getColumnIndex(COLUMN_ID_KH))));
                 dh.setDsHang(layDSChiTietDonHang(dh.getId()));
+                dh.setShipVia(c.getInt(c.getColumnIndex(COLUMN_SV)));
 
                 // Thêm vào danh sách.
                 dsDonHang.add(dh);
@@ -238,10 +264,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        values.put(COLUMN_ID_NV, dh.getIdNhanVien());
         values.put(COLUMN_NG, df.format(dh.getNgayGio()));
         values.put(COLUMN_CP, dh.getCuocPhi());
         values.put(COLUMN_TCH, dh.getTenChuyenHang());
-        values.put(COLUMN_ID_KH, dh.getKhachHang().getId());
+        values.put(COLUMN_DC, dh.getDiaChiGiaoHang());
+        values.put(COLUMN_TP, dh.getThanhPhoGiaoHang());
+        values.put(COLUMN_V, dh.getVungGiaoHang());
+        values.put(COLUMN_QG, dh.getQuocGiaGiaoHang());
+        values.put(COLUMN_MBC, dh.getMbcGiaoHang());
+        values.put(COLUMN_ID_KH, dh.getIdKhachHang());
+        values.put(COLUMN_SV, dh.getShipVia());
 
         // updating row
         return db.update(TABLE_DH, values, COLUMN_ID_DH + " = ?",
@@ -391,11 +424,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_ID_HH, hh.getId());
         values.put(COLUMN_TH, hh.getTen());
         values.put(COLUMN_HB, hh.isHuyBan());
+        values.put(COLUMN_ROL, hh.getReOrderLevel());
         values.put(COLUMN_DG, hh.getDonGia());
         values.put(COLUMN_SLT, hh.getSlTon());
         values.put(COLUMN_SLD, hh.getSlDat());
         values.put(COLUMN_CT, hh.getChiTiet());
-        values.put(COLUMN_ID_TL, hh.getTheLoai().getId());
+        values.put(COLUMN_ID_TL, hh.getIdTheLoai());
+        values.put(COLUMN_SP_ID, hh.getSupplierId());
 
         // Trèn một dòng dữ liệu vào bảng.
         db.insert(TABLE_HH, null, values);
@@ -421,11 +456,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         hh.setId(c.getInt(c.getColumnIndex(COLUMN_ID_HH)));
         hh.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
         hh.setHuyBan(c.getInt(c.getColumnIndex(COLUMN_HB)) != 0);
-        hh.setDonGia(c.getLong(c.getColumnIndex(COLUMN_DG)));
+        hh.setReOrderLevel(c.getInt(c.getColumnIndex(COLUMN_ROL)));
+        hh.setDonGia(c.getFloat(c.getColumnIndex(COLUMN_DG)));
         hh.setSlTon(c.getInt(c.getColumnIndex(COLUMN_SLT)));
         hh.setSlDat(c.getInt(c.getColumnIndex(COLUMN_SLD)));
         hh.setChiTiet(c.getString(c.getColumnIndex(COLUMN_CT)));
         hh.setTheLoai(layTheLoai(c.getInt(c.getColumnIndex(COLUMN_ID_TL))));
+        hh.setSupplierId(c.getInt(c.getColumnIndex(COLUMN_SP_ID)));
 
         // return Hang Hoa
         return hh;
@@ -450,11 +487,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 hh.setId(c.getInt(c.getColumnIndex(COLUMN_ID_HH)));
                 hh.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
                 hh.setHuyBan(c.getInt(c.getColumnIndex(COLUMN_HB)) != 0);
-                hh.setDonGia(c.getLong(c.getColumnIndex(COLUMN_DG)));
+                hh.setReOrderLevel(c.getInt(c.getColumnIndex(COLUMN_ROL)));
+                hh.setDonGia(c.getFloat(c.getColumnIndex(COLUMN_DG)));
                 hh.setSlTon(c.getInt(c.getColumnIndex(COLUMN_SLT)));
                 hh.setSlDat(c.getInt(c.getColumnIndex(COLUMN_SLD)));
                 hh.setChiTiet(c.getString(c.getColumnIndex(COLUMN_CT)));
                 hh.setTheLoai(layTheLoai(c.getInt(c.getColumnIndex(COLUMN_ID_TL))));
+                hh.setSupplierId(c.getInt(c.getColumnIndex(COLUMN_SP_ID)));
 
                 // Thêm vào danh sách.
                 dsHangHoa.add(hh);
@@ -473,11 +512,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_TH, hh.getTen());
         values.put(COLUMN_HB, hh.isHuyBan());
+        values.put(COLUMN_ROL, hh.getReOrderLevel());
         values.put(COLUMN_DG, hh.getDonGia());
         values.put(COLUMN_SLT, hh.getSlTon());
         values.put(COLUMN_SLD, hh.getSlDat());
         values.put(COLUMN_CT, hh.getChiTiet());
-        values.put(COLUMN_ID_TL, hh.getTheLoai().getId());
+        values.put(COLUMN_ID_TL, hh.getIdTheLoai());
+        values.put(COLUMN_SP_ID, hh.getSupplierId());
 
         // updating row
         return db.update(TABLE_HH, values, COLUMN_ID_HH + " = ?",
@@ -494,14 +535,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Chi Tiết Đơn Hàng
-    public void themChiTietDonHang(int id, ChiTietDonHang ct) {
-        Log.i(TAG, "DatabaseHelper.themChiTietDonHang ... " + id);
+    public void themChiTietDonHang(ChiTietDonHang ct) {
+        Log.i(TAG, "DatabaseHelper.themChiTietDonHang ... " + ct.getIdDonHang() + " " + ct.getIdHangHoa());
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID_DH, id);
-        values.put(COLUMN_ID_HH, ct.getId());
+        values.put(COLUMN_ID_DH, ct.getIdDonHang());
+        values.put(COLUMN_ID_HH, ct.getIdHangHoa());
         values.put(COLUMN_SL, ct.getSoLuong());
         values.put(COLUMN_DG, ct.getDonGia());
         values.put(COLUMN_GG, ct.getGiamGia());
@@ -515,9 +556,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public ChiTietDonHang layChiTietDonHang(int idDh, int idHH) {
-        Log.i(TAG, "DatabaseHelper.layChiTietDonHang ... " + idDh);
+        Log.i(TAG, "DatabaseHelper.layChiTietDonHang ... " + idDh + " " + idHH);
 
-        String selectQuery = "SELECT " + TABLE_CTDH + "." + COLUMN_ID_HH + ", " + COLUMN_TH + ", " + COLUMN_SL + ", " + TABLE_CTDH + "." + COLUMN_DG + ", " + COLUMN_GG
+        String selectQuery = "SELECT " + COLUMN_ID_DH +", " + TABLE_CTDH + "." + COLUMN_ID_HH + ", " + COLUMN_TH + ", " + COLUMN_SL + ", " + TABLE_CTDH + "." + COLUMN_DG + ", " + COLUMN_GG
                 + " FROM " + TABLE_CTDH + ", " + TABLE_HH + " WHERE " + TABLE_CTDH + "." + COLUMN_ID_DH + "=" + idDh
                 + " AND " + TABLE_HH + "." + COLUMN_ID_HH + "=" + idHH;
 
@@ -528,10 +569,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             c.moveToFirst();
 
         ChiTietDonHang ct = new ChiTietDonHang();
-        ct.setId(c.getInt(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_ID_HH)));
+        ct.setIdDonHang(c.getInt(c.getColumnIndex(COLUMN_ID_DH)));
+        ct.setIdHangHoa(c.getInt(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_ID_HH)));
         ct.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
         ct.setSoLuong(c.getInt(c.getColumnIndex(COLUMN_SL)));
-        ct.setDonGia(c.getLong(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_DG)));
+        ct.setDonGia(c.getFloat(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_DG)));
         ct.setGiamGia(c.getFloat(c.getColumnIndex(COLUMN_GG)));
 
         // return Chi Tiet Don Hang
@@ -540,7 +582,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public ArrayList<ChiTietDonHang> layDSChiTietDonHang(int id) {
-        Log.i(TAG, "MyDatabaseHelper.layDSChiTietDonHang ... " );
+        Log.i(TAG, "MyDatabaseHelper.layDSChiTietDonHang ... " + id );
 
         ArrayList<ChiTietDonHang> dsChiTietDonHang = new ArrayList<ChiTietDonHang>();
         // Select All Query
@@ -556,10 +598,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 ChiTietDonHang ct = new ChiTietDonHang();
-                ct.setId(c.getInt(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_ID_HH)));
+                ct.setIdDonHang(id);
+                ct.setIdHangHoa(c.getInt(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_ID_HH)));
                 ct.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
                 ct.setSoLuong(c.getInt(c.getColumnIndex(COLUMN_SL)));
-                ct.setDonGia(c.getLong(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_DG)));
+                ct.setDonGia(c.getFloat(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_DG)));
                 ct.setGiamGia(c.getFloat(c.getColumnIndex(COLUMN_GG)));
 
                 // Thêm vào danh sách.
@@ -571,8 +614,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return dsChiTietDonHang;
     }
 
-    public int suaChiTietDonHang(int id, ChiTietDonHang ct) {
-        Log.i(TAG, "DatabaseHelper.suaChiTietDonHang ... "  + id);
+    public int suaChiTietDonHang(ChiTietDonHang ct) {
+        Log.i(TAG, "DatabaseHelper.suaChiTietDonHang ... "  + ct.getIdDonHang() + " " + ct.getIdHangHoa());
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -583,15 +626,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // updating row
         return db.update(TABLE_CTDH, values, COLUMN_ID_DH + " = ?" + "AND " + COLUMN_ID_HH + " =?",
-                new String[]{String.valueOf(id), String.valueOf(ct.getId())});
+                new String[]{String.valueOf(ct.getIdDonHang()), String.valueOf(ct.getIdHangHoa())});
     }
 
-    public void xoaChiTietDonHang(int id, ChiTietDonHang ct) {
-        Log.i(TAG, "DatabaseHelper.xoaChiTietDonHang ... " + id );
+    public void xoaChiTietDonHang(ChiTietDonHang ct) {
+        Log.i(TAG, "DatabaseHelper.xoaChiTietDonHang ... " + ct.getIdDonHang() + " " + ct.getIdHangHoa() );
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_CTDH, COLUMN_ID_DH + " = ?" + "AND " + COLUMN_ID_HH + " = ?",
-                new String[]{String.valueOf(id), String.valueOf(ct.getId())});
+                new String[]{String.valueOf(ct.getIdDonHang()), String.valueOf(ct.getIdHangHoa())});
         db.close();
     }
 

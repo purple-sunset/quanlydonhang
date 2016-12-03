@@ -3,7 +3,7 @@ package com.nhom03.hust.quanlydonhang.rest;
 import android.util.Log;
 
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
-import com.nhom03.hust.quanlydonhang.model.TheLoai;
+import com.nhom03.hust.quanlydonhang.model.HangHoa;
 
 import java.util.List;
 
@@ -14,12 +14,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by Admin on 02/12/2016.
+ * Created by Admin on 03/12/2016.
  */
 
-public class APITheLoai {
-    public static final String BASE_URL = "http://daotao.misa.com.vn/services/OrderService.svc/rest/";
+public class APIHangHoa {
+
+    public static final String BASE_URL = "http://daotao.misa.com.vn/Services/OrderService.svc/rest/";
     private static Retrofit retrofit = null;
+
 
     public static Retrofit get() {
         if (retrofit == null) {
@@ -31,23 +33,24 @@ public class APITheLoai {
         return retrofit;
     }
 
-    public static void layDSTheLoai() {
-        APIInterface apiService = APITheLoai.get().create(APIInterface.class);
-        Call<ListTheLoai> call = apiService.getListCategory();
-        call.enqueue(new Callback<ListTheLoai>() {
+    public static void layDSHangHoa() {
+        APIInterface apiService = APIHangHoa.get().create(APIInterface.class);
+        Call<ListHangHoa> call = apiService.getListProduct();
+        call.enqueue(new Callback<ListHangHoa>() {
             @Override
-            public void onResponse(Call<ListTheLoai> call, Response<ListTheLoai> response) {
+            public void onResponse(Call<ListHangHoa> call, Response<ListHangHoa> response) {
                 if(response.isSuccessful()){
                     Log.d("API", "Success");
-                    List<TheLoai> result = response.body().getTheLoaiList();
-                    for(TheLoai tl:result){
-                        DatabaseHelper.getInstance().themTheLoai(tl);
+                    List<HangHoa> result = response.body().getHangHoaList();
+                    for(HangHoa hh:result){
+                        DatabaseHelper.getInstance().themHangHoa(hh);
                     }
                 }
+
             }
 
             @Override
-            public void onFailure(Call<ListTheLoai> call, Throwable t) {
+            public void onFailure(Call<ListHangHoa> call, Throwable t) {
                 Log.d("API", "Fail");
             }
         });

@@ -1,32 +1,56 @@
 package com.nhom03.hust.quanlydonhang.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Admin on 30/11/2016.
  */
 
 public class ChiTietDonHang {
-    private int id;
+
+    @SerializedName("OrderID")
+    private int idDonHang;
+
+    @SerializedName("ProductID")
+    private int idHangHoa;
+
+    @Expose
     private String ten;
+
+    @SerializedName("Quantity")
     private int soLuong;
-    private long donGia;
+
+    @SerializedName("UnitPrice")
+    private float donGia;
+
+    @SerializedName("Discount")
     private float giamGia;
 
     public ChiTietDonHang(){}
 
-    public ChiTietDonHang(int id, String ten, int soLuong, long donGia, float giamGia) {
-        this.id = id;
-        this.ten = ten;
+    public ChiTietDonHang(int idDonHang, int idHangHoa, int soLuong, float donGia, float giamGia) {
+        this.idDonHang = idDonHang;
+        this.idHangHoa = idHangHoa;
         this.soLuong = soLuong;
         this.donGia = donGia;
         this.giamGia = giamGia;
     }
 
-    public int getId() {
-        return id;
+    public int getIdDonHang() {
+        return idDonHang;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdDonHang(int idDonHang) {
+        this.idDonHang = idDonHang;
+    }
+
+    public int getIdHangHoa() {
+        return idHangHoa;
+    }
+
+    public void setIdHangHoa(int idHangHoa) {
+        this.idHangHoa = idHangHoa;
     }
 
     public String getTen() {
@@ -45,11 +69,11 @@ public class ChiTietDonHang {
         this.soLuong = soLuong;
     }
 
-    public long getDonGia() {
+    public float getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(long donGia) {
+    public void setDonGia(float donGia) {
         this.donGia = donGia;
     }
 

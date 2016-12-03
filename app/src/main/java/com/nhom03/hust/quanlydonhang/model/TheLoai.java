@@ -8,10 +8,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class TheLoai {
 
+    @SerializedName("CategoryID")
     private int id;
 
+    @SerializedName("CategoryName")
     private String ten;
 
+    @SerializedName("Description")
     private String moTa;
 
     public TheLoai(){}

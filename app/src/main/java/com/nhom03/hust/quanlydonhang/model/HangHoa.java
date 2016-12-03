@@ -1,32 +1,63 @@
 package com.nhom03.hust.quanlydonhang.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Admin on 30/11/2016.
  */
 
 public class HangHoa {
+
+    @SerializedName("ProductID")
     private int id;
+
+    @SerializedName("ProductName")
     private String ten;
+
+    @SerializedName("Discontinued")
     private boolean huyBan;
-    private long donGia;
-    private int slTon;
-    private int slDat;
+
+    @SerializedName("ReorderLevel")
+    private int reOrderLevel = 0;
+
+    @SerializedName("QuantityPerUnit")
     private String chiTiet;
+
+    @SerializedName("UnitPrice")
+    private float donGia;
+
+    @SerializedName("UnitsInStock")
+    private int slTon;
+
+    @SerializedName("UnitsOnOrder")
+    private int slDat;
+
+    @SerializedName("SupplierID")
+    private int supplierId;
+
+    @SerializedName("CategoryID")
+    private int idTheLoai;
+
+    @Expose
     private TheLoai theLoai;
 
     public HangHoa(){}
 
-    public HangHoa(int id, String ten, boolean huyBan, long donGia,
-                   int slTon, int slDat, String chiTiet, TheLoai theLoai) {
+    public HangHoa(int id, String ten, boolean huyBan, int reOrderLevel, String chiTiet,
+                   float donGia, int slTon, int slDat, int supplierId, int idTheLoai) {
         this.id = id;
         this.ten = ten;
         this.huyBan = huyBan;
+        this.reOrderLevel = reOrderLevel;
+        this.chiTiet = chiTiet;
         this.donGia = donGia;
         this.slTon = slTon;
         this.slDat = slDat;
-        this.chiTiet = chiTiet;
-        this.theLoai = theLoai;
+        this.supplierId = supplierId;
+        this.idTheLoai = idTheLoai;
     }
+
 
     public int getId() {
         return id;
@@ -52,11 +83,11 @@ public class HangHoa {
         this.huyBan = huyBan;
     }
 
-    public long getDonGia() {
+    public float getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(long donGia) {
+    public void setDonGia(float donGia) {
         this.donGia = donGia;
     }
 
@@ -90,6 +121,31 @@ public class HangHoa {
 
     public void setTheLoai(TheLoai theLoai) {
         this.theLoai = theLoai;
+        //this.idTheLoai = theLoai.getId();
+    }
+
+    public int getIdTheLoai() {
+        return idTheLoai;
+    }
+
+    public void setIdTheLoai(int idTheLoai) {
+        this.idTheLoai = idTheLoai;
+    }
+
+    public int getReOrderLevel() {
+        return reOrderLevel;
+    }
+
+    public void setReOrderLevel(int reOrderLevel) {
+        this.reOrderLevel = reOrderLevel;
+    }
+
+    public int getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(int supplierId) {
+        this.supplierId = supplierId;
     }
 }
 
