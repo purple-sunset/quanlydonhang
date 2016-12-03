@@ -24,3 +24,21 @@ class ListKhachHang {
     }
 }
 
+class KhachHangJson {
+
+    @SerializedName("customer")
+    private KhachHang khachHang;
+
+    public KhachHangJson(KhachHang khachHang) {
+        this.khachHang = khachHang;
+    }
+
+    public KhachHang getKhachHang() {
+        return khachHang;
+    }
+
+    public void setKhachHang(KhachHang khachHang) {
+        this.khachHang = khachHang;
+    }
+}
+

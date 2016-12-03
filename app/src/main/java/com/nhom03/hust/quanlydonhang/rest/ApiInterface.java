@@ -1,8 +1,15 @@
 package com.nhom03.hust.quanlydonhang.rest;
 
+import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -32,7 +39,16 @@ public interface APIInterface {
 
     //them khach hang
     @POST("AddCustomer")
-    Call<String> suaKhacHang(@Header("Cookie") String cookie, @Query("customer") KhachHang khachHang);
+    Call<String> addCustomer(@Body JSONObject object);
+
+    @POST("AddOrderDetail")
+    Call<KetQuaThem> addOrderDetail(@Body Map<String, Object> body);
+
+    @POST("EditOrderDetail")
+    Call<KetQuaSua> editOrderDetail(@Body Map<String, Object> body);
+
+    @POST("DeleteOrderDetail")
+    Call<KetQuaXoa> deleteOrderDetail(@Body Map<String, Object> body);
 
 }
 

@@ -43,6 +43,20 @@ public class KhachHang {
 
     public KhachHang(){}
 
+    public KhachHang(String tenKH, String tenCT, String tieuDe, String diaChi, String thanhPho,
+                     String vung, String quocGia, String sdt, String fax, String maBuuChinh) {
+        this.tenKH = tenKH;
+        this.tenCT = tenCT;
+        this.tieuDe = tieuDe;
+        this.diaChi = diaChi;
+        this.thanhPho = thanhPho;
+        this.vung = vung;
+        this.quocGia = quocGia;
+        this.sdt = sdt;
+        this.fax = fax;
+        this.maBuuChinh = maBuuChinh;
+    }
+
     public KhachHang(String id, String tenKH, String tenCT, String tieuDe, String diaChi, String thanhPho,
                      String vung, String quocGia, String sdt, String fax, String maBuuChinh) {
         this.id = id;

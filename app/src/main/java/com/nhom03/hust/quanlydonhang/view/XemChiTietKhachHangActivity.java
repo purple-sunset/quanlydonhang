@@ -72,7 +72,7 @@ public class XemChiTietKhachHangActivity extends AppCompatActivity {
 
     private void suaKhachHang() {
         KhachHang khachHang1 = getKhachHang();
-        APIInterface apiService = APIKhachHang.get().create(APIInterface.class);
+        /*APIInterface apiService = APIKhachHang.get().create(APIInterface.class);
 
         Call<String> call = apiService.suaKhacHang(nguoiDung.getCookie(),khachHang1);
 
@@ -86,7 +86,7 @@ public class XemChiTietKhachHangActivity extends AppCompatActivity {
             public void onFailure(Call<String> call, Throwable t) {
 
             }
-        });
+        });*/
     }
 
     private KhachHang getKhachHang() {

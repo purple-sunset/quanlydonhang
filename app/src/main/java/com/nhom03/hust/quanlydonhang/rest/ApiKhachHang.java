@@ -2,8 +2,10 @@ package com.nhom03.hust.quanlydonhang.rest;
 
 import android.util.Log;
 
+import com.nhom03.hust.quanlydonhang.MyApplication;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
+import com.nhom03.hust.quanlydonhang.view.MainActivity;
 
 import java.util.List;
 
@@ -55,4 +57,26 @@ public class APIKhachHang {
         });
 
     }
+
+    /*public static void themKhachHang(KhachHang khachHang) {
+        KhachHangJson khJ = new KhachHangJson(khachHang);
+        APIInterface apiService = APIKhachHang.get().create(APIInterface.class);
+        Call<String> call = apiService.addCustomer(MyApplication.getCookie(), khJ);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                    Log.d("API", "Success");
+                    //DatabaseHelper.getInstance().themKhachHang(kh);
+                    Log.d("Return", response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d("API", "Fail");
+            }
+        });
+        //return "";
+    }*/
 }

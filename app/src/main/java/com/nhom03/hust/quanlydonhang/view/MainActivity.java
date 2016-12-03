@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
+import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
 import com.nhom03.hust.quanlydonhang.rest.APIChiTietDonHang;
 import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
 import com.nhom03.hust.quanlydonhang.rest.APIHangHoa;
 import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
 import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
-import com.nhom03.hust.quanlydonhang.rest.AsyncDeleteCustomer;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
@@ -30,8 +30,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private NguoiDung nguoiDung;
-    public static String COOKIE;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +40,11 @@ public class MainActivity extends AppCompatActivity {
         Intent dangNhap = getIntent();
         nguoiDung = (NguoiDung) dangNhap.getExtras().getSerializable("NGUOI_DUNG");
         txtUserName.setText(nguoiDung.getTen());
-        COOKIE = nguoiDung.getCookie();
-
-
-
     }
 
     public void testLogin(View view){
         if(checkLogin()){
-            AsyncDeleteCustomer asyncT = new AsyncDeleteCustomer();
-            asyncT.execute();
+
         }
 
     }
@@ -106,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void layDSDonHang(View view){
-
+        ChiTietDonHang ct = new ChiTietDonHang(10309, 4, 12, 18, 0);
+        APIChiTietDonHang.suaChiTietDonHang(ct);
+        Log.d("Debug", "STOP");
 
     }
 
