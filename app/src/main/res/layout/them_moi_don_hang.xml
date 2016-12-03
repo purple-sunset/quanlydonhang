@@ -11,7 +11,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Them don hang"
+            android:text="Thêm đơn hàng"
             android:gravity="center"
             style="@style/Tieu_de_1"
             />
@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/TV_ten_khach_hang"
-                android:text="Khach hang: "
+                android:text="Khách hàng: "
                 android:gravity="center"
                 style="@style/Tieu_de_2"
                 android:layout_weight="1"/>
@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/TV_ngay_thang"
-                android:text="Ngay dat hang: "
+                android:text="Ngày đặt hàng: "
                 style="@style/Tieu_de_2"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -78,7 +78,7 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/TV_dia_chi_giao_hang"
-                android:text="Dia chi giao hang: "
+                android:text="Địa chỉ giao hàng: "
                 style="@style/Tieu_de_2"
                 android:gravity="center"
                 android:layout_weight="1"/>
@@ -98,13 +98,13 @@
         android:layout_height="wrap_content"
         style="@style/button"
         android:drawableLeft="@drawable/shopping1"
-        android:text="Thong tin hang hoa"/>
+        android:text="Thông tin hàng hóa"/>
     <Button
         android:layout_marginTop="250dp"
         android:id="@+id/BT_them_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Them"
+        android:text="Thêm"
         style="@style/button"
         android:drawableLeft="@drawable/add1"
         />

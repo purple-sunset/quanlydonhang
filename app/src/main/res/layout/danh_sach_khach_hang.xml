@@ -10,7 +10,7 @@
         <TextView
             android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:text="Danh sach khach hang"
+            android:text="Danh sách khách hàng"
             style="@style/Tieu_de_1"
             android:gravity="center"/>
     </android.support.v7.widget.Toolbar>

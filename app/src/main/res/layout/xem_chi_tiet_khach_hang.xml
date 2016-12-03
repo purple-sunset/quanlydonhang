@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Chi tiet khach hang"
+            android:text="Thông tin khách hàng"
             style="@style/Tieu_de_1"
             android:gravity="center"/>
         </android.support.v7.widget.Toolbar>
@@ -176,7 +176,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ma buu chinh:"
+                    android:text="Mã bưu chính:"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:layout_weight="1"
@@ -195,7 +195,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Khu vuc:"
+                    android:text="Khu vực:"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:layout_weight="1"
@@ -216,7 +216,7 @@
         android:id="@+id/btn_sua_thong_tin_khach_hang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Sua"
+        android:text="Sửa"
         style="@style/button"
         android:layout_weight="5"
         android:drawableLeft="@drawable/edit1"
@@ -226,7 +226,7 @@
         android:id="@+id/btn_xoa_thong_tin_khach_hang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Xoa"
+        android:text="Xóa"
         style="@style/button"
         android:layout_weight="5"
         android:drawableLeft="@drawable/delete1"

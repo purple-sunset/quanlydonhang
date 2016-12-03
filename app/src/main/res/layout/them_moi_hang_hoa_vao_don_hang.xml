@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Thong tin hang hoa"
+            android:text="Thông tin hàng hóa"
             style="@style/Tieu_de_1"
             android:gravity="center"
             />
@@ -28,7 +28,7 @@
             <TextView
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="Ten hang"
+                android:text="Tên hàng"
                 style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <Button
@@ -44,7 +44,7 @@
             <TextView
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="So luong"
+                android:text="Số lượng"
                 style="@style/Tieu_de_2"
                 android:gravity="center"
                 />
@@ -63,7 +63,7 @@
             <TextView
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="Don gia"
+                android:text="Đơn giá"
                 style="@style/Tieu_de_2"
                 android:gravity="center"
                 />
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="Thanh tien"
+                android:text="Thành tiền"
                 style="@style/Tieu_de_2"
                 android:gravity="center"
                 />
@@ -100,7 +100,7 @@
         android:id="@+id/BT_them_moi_hang_hoa_vao_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cat"
+        android:text="Cất"
         style="@style/button"
         android:drawableLeft="@drawable/save1" />
 </LinearLayout>

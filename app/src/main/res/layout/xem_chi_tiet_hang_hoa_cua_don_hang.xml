@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Thong tin hang hoa"
+            android:text="Thông tin hàng hóa"
             style="@style/Tieu_de_1"
             android:gravity="center"
             />
@@ -29,7 +29,7 @@
                 android:layout_weight="1"
                 style="@style/Tieu_de_2"
                 android:layout_height="match_parent"
-                android:text="Ten hang"
+                android:text="Tên"
                 android:gravity="center"/>
             <Button
                 android:id="@+id/BT_xem_danh_sach_hang_hoa"
@@ -45,7 +45,7 @@
             <TextView
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="So luong"
+                android:text="Số lượng"
                 style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <EditText
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
 
                 android:layout_height="match_parent"
-                android:text="Don gia"
+                android:text="Đơn giá"
                 style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <EditText
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="Thanh tien"
+                android:text="Thành tiền"
                 style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <EditText

@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Them moi khach hang"
+            android:text="Thêm mới khách hàng"
             style="@style/Tieu_de_1"
             android:gravity="center"
             />
@@ -176,7 +176,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ma buu chinh:"
+                    android:text="Mã bưu chính:"
                     style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
@@ -194,7 +194,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Khu vuc:"
+                    android:text="Khu vực:"
                     style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
@@ -213,7 +213,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Them"
+        android:text="Thêm"
         style="@style/button"
         android:layout_gravity="center"
         android:layout_weight="10"
