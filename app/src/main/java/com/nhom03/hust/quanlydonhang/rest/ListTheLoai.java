@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Admin on 02/12/2016.
  */
 
-class ListTheLoai {
+public class ListTheLoai {
 
     @SerializedName("GetAllCategoryResult")
     private List<TheLoai> theLoaiList;

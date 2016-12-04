@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Admin on 03/12/2016.
  */
-class ListHangHoa {
+public class ListHangHoa {
 
     @SerializedName("GetAllProductResult")
     private List<HangHoa> hangHoaList;

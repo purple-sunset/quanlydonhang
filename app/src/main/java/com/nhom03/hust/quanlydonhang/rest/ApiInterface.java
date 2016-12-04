@@ -37,9 +37,23 @@ public interface APIInterface {
     Call<ListChiTietDonHang> getListDetail(@Query("orderId") int id);
 
 
-    //them khach hang
     @POST("AddCustomer")
-    Call<String> addCustomer(@Body JSONObject object);
+    Call<KetQuaThem> addCustomer(@Body Map<String, Object> body);
+
+    @POST("EditCustomer")
+    Call<KetQuaSua> editCustomer(@Body Map<String, Object> body);
+
+    @POST("DeleteCustomer")
+    Call<KetQuaXoa> deleteCustomer(@Body Map<String, Object> body);
+
+    @POST("AddOrder")
+    Call<KetQuaThem> addOrder(@Body Map<String, Object> body);
+
+    @POST("EditOrder")
+    Call<KetQuaSua> editOrder(@Body Map<String, Object> body);
+
+    @POST("DeleteOrder")
+    Call<KetQuaXoa> deleteOrder(@Body Map<String, Object> body);
 
     @POST("AddOrderDetail")
     Call<KetQuaThem> addOrderDetail(@Body Map<String, Object> body);

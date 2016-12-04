@@ -4,10 +4,13 @@ import android.util.Log;
 
 import com.nhom03.hust.quanlydonhang.MyApplication;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
+import com.nhom03.hust.quanlydonhang.model.DonHang;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.view.MainActivity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +51,8 @@ public class APIKhachHang {
                             DatabaseHelper.getInstance().themKhachHang(kh);
                     }
                 }
+                else
+                    Log.d("API", "Fail");
             }
 
             @Override
@@ -58,25 +63,75 @@ public class APIKhachHang {
 
     }
 
-    /*public static void themKhachHang(KhachHang khachHang) {
-        KhachHangJson khJ = new KhachHangJson(khachHang);
+    public static void themKhachHang(KhachHang kh) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("customer", kh);
         APIInterface apiService = APIKhachHang.get().create(APIInterface.class);
-        Call<String> call = apiService.addCustomer(MyApplication.getCookie(), khJ);
-        call.enqueue(new Callback<String>() {
+        Call<KetQuaThem> call = apiService.addCustomer(map);
+        call.enqueue(new Callback<KetQuaThem>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<KetQuaThem> call, Response<KetQuaThem> response) {
                 if(response.isSuccessful()){
                     Log.d("API", "Success");
-                    //DatabaseHelper.getInstance().themKhachHang(kh);
-                    Log.d("Return", response.body());
+                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
                 }
+                else
+                    Log.d("API", "Fail");
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<KetQuaThem> call, Throwable t) {
                 Log.d("API", "Fail");
             }
         });
-        //return "";
-    }*/
+
+    }
+
+    public static void suaKhachHang(KhachHang kh) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("customer", kh);
+        APIInterface apiService = APIKhachHang.get().create(APIInterface.class);
+        Call<KetQuaSua> call = apiService.editCustomer(map);
+        call.enqueue(new Callback<KetQuaSua>() {
+            @Override
+            public void onResponse(Call<KetQuaSua> call, Response<KetQuaSua> response) {
+                if(response.isSuccessful()){
+                    Log.d("API", "Success");
+                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
+                }
+                else
+                    Log.d("API", "Fail");
+            }
+
+            @Override
+            public void onFailure(Call<KetQuaSua> call, Throwable t) {
+                Log.d("API", "Fail");
+            }
+        });
+
+    }
+
+    public static void xoaKhachHang(KhachHang kh) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("customerId", kh.getId());
+        APIInterface apiService = APIKhachHang.get().create(APIInterface.class);
+        Call<KetQuaXoa> call = apiService.deleteCustomer(map);
+        call.enqueue(new Callback<KetQuaXoa>() {
+            @Override
+            public void onResponse(Call<KetQuaXoa> call, Response<KetQuaXoa> response) {
+                if(response.isSuccessful()){
+                    Log.d("API", "Success");
+                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
+                }
+                else
+                    Log.d("API", "Fail");
+
+            }
+
+            @Override
+            public void onFailure(Call<KetQuaXoa> call, Throwable t) {
+                Log.d("API", "Fail");
+            }
+        });
+    }
 }

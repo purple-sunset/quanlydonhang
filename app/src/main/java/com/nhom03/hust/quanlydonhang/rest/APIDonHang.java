@@ -8,7 +8,9 @@ import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.DonHang;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,6 +57,8 @@ public class APIDonHang {
                         APIChiTietDonHang.layDSChiTietDonHang(dh.getId());
                     }
                 }
+                else
+                    Log.d("API", "Fail");
             }
 
             @Override
@@ -63,5 +67,77 @@ public class APIDonHang {
             }
         });
 
+    }
+
+    public static void themDonHang(DonHang dh) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("order", dh);
+        APIInterface apiService = APIDonHang.get().create(APIInterface.class);
+        Call<KetQuaThem> call = apiService.addOrder(map);
+        call.enqueue(new Callback<KetQuaThem>() {
+            @Override
+            public void onResponse(Call<KetQuaThem> call, Response<KetQuaThem> response) {
+                if(response.isSuccessful()){
+                    Log.d("API", "Success");
+                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
+                }
+                else
+                    Log.d("API", "Fail");
+            }
+
+            @Override
+            public void onFailure(Call<KetQuaThem> call, Throwable t) {
+                Log.d("API", "Fail");
+            }
+        });
+
+    }
+
+    public static void suaDonHang(DonHang dh) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("order", dh);
+        APIInterface apiService = APIDonHang.get().create(APIInterface.class);
+        Call<KetQuaSua> call = apiService.editOrder(map);
+        call.enqueue(new Callback<KetQuaSua>() {
+            @Override
+            public void onResponse(Call<KetQuaSua> call, Response<KetQuaSua> response) {
+                if(response.isSuccessful()){
+                    Log.d("API", "Success");
+                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
+                }
+                else
+                    Log.d("API", "Fail");
+            }
+
+            @Override
+            public void onFailure(Call<KetQuaSua> call, Throwable t) {
+                Log.d("API", "Fail");
+            }
+        });
+
+    }
+
+    public static void xoaDonHang(DonHang dh) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("orderId", dh.getId());
+        APIInterface apiService = APIDonHang.get().create(APIInterface.class);
+        Call<KetQuaXoa> call = apiService.deleteOrder(map);
+        call.enqueue(new Callback<KetQuaXoa>() {
+            @Override
+            public void onResponse(Call<KetQuaXoa> call, Response<KetQuaXoa> response) {
+                if(response.isSuccessful()){
+                    Log.d("API", "Success");
+                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
+                }
+                else
+                    Log.d("API", "Fail");
+
+            }
+
+            @Override
+            public void onFailure(Call<KetQuaXoa> call, Throwable t) {
+                Log.d("API", "Fail");
+            }
+        });
     }
 }

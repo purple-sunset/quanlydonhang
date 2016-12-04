@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
+import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
 import com.nhom03.hust.quanlydonhang.rest.APIChiTietDonHang;
 import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
@@ -99,8 +100,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void layDSDonHang(View view){
-        ChiTietDonHang ct = new ChiTietDonHang(10309, 4, 12, 18, 0);
-        APIChiTietDonHang.suaChiTietDonHang(ct);
+        //ChiTietDonHang ct = new ChiTietDonHang(10309, 1, 12, 18, 0);
+        //APIChiTietDonHang.themChiTietDonHang(ct);
+
+        KhachHang kh = new KhachHang("duc", "duc", "HUST", "nhom 3", "Bach Khoa", "Ha Noi", "Mien Bac", "Viet Nam", "0123456789", "0123", "0000");
+        APIKhachHang.xoaKhachHang(kh);
         Log.d("Debug", "STOP");
 
     }

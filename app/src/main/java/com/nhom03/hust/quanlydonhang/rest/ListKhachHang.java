@@ -9,7 +9,7 @@ import java.util.List;
  * Created by sakura on 01/12/2016.
  */
 
-class ListKhachHang {
+public class ListKhachHang {
 
     @SerializedName("GetAllCustomerResult")
     private List<KhachHang> khachHangList;
@@ -24,21 +24,4 @@ class ListKhachHang {
     }
 }
 
-class KhachHangJson {
-
-    @SerializedName("customer")
-    private KhachHang khachHang;
-
-    public KhachHangJson(KhachHang khachHang) {
-        this.khachHang = khachHang;
-    }
-
-    public KhachHang getKhachHang() {
-        return khachHang;
-    }
-
-    public void setKhachHang(KhachHang khachHang) {
-        this.khachHang = khachHang;
-    }
-}
 

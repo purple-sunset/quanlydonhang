@@ -34,15 +34,10 @@ public class APIChiTietDonHang {
 
     public static Retrofit get() {
 
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
-
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .client(client)
                     .build();
         }
         return retrofit;
@@ -61,6 +56,8 @@ public class APIChiTietDonHang {
                         DatabaseHelper.getInstance().themChiTietDonHang(ct);
                     }
                 }
+                else
+                    Log.d("API", "Fail");
 
             }
 
@@ -84,6 +81,8 @@ public class APIChiTietDonHang {
                     Log.d("API", "Success");
                     Log.d("Ket qua", response.body().getMessageJson().getMessage());
                 }
+                else
+                    Log.d("API", "Fail");
             }
 
             @Override
@@ -106,6 +105,8 @@ public class APIChiTietDonHang {
                     Log.d("API", "Success");
                     Log.d("Ket qua", response.body().getMessageJson().getMessage());
                 }
+                else
+                    Log.d("API", "Fail");
             }
 
             @Override
@@ -130,6 +131,8 @@ public class APIChiTietDonHang {
                     Log.d("API", "Success");
                     Log.d("Ket qua", response.body().getMessageJson().getMessage());
                 }
+                else
+                    Log.d("API", "Fail");
 
             }
 
