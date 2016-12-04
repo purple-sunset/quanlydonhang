@@ -1,7 +1,10 @@
 package com.nhom03.hust.quanlydonhang.model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.nhom03.hust.quanlydonhang.rest.APIChiTietDonHang;
 
 /**
  * Created by Admin on 30/11/2016.
@@ -84,4 +87,5 @@ public class ChiTietDonHang {
     public void setGiamGia(float giamGia) {
         this.giamGia = giamGia;
     }
+
 }

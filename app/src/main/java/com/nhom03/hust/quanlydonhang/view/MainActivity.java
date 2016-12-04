@@ -1,10 +1,15 @@
 package com.nhom03.hust.quanlydonhang.view;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DialogTitle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
@@ -100,11 +105,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void layDSDonHang(View view){
-        //ChiTietDonHang ct = new ChiTietDonHang(10309, 1, 12, 18, 0);
-        //APIChiTietDonHang.themChiTietDonHang(ct);
 
-        KhachHang kh = new KhachHang("duc", "duc", "HUST", "nhom 3", "Bach Khoa", "Ha Noi", "Mien Bac", "Viet Nam", "0123456789", "0123", "0000");
-        APIKhachHang.xoaKhachHang(kh);
+        ChiTietDonHang ct = new ChiTietDonHang(10306, 5, 12, 18, 0);
+        APIChiTietDonHang.themChiTietDonHang(ct, this);
+
+        //KhachHang kh = new KhachHang("duc", "duc", "HUST", "nhom 3", "Bach Khoa", "Ha Noi", "Mien Bac", "Viet Nam", "0123456789", "0123", "0000");
+        //APIKhachHang.xoaKhachHang(kh);
         Log.d("Debug", "STOP");
 
     }

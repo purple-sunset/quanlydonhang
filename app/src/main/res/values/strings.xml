@@ -21,4 +21,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="ok">Đồng ý</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="dialog_success_title">Thành công</string>
 </resources>

@@ -1,7 +1,18 @@
 package com.nhom03.hust.quanlydonhang.rest;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.nhom03.hust.quanlydonhang.R;
+import com.nhom03.hust.quanlydonhang.model.APICallback;
 import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.HangHoa;
@@ -69,7 +80,8 @@ public class APIChiTietDonHang {
 
     }
 
-    public static void themChiTietDonHang(ChiTietDonHang ct) {
+    public static void themChiTietDonHang(final ChiTietDonHang ct, final Context context) {
+
         Map<String, Object> map = new HashMap<>();
         map.put("orderDetail", ct);
         APIInterface apiService = APIChiTietDonHang.get().create(APIInterface.class);
@@ -78,8 +90,17 @@ public class APIChiTietDonHang {
             @Override
             public void onResponse(Call<KetQuaThem> call, Response<KetQuaThem> response) {
                 if(response.isSuccessful()){
+                    boolean result = false;
                     Log.d("API", "Success");
+                    if(response.body().getMessageJson().getMessage().equals("Success")) {
+                        result = true;
+                        DatabaseHelper.getInstance().themChiTietDonHang(ct);
+                    }
+
+                    hienKetQuaThem(result, context);
+
                     Log.d("Ket qua", response.body().getMessageJson().getMessage());
+
                 }
                 else
                     Log.d("API", "Fail");
@@ -87,9 +108,48 @@ public class APIChiTietDonHang {
 
             @Override
             public void onFailure(Call<KetQuaThem> call, Throwable t) {
+                hienKetQuaThem(false, context);
                 Log.d("API", "Fail");
             }
         });
+
+    }
+
+    private static void hienKetQuaThem(boolean result, Context context){
+
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog);
+        TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
+        TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
+        Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
+        Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
+
+        btnOk.setText("OK");
+        btnCancel.setText("Cancel");
+
+        if(result) {
+            title.setText("Thành công");
+            textView.setText("Quay về trang trước?");
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+        }
+        else {
+            title.setText("Lỗi");
+            textView.setText("Đóng hộp thoại này?");
+            btnCancel.setVisibility(View.INVISIBLE);
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+        }
+
+        dialog.show();
 
     }
 
