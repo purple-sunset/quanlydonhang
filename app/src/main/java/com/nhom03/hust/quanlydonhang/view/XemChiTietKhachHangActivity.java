@@ -1,5 +1,6 @@
 package com.nhom03.hust.quanlydonhang.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -22,84 +23,88 @@ import retrofit2.Response;
 
 public class XemChiTietKhachHangActivity extends AppCompatActivity {
 
-    private NguoiDung nguoiDung;
+    private static final int RESULT_CODE_BACK = 320;
 
+    private Intent intent;
     private KhachHang khachHang;
+    private int position;
 
+    private EditText tenKH;
+    private EditText tenCT;
+    private EditText tieuDe;
     private EditText diaChi;
     private EditText thanhPho;
-    private EditText tenLienLac;
-    private EditText thongTinLienLac;
+    private EditText vung;
     private EditText quocGia;
-    private EditText iDKhachHang;
+    private EditText sdt;
     private EditText fax;
-    private EditText soDienThoai;
     private EditText maBuuChinh;
-    private EditText khuVuc;
-
-    private Button suaKhachHang;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_chi_tiet_khach_hang);
 
-        connectToVIew();
+        intent = getIntent();
+        khachHang = (KhachHang) intent.getExtras().getSerializable("KH");
+        position = intent.getExtras().getInt("Position");
 
-        suaKhachHang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                suaKhachHang();
-            }
-        });
+        tenKH = (EditText) findViewById(R.id.ctkh_ten_kh);
+        tenKH.setText(khachHang.getTenKH());
+
+        tenCT = (EditText) findViewById(R.id.ctkh_ten_ct);
+        tenCT.setText(khachHang.getTenCT());
+
+        tieuDe = (EditText) findViewById(R.id.ctkh_tieu_de);
+        tieuDe.setText(khachHang.getTieuDe());
+
+        diaChi = (EditText) findViewById(R.id.ctkh_dia_chi);
+        diaChi.setText(khachHang.getDiaChi());
+
+        thanhPho = (EditText) findViewById(R.id.ctkh_thanh_pho);
+        thanhPho.setText(khachHang.getThanhPho());
+
+        vung = (EditText) findViewById(R.id.ctkh_vung);
+        vung.setText(khachHang.getVung());
+
+        quocGia = (EditText) findViewById(R.id.ctkh_quoc_gia);
+        quocGia.setText(khachHang.getQuocGia());
+
+        sdt = (EditText) findViewById(R.id.ctkh_sdt);
+        sdt.setText(khachHang.getSdt());
+
+        fax = (EditText) findViewById(R.id.ctkh_fax);
+        fax.setText(khachHang.getFax());
+
+        maBuuChinh = (EditText) findViewById(R.id.ctkh_ma_buu_chinh);
+        maBuuChinh.setText(khachHang.getMaBuuChinh());
+
     }
 
-    private void connectToVIew() {
-        diaChi = (EditText) findViewById(R.id.ET_dia_chi);
-        thanhPho = (EditText) findViewById(R.id.ET_thanh_pho);
-        tenLienLac = (EditText) findViewById(R.id.ET_ten_lien_lac);
-        thongTinLienLac = (EditText) findViewById(R.id.ET_thong_tin_lien_lac);
-        quocGia = (EditText) findViewById(R.id.ET_quoc_gia);
-        iDKhachHang = (EditText) findViewById(R.id.ET_id_khach_hang);
-        fax = (EditText) findViewById(R.id.ET_fax);
-        soDienThoai = (EditText) findViewById(R.id.ET_sdt);
-        maBuuChinh = (EditText) findViewById(R.id.ET_ma_buu_chinh);
-        khuVuc = (EditText) findViewById(R.id.ET_khu_vuc);
+    @Override
+    public void onBackPressed() {
 
-        suaKhachHang = (Button) findViewById(R.id.btn_sua_thong_tin_khach_hang);
-
+        intent.putExtra("Return", "Back Success");
+        setResult(RESULT_CODE_BACK, intent);
+        finish();
     }
 
-    private void suaKhachHang() {
-        KhachHang khachHang1 = getKhachHang();
-        /*APIInterface apiService = APIKhachHang.get().create(APIInterface.class);
-
-        Call<String> call = apiService.suaKhacHang(nguoiDung.getCookie(),khachHang1);
-
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                String respone = response.body().toString();
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-
-            }
-        });*/
-    }
-
-    private KhachHang getKhachHang() {
+    public void suaTTKhachHang(View view) {
+        khachHang.setTenKH(tenKH.getText().toString());
+        khachHang.setTenCT(tenCT.getText().toString());
+        khachHang.setTieuDe(tieuDe.getText().toString());
         khachHang.setDiaChi(diaChi.getText().toString());
         khachHang.setThanhPho(thanhPho.getText().toString());
-        khachHang.setTenKH(tenLienLac.getText().toString());
-        khachHang.setTieuDe(thongTinLienLac.getText().toString());
+        khachHang.setVung(vung.getText().toString());
         khachHang.setQuocGia(quocGia.getText().toString());
-        khachHang.setId(iDKhachHang.getText().toString());
+        khachHang.setSdt(sdt.getText().toString());
         khachHang.setFax(fax.getText().toString());
-        khachHang.setSdt(soDienThoai.getText().toString());
         khachHang.setMaBuuChinh(maBuuChinh.getText().toString());
-        khachHang.setTenKH(khuVuc.getText().toString());
-        return khachHang;
+
+        APIKhachHang.suaKhachHang(position, khachHang, this, intent);
+    }
+
+    public void xoaKhachHang(View view) {
+        APIKhachHang.xoaKhachHang(position, khachHang, this, intent);
     }
 }

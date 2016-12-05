@@ -80,7 +80,7 @@ public class APIChiTietDonHang {
 
     }
 
-    public static void themChiTietDonHang(final ChiTietDonHang ct, final Context context) {
+    public static void themChiTietDonHang(final ChiTietDonHang ct, final Context context, final Intent intent) {
 
         Map<String, Object> map = new HashMap<>();
         map.put("orderDetail", ct);
@@ -92,14 +92,15 @@ public class APIChiTietDonHang {
                 if(response.isSuccessful()){
                     boolean result = false;
                     Log.d("API", "Success");
+                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
                     if(response.body().getMessageJson().getMessage().equals("Success")) {
                         result = true;
                         DatabaseHelper.getInstance().themChiTietDonHang(ct);
                     }
 
-                    hienKetQuaThem(result, context);
+                    hienKetQua(result, context, intent);
 
-                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
+
 
                 }
                 else
@@ -108,48 +109,10 @@ public class APIChiTietDonHang {
 
             @Override
             public void onFailure(Call<KetQuaThem> call, Throwable t) {
-                hienKetQuaThem(false, context);
+                hienKetQua(false, context, intent);
                 Log.d("API", "Fail");
             }
         });
-
-    }
-
-    private static void hienKetQuaThem(boolean result, Context context){
-
-        final Dialog dialog = new Dialog(context);
-        dialog.setContentView(R.layout.dialog);
-        TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
-        TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
-        Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
-        Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
-
-        btnOk.setText("OK");
-        btnCancel.setText("Cancel");
-
-        if(result) {
-            title.setText("Thành công");
-            textView.setText("Quay về trang trước?");
-            btnCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dialog.dismiss();
-                }
-            });
-        }
-        else {
-            title.setText("Lỗi");
-            textView.setText("Đóng hộp thoại này?");
-            btnCancel.setVisibility(View.INVISIBLE);
-            btnOk.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dialog.dismiss();
-                }
-            });
-        }
-
-        dialog.show();
 
     }
 
@@ -201,5 +164,51 @@ public class APIChiTietDonHang {
                 Log.d("API", "Fail");
             }
         });
+    }
+
+    private static void hienKetQua(boolean result, Context context, Intent intent){
+
+        final Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog);
+        TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
+        TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
+        Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
+        Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
+
+        btnOk.setText("OK");
+        btnCancel.setText("Cancel");
+
+        if(result) {
+            title.setText("Thành công");
+            textView.setText("Quay về trang trước?");
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    dialog.dismiss();
+                }
+            });
+
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+        }
+        else {
+            title.setText("Lỗi");
+            textView.setText("Đóng hộp thoại này?");
+            btnCancel.setVisibility(View.INVISIBLE);
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+        }
+
+        dialog.show();
+
     }
 }

@@ -1,32 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/suong_mat_ong">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        >
-        <TextView
+        android:background="@android:color/holo_orange_dark"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Thêm mới khách hàng"
-            style="@style/Tieu_de_1"
-            android:gravity="center"
-            />
-    </android.support.v7.widget.Toolbar>
+            android:layout_height="40dp">
+
+            <TextView
+                style="@style/Tieu_de_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Thông tin khách hàng" />
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="5dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:visibility="visible"
+        android:background="@color/suong_mat_ong">
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp">
+            <TableRow
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên:"
+                    style="@style/Tieu_de_2"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    />
+                <EditText
+
+                    android:id="@+id/tmkh_ten_kh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Obere"
+                    style="@style/thuong"
+                    android:layout_weight="10"
+                    android:layout_gravity="center_vertical"
+                    ></EditText>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Công ty:"
+                    style="@style/Tieu_de_2"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    />
+                <EditText
+
+                    android:id="@+id/tmkh_ten_ct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Obere"
+                    style="@style/thuong"
+                    android:layout_weight="10"
+                    android:layout_gravity="center_vertical"
+                    ></EditText>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên liên lạc:"
+                    style="@style/Tieu_de_2"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"/>
+                <EditText
+
+                    android:id="@+id/tmkh_tieu_de"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Obere Str.57"
+                    style="@style/thuong"
+                    android:layout_weight="10"
+                    android:layout_gravity="center_vertical"/>
+            </TableRow>
+
             <TableRow
                 android:layout_height="wrap_content">
                 <TextView
@@ -37,7 +109,8 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-                    android:id="@+id/ET_dia_chi"
+
+                    android:id="@+id/tmkh_dia_chi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
@@ -47,6 +120,7 @@
 
                 </EditText>
             </TableRow>
+
             <TableRow
                 android:layout_height="wrap_content">
                 <TextView
@@ -58,26 +132,28 @@
                     android:layout_gravity="center_vertical"
                     />
                 <EditText
-                    android:id="@+id/ET_thanh_pho"
+
+                    android:id="@+id/tmkh_thanh_pho"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere Stjshdjkahdkakhsdkahskd"
+                    android:text="Obere d"
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"
                     ></EditText>
             </TableRow>
-            <TableRow
-                android:layout_height="wrap_content">
+
+            <TableRow>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tên liên lạc:"
+                    android:text="Khu vực:"
                     style="@style/Tieu_de_2"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-                    android:id="@+id/ET_ten_lien_lac"
+
+                    android:id="@+id/tmkh_vung"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
@@ -85,24 +161,7 @@
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
-            <TableRow
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Thông tin liên lạc:"
-                    style="@style/Tieu_de_2"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"/>
-                <EditText
-                    android:id="@+id/ET_thong_tin_lien_lac"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
-                    style="@style/thuong"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="10"/>
-            </TableRow>
+
             <TableRow>
                 <TextView
                     android:layout_width="wrap_content"
@@ -112,42 +171,8 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-                    android:id="@+id/ET_quoc_gia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
-                    style="@style/thuong"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical"/>
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ID Khách hàng:"
-                    style="@style/Tieu_de_2"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"/>
-                <EditText
-                    android:id="@+id/ET_id_khach_hang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
-                    style="@style/thuong"
-                    android:layout_weight="10"
-                    android:layout_gravity="center_vertical"/>
 
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fax:"
-                    style="@style/Tieu_de_2"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"/>
-                <EditText
-                    android:id="@+id/ET_fax"
+                    android:id="@+id/tmkh_quoc_gia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
@@ -155,6 +180,7 @@
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
+
             <TableRow>
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,7 +190,8 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-                    android:id="@+id/ET_sdt"
+
+                    android:id="@+id/tmkh_sdt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Obere Str.57"
@@ -172,6 +199,26 @@
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fax:"
+                    style="@style/Tieu_de_2"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"/>
+                <EditText
+
+                    android:id="@+id/tmkh_fax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Obere Str.57"
+                    style="@style/thuong"
+                    android:layout_weight="10"
+                    android:layout_gravity="center_vertical"/>
+            </TableRow>
+
             <TableRow>
                 <TextView
                     android:layout_width="wrap_content"
@@ -181,43 +228,28 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-                    android:id="@+id/ET_ma_buu_chinh"
+
+                    android:id="@+id/tmkh_ma_buu_chinh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
-                    android:layout_weight="10"
                     style="@style/thuong"
-                    android:layout_gravity="center_vertical"/>
-            </TableRow>
-            <TableRow
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Khu vực:"
-                    style="@style/Tieu_de_2"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"/>
-                <EditText
-                    android:id="@+id/ET_khu_vuc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
-                    style="@style/thuong"
+                    android:text="0000"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
         </TableLayout>
 
     </ScrollView>
+
     <Button
+        android:onClick="themKhachHang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Thêm"
         style="@style/button"
         android:layout_gravity="center"
-        android:layout_weight="10"
-        android:drawableLeft="@drawable/add1"/>
+        android:layout_weight="50"
+        android:drawableLeft="@drawable/add1" />
 
 
 </LinearLayout>

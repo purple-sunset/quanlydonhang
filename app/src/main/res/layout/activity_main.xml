@@ -57,13 +57,12 @@
         android:onClick="layDSHangHoa"/>
 
     <Button
-        android:id="@+id/btn_test_login"
-        android:text="Test login"
+        android:text="Cập nhật CSDL"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/btn_hang_hoa"
         android:layout_marginTop="20dp"
-        android:onClick="testLogin"
+        android:onClick="updateDB"
         />
 
 

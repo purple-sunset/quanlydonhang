@@ -10,80 +10,74 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
+import com.nhom03.hust.quanlydonhang.view.DangNhapActivity;
+import com.nhom03.hust.quanlydonhang.view.DanhSachKhachHangActivity;
 import com.nhom03.hust.quanlydonhang.view.XemChiTietKhachHangActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by sakura on 01/12/2016.
  */
 
-public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.KhachHangwHolder>{
+public class KhachHangAdapter extends BaseAdapter {
 
-    private List<KhachHang> khachHangList;
-    private int rowLayout;
+    private ArrayList<KhachHang> listKH;
+    private LayoutInflater layoutInflater;
     private Context context;
 
-    public KhachHangAdapter(List<KhachHang> khachHangList, int rowLayout, Context context) {
-        this.khachHangList = khachHangList;
-        this.rowLayout = rowLayout;
+    public KhachHangAdapter(Context context, ArrayList<KhachHang> listKh){
         this.context = context;
+        this.listKH = listKh;
+        this.layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
-    public KhachHangwHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
-        return new KhachHangwHolder(view);
+    public int getCount() {
+        return listKH.size();
     }
 
     @Override
-    public void onBindViewHolder(KhachHangwHolder holder, final int position) {
-        holder.name_customer.setText(khachHangList.get(position).getTenKH());
-        holder.address_customer.setText(khachHangList.get(position).getDiaChi());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                KhachHang khachHang = khachHangList.get(position);
-                String id= khachHang.getId();
-                Intent intent = new Intent(view.getContext(), XemChiTietKhachHangActivity.class);
-                intent.putExtra("id", id);
-                view.getContext().startActivity(intent);
-            }
-        });
-
+    public Object getItem(int i) {
+        return listKH.get(i);
     }
 
     @Override
-    public int getItemCount() {
-        return khachHangList.size();
+    public long getItemId(int i) {
+        return i;
     }
 
-    public class KhachHangwHolder extends RecyclerView.ViewHolder{
-        LinearLayout customerLayout;
-        TextView name_customer;
-        TextView address_customer;
-
-
-        public KhachHangwHolder(View v) {
-            super(v);
-            //customerLayout = (LinearLayout) v.findViewById(R.id.movies_layout);
-            name_customer = (TextView) v.findViewById(R.id.name_customer);
-            address_customer = (TextView) v.findViewById(R.id.address_customer);
-//            v.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(context, "ddddd", Toast.LENGTH_LONG).show();
-//                }
-//            });
-
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder holder;
+        if (view == null) {
+            view = layoutInflater.inflate(R.layout.item_khach_hang, null);
+            holder = new ViewHolder();
+            holder.textID = (TextView) view.findViewById(R.id.text_id_kh);
+            holder.textTenKH = (TextView) view.findViewById(R.id.text_ten_kh);
+            view.setTag(holder);
+        } else {
+            holder = (ViewHolder) view.getTag();
         }
+
+        KhachHang kh = this.listKH.get(i);
+        holder.textID.setText(kh.getId());
+        holder.textTenKH.setText(kh.getTenKH());
+
+        return view;
     }
 
-
+    class ViewHolder{
+        TextView textID;
+        TextView textTenKH;
+    }
 }
+

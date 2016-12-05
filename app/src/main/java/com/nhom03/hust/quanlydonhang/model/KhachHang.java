@@ -2,11 +2,13 @@ package com.nhom03.hust.quanlydonhang.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Admin on 30/11/2016.
  */
 
-public class KhachHang {
+public class KhachHang implements Serializable {
 
     @SerializedName("CustomerID")
     private String id;

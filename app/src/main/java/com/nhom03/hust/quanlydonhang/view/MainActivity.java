@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
+import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
 import com.nhom03.hust.quanlydonhang.rest.APIChiTietDonHang;
@@ -43,89 +44,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView txtUserName = (TextView) findViewById(R.id.txt_user);
-        Intent dangNhap = getIntent();
+        /*Intent dangNhap = getIntent();
         nguoiDung = (NguoiDung) dangNhap.getExtras().getSerializable("NGUOI_DUNG");
-        txtUserName.setText(nguoiDung.getTen());
+        txtUserName.setText(nguoiDung.getTen());*/
     }
 
-    public void testLogin(View view){
-        if(checkLogin()){
+    public void updateDB(View view){
+        DatabaseHelper.remove();
 
-        }
-
-    }
-
-    public boolean checkLogin(){
-        final String NAMESPACE = "http://asp.net/ApplicationServices/v200";
-        final String METHOD_NAME = "IsLoggedIn";
-        final String SOAP_ACTION = "http://asp.net/ApplicationServices/v200/AuthenticationService/IsLoggedIn";
-        final String URL = "http://daotao.misa.com.vn/AuthenticationService.svc?wsdl";
-        boolean result = false;
-        SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
-
-        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
-        envelope.dotNet = true;
-        envelope.setOutputSoapObject(request);
-
-        System.out.println(request);
-        List<HeaderProperty> headerIn = new ArrayList<HeaderProperty>();
-        HeaderProperty hp = new HeaderProperty("Cookie", nguoiDung.getCookie());
-        headerIn.add(hp);
-        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
-        try {
-            androidHttpTransport.call(SOAP_ACTION, envelope, headerIn);
-            SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
-            Log.i("myApp", response.toString());
-            System.out.println("response " + response);
-
-            if(response.toString().equalsIgnoreCase("true"))
-            {
-                result = true;
-            }
-
-
-        } catch(SocketException ex)
-        {
-            Log.e("Error : " , "Error on soapPrimitiveData() " + ex.getMessage());
-            ex.printStackTrace();
-        }
-        catch (Exception e) {
-            Log.e("Error : " , "Error on soapPrimitiveData() " + e.getMessage());
-            e.printStackTrace();
-        }
-
-        if(result)
-        {
-            Log.d("Login", "Success");
-        }
-
-        else
-            Log.d("Login", "Fail");
-        return result;
-    }
-
-    public void layDSDonHang(View view){
-
-        ChiTietDonHang ct = new ChiTietDonHang(10306, 5, 12, 18, 0);
-        APIChiTietDonHang.themChiTietDonHang(ct, this);
-
-        //KhachHang kh = new KhachHang("duc", "duc", "HUST", "nhom 3", "Bach Khoa", "Ha Noi", "Mien Bac", "Viet Nam", "0123456789", "0123", "0000");
-        //APIKhachHang.xoaKhachHang(kh);
-        Log.d("Debug", "STOP");
-
-    }
-
-    public void layDSKhachHang(View view){
-
-    }
-
-    public void layDSHangHoa(View view){
         APIKhachHang.layDSKhachHang();
         APITheLoai.layDSTheLoai();
         APIHangHoa.layDSHangHoa();
         APIDonHang.layDSDonHang();
+
+    }
+
+
+    public void layDSDonHang(View view){
+
+        //ChiTietDonHang ct = new ChiTietDonHang(10306, 5, 12, 18, 0);
+        //APIChiTietDonHang.themChiTietDonHang(ct, this);
+
+        //KhachHang kh = new KhachHang("duc", "duc", "HUST", "nhom 3", "Bach Khoa", "Ha Noi", "Mien Bac", "Viet Nam", "0123456789", "0123", "0000");
+        //APIKhachHang.xoaKhachHang(kh);
+        //Log.d("Debug", "STOP");
+
+    }
+
+    public void layDSKhachHang(View view){
+        Intent intent = new Intent(this, DanhSachKhachHangActivity.class);
+        startActivity(intent);
+        //finish();
+    }
+
+    public void layDSHangHoa(View view){
+
         //APIChiTietDonHang.layDSChiTietDonHang(10287);
-        Log.d("Test", "OK");
+        //Log.d("Test", "OK");
 
     }
 }

@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //Cơ sở dữ liệu
     private static final String TAG = "SQLite";
-    private static final int DB_VERSION = 62;
+    private static final int DB_VERSION = 4;
     private static final String DB_NAME = "Quan_ly_don_hang";
 
     //Tên các bảng
@@ -151,6 +151,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Và tạo lại.
         onCreate(db);
+    }
+
+    public static void remove() {
+
+        SQLiteDatabase db = instan.getWritableDatabase();
+        Log.i(TAG, "DatabaseHelper.remove ... ");
+
+        // Hủy (drop) bảng cũ nếu nó đã tồn tại.
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CTDH);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TL);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HH);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DH);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_KH);
+
+        instan = null;
     }
 
     //Đơn Hàng
@@ -401,7 +416,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_MBC, kh.getMaBuuChinh());
 
         // updating row
-        return db.update(TABLE_KH, values, COLUMN_ID_DH + " = ?",
+        return db.update(TABLE_KH, values, COLUMN_ID_KH + " = ?",
                 new String[]{String.valueOf(kh.getId())});
     }
 

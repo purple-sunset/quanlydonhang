@@ -11,6 +11,10 @@ import android.widget.EditText;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
+import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
+import com.nhom03.hust.quanlydonhang.rest.APIHangHoa;
+import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
+import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
@@ -59,7 +63,7 @@ public class DangNhapActivity extends AppCompatActivity {
         String userName = textTen.getText().toString();
         String passWord = textMatKhau.getText().toString();
         boolean result = false;
-        NguoiDung nd = new NguoiDung("demo", "12345678");
+        NguoiDung nd = new NguoiDung(userName, passWord);
 
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
 
@@ -90,10 +94,6 @@ public class DangNhapActivity extends AppCompatActivity {
             if(response.toString().equalsIgnoreCase("true"))
             {
                 result = true;
-                for (int i = 0; i < headerOut.size(); i++) {
-                    HeaderProperty hp = (HeaderProperty) headerOut.get(i);
-                    Log.d("Header", "Header"+ i +"="+hp.getKey()+" / "+hp.getValue());
-                }
                 nd.setCookie(((HeaderProperty) headerOut.get(7)).getValue());
 
             }
@@ -113,9 +113,16 @@ public class DangNhapActivity extends AppCompatActivity {
         {
             Log.d("Login", "Success");
             Log.d("Login", nd.getCookie());
+
+            /*APIKhachHang.layDSKhachHang();
+            APITheLoai.layDSTheLoai();
+            APIHangHoa.layDSHangHoa();
+            APIDonHang.layDSDonHang();*/
+
             Intent dangNhap = new Intent(this, MainActivity.class);
             dangNhap.putExtra("NGUOI_DUNG", nd);
             startActivity(dangNhap);
+            finish();
         }
 
         else
