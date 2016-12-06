@@ -40,7 +40,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     private int position;
 
 
-    private EditText tenKH;
+    private Button tenKH;
     private EditText ngayDatHang;
     private EditText diaChiGiaoHang;
 
@@ -56,7 +56,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         donHang = (DonHang) intent.getExtras().getSerializable("DH");
         position = intent.getExtras().getInt("Position");
 
-        tenKH = (EditText) findViewById(R.id.xttdh_ten_khach_hang);
+        tenKH = (Button) findViewById(R.id.xttdh_ten_khach_hang);
         tenKH.setText(donHang.getKhachHang().getTenKH());
 
         ngayDatHang = (EditText) findViewById(R.id.xttdh_ngay_dat_hang);

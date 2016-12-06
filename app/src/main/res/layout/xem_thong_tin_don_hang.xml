@@ -37,7 +37,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-        <EditText
+        <Button
+            android:onClick="suaTTKhachHang"
             android:id="@+id/xttdh_ten_khach_hang"
             android:layout_height="match_parent"
             android:layout_width="fill_parent"
@@ -46,12 +47,7 @@
             android:gravity="center"
             android:layout_gravity="bottom"
             android:layout_weight="20"
-            android:enabled="false" />
-            <Button
-                android:background="@drawable/next1"
-                android:layout_width="20dp"
-                android:layout_height="fill_parent"
-                android:onClick="suaTTKhachHang"/>
+             />
         </LinearLayout>>
     </TableRow>
         <TableRow
