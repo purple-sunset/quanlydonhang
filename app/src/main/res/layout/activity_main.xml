@@ -18,6 +18,7 @@
         android:gravity="center"
         android:layout_width="150dp"
         android:layout_height="100dp"
+        android:textColor="#ff0004"
         />
 
     <TextView
@@ -26,7 +27,8 @@
         android:layout_height="100dp"
         style="@style/Header"
         android:gravity="center"
-        android:layout_toEndOf="@+id/txt_xin_chao" />
+        android:layout_toEndOf="@+id/txt_xin_chao"
+        android:textColor="#ff0004"/>
 
     <Button
         android:id="@+id/btn_don_hang"
@@ -35,6 +37,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/txt_xin_chao"
         android:onClick="layDSDonHang"
+        style="@style/button"
         />
 
     <Button
@@ -45,6 +48,7 @@
         android:layout_marginTop="20dp"
         android:layout_below="@id/btn_don_hang"
         android:onClick="layDSKhachHang"
+        style="@style/button"
         />
 
     <Button
@@ -54,7 +58,8 @@
         android:layout_height="50dp"
         android:layout_below="@id/btn_khach_hang"
         android:layout_marginTop="20dp"
-        android:onClick="layDSHangHoa"/>
+        android:onClick="layDSHangHoa"
+        style="@style/button"/>
 
     <Button
         android:text="Cập nhật CSDL"
@@ -63,6 +68,7 @@
         android:layout_below="@id/btn_hang_hoa"
         android:layout_marginTop="20dp"
         android:onClick="updateDB"
+        style="@style/button"
         />
 
 
