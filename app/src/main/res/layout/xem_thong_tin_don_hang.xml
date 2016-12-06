@@ -38,20 +38,16 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
         <EditText
-            android:id="@+id/ET_ten_khach_hang"
+            android:id="@+id/xttdh_ten_khach_hang"
             android:layout_height="match_parent"
             android:layout_width="fill_parent"
             android:text=" Cong ty co phan Misa"
             style="@style/thuong"
             android:gravity="center"
             android:layout_gravity="bottom"
-            android:layout_weight="20"/>
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_weight="40"
-                android:layout_gravity="bottom"
-                android:background="@drawable/next"/>
+            android:layout_weight="20"
+            android:enabled="false"
+            android:onClick=""/>
         </LinearLayout>>
     </TableRow>
         <TableRow
@@ -66,13 +62,14 @@
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
-                android:id="@+id/ET_ngay_thang"
+                android:id="@+id/xttdh_ngay_dat_hang"
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
                 android:text=" 07/11/2016"
                 style="@style/thuong"
                 android:gravity="center"
-                android:layout_weight="20"/>
+                android:layout_weight="20"
+                android:enabled="false"/>
         </TableRow>
         <TableRow
             android:id="@+id/TableRow3"
@@ -86,30 +83,39 @@
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
-                android:id="@+id/ET_dia_chi_giao_hang"
+                android:id="@+id/xttdh_dia_chi_giao_hang"
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
                 android:text=" VIet Nam"
                 style="@style/thuong"
                 android:gravity="center"
-                android:layout_weight="20"/>
+                android:layout_weight="20"
+                android:enabled="false"/>
         </TableRow>
     </TableLayout>>
     <Button
-        android:id="@+id/BT_xem_hang_hoa_cua_don_hang"
+        android:id="@+id/xttdh_BT_xem_hang_hoa_cua_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thông tin hàng hóa"
         android:drawableLeft="@drawable/shopping1"
         style="@style/button"/>
     <Button
-        android:id="@+id/BT_xoa_don_hang"
+        android:id="@+id/xttdh_BT_xoa_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="170dp"
         android:text="Xóa"
         android:layout_marginBottom="10dp"
         style="@style/button"
         android:drawableLeft="@drawable/delete1"
         />
+    <Button
+        android:id="@+id/BT_sua_don_hang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sửa"
+        android:layout_marginBottom="10dp"
+        style="@style/button"
+        android:drawableLeft="@drawable/edit1"/>
 </LinearLayout>
