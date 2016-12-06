@@ -41,17 +41,20 @@ public class ChiTietDonHangAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if (view == null)
-            view = layoutInflater.inflate(R.layout.item_danh_sach_don_hang, null);
+            view = layoutInflater.inflate(R.layout.item_hang_hoa_cua_don_hang, null);
 
         ChiTietDonHang ctdh = this.listCTDH.get(i);
 
-        TextView textTenKH = (TextView) view.findViewById(R.id.ten_khach_hang);
-        TextView textNgayDatHang = (TextView) view.findViewById(R.id.ngay_dat_hang);
-        TextView textTongTienHang = (TextView) view.findViewById(R.id.tong_tien_hang);
+        TextView textTenHH = (TextView) view.findViewById(R.id.item_hhcdh_ten_hang_hoa);
+        TextView textDonGia = (TextView) view.findViewById(R.id.item_hhcdh_don_gia);
+        TextView textSoLuong = (TextView) view.findViewById(R.id.item_hhcdh_so_luong);
+        TextView textThanhTien = (TextView) view.findViewById(R.id.item_hhcdh_thanh_tien);
 
-        textTenKH.setText(dh.getKhachHang().getTenKH());
-        textNgayDatHang.setText(dh.getNgayGio().toString());
-        textTongTienHang.setText(String.valueOf(dh.getTongTien()*10000));
+        textTenHH.setText(ctdh.getTen());
+        textDonGia.setText(String.valueOf(ctdh.getDonGia()));
+        textSoLuong.setText(String.valueOf(ctdh.getSoLuong()));
+        textThanhTien.setText(String.valueOf(ctdh.thanhTien()));
+
         return view;
     }
 }

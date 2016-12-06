@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
 
-
+    private Intent intent;
     private ArrayList<ChiTietDonHang> dsChiTietDonHang;
 
 
@@ -28,7 +28,9 @@ public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_danh_sach_hang_hoa);
-        dsTL = DatabaseHelper.getInstance().layDSTheLoai();
+        intent=getIntent();
+        dsChiTietDonHang=intent.getExtras().get("dsChiTietDonHang");
+        dsChiTietDonHang = DatabaseHelper.getInstance().layDSTheLoai();
         adapter = new TheLoaiAdapter(this, dsTL);
         listViewTL = (ExpandableListView) findViewById(R.id.list_hang_hoa);
         listViewTL.setAdapter(adapter);
