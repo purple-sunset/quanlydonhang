@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.DonHang;
+import com.nhom03.hust.quanlydonhang.model.HangHoa;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
 import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
@@ -15,6 +17,7 @@ import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -25,6 +28,7 @@ import java.util.Locale;
 public class XemChiTietDonHangActivity extends AppCompatActivity {
 
     private static final int RESULT_CODE_BACK = 120;
+    private static final int RESULT_CODE_HANGHOA = 999;
 
     private Intent intent;
     private DonHang DonHang;
@@ -34,6 +38,11 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     private EditText tenKH;
     private EditText ngayDatHang;
     private EditText diaChiGiaoHang;
+
+    private Button hangHoaList;
+    private Button xoaDonhang;
+    private Button suaDonHang;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_thong_tin_don_hang);
@@ -50,8 +59,37 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
 
         diaChiGiaoHang = (EditText) findViewById(R.id.xttdh_dia_chi_giao_hang);
         diaChiGiaoHang.setText(DonHang.getDiaChiGiaoHang());
+
+        hangHoaList = (Button) findViewById(R.id.xttdh_BT_xem_hang_hoa_cua_don_hang);
+        xoaDonhang = (Button) findViewById(R.id.xttdh_BT_xoa_don_hang);
+        suaDonHang = (Button) findViewById(R.id.BT_sua_don_hang);
+
+        hangHoaList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DanhSachHangHoaCuaDonHangActivity.class);
+                intent.putExtra("dshanghoa", DonHang.getDsHang());
+                startActivityForResult(intent, RESULT_CODE_HANGHOA);
+            }
+        });
+        xoaDonhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                xoaDonHang(view);
+            }
+        });
+
+        suaDonHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                suaTTDonHang(view);
+            }
+        });
     }
 
+//    Intent intent = new Intent();
+//    ArrayList<HangHoa> list = (ArrayList<HangHoa>) intent.getExtras().get("dshanghoa");
+//    listHangHoa.setAdapter(new HangHoaCuaDonHangAdapter(this, list));
     @Override
     public void onBackPressed() {
 
@@ -81,10 +119,13 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+
     }
 
     public void xoaDonHang(View view) {
-        APIDonHang.xoaDonHang(DonHang);
+
+        APIDonHang.xoaDonHang(position, DonHang, true, this, intent);
     }
 
 }
