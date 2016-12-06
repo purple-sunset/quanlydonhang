@@ -42,6 +42,11 @@
             />
 
     </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list_hang_hoa_cua_don_hang">
 
+    </ListView>
 
 </LinearLayout>
