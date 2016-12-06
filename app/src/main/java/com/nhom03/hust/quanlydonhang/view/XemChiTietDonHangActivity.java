@@ -44,7 +44,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         setContentView(R.layout.xem_thong_tin_don_hang);
 
         intent = getIntent();
-        donHang = (DonHang) intent.getExtras().getSerializable("H");
+        donHang = (DonHang) intent.getExtras().getSerializable("DH");
         position = intent.getExtras().getInt("Position");
 
         tenKH = (EditText) findViewById(R.id.xttdh_ten_khach_hang);
@@ -103,6 +103,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
                     case RESULT_CODE_CHON_KHACHHANG: {
                         KhachHang kh = (KhachHang) data.getExtras().getSerializable("Return_KH");
                         donHang.setKhachHang(kh);
+                        tenKH.setText(donHang.getKhachHang().getTenKH());
                         break;
                     }
 

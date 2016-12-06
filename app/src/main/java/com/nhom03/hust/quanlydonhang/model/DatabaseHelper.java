@@ -624,10 +624,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ChiTietDonHang ct = new ChiTietDonHang();
         ct.setIdDonHang(c.getInt(c.getColumnIndex(COLUMN_ID_DH)));
-        ct.setIdHangHoa(c.getInt(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_ID_HH)));
+        ct.setIdHangHoa(c.getInt(c.getColumnIndex(COLUMN_ID_HH)));
         ct.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
         ct.setSoLuong(c.getInt(c.getColumnIndex(COLUMN_SL)));
-        ct.setDonGia(c.getFloat(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_DG)));
+        ct.setDonGia(c.getFloat(c.getColumnIndex(COLUMN_DG)));
         ct.setGiamGia(c.getFloat(c.getColumnIndex(COLUMN_GG)));
 
         // return Chi Tiet Don Hang
@@ -653,10 +653,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do {
                 ChiTietDonHang ct = new ChiTietDonHang();
                 ct.setIdDonHang(id);
-                ct.setIdHangHoa(c.getInt(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_ID_HH)));
+                ct.setIdHangHoa(c.getInt(c.getColumnIndex(COLUMN_ID_HH)));
                 ct.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
                 ct.setSoLuong(c.getInt(c.getColumnIndex(COLUMN_SL)));
-                ct.setDonGia(c.getFloat(c.getColumnIndex(TABLE_CTDH + "." + COLUMN_DG)));
+                ct.setDonGia(c.getFloat(c.getColumnIndex(COLUMN_DG)));
                 ct.setGiamGia(c.getFloat(c.getColumnIndex(COLUMN_GG)));
 
                 // Thêm vào danh sách.

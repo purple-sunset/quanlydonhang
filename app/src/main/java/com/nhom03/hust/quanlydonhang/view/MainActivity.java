@@ -61,13 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void layDSDonHang(View view){
-
-        //ChiTietDonHang ct = new ChiTietDonHang(10306, 5, 12, 18, 0);
-        //APIChiTietDonHang.themChiTietDonHang(ct, this);
-
-        //KhachHang kh = new KhachHang("duc", "duc", "HUST", "nhom 3", "Bach Khoa", "Ha Noi", "Mien Bac", "Viet Nam", "0123456789", "0123", "0000");
-        //APIKhachHang.xoaKhachHang(kh);
-        //Log.d("Debug", "STOP");
+        Intent intent = new Intent(this, DanhSachDonHangActivity.class);
+        startActivity(intent);
 
     }
 
