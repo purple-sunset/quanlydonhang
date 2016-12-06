@@ -1,11 +1,13 @@
 package com.nhom03.hust.quanlydonhang.view;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
@@ -29,6 +31,8 @@ public class XemChiTietKhachHangActivity extends AppCompatActivity {
     private KhachHang khachHang;
     private int position;
 
+    private Button btnSua;
+    private Button btnXoa;
     private EditText tenKH;
     private EditText tenCT;
     private EditText tieuDe;
@@ -79,6 +83,10 @@ public class XemChiTietKhachHangActivity extends AppCompatActivity {
         maBuuChinh = (EditText) findViewById(R.id.ctkh_ma_buu_chinh);
         maBuuChinh.setText(khachHang.getMaBuuChinh());
 
+        btnSua = (Button) findViewById(R.id.ctkh_sua);
+
+        btnXoa = (Button) findViewById(R.id.ctkh_xoa);
+
     }
 
     @Override
@@ -90,21 +98,67 @@ public class XemChiTietKhachHangActivity extends AppCompatActivity {
     }
 
     public void suaTTKhachHang(View view) {
-        khachHang.setTenKH(tenKH.getText().toString());
-        khachHang.setTenCT(tenCT.getText().toString());
-        khachHang.setTieuDe(tieuDe.getText().toString());
-        khachHang.setDiaChi(diaChi.getText().toString());
-        khachHang.setThanhPho(thanhPho.getText().toString());
-        khachHang.setVung(vung.getText().toString());
-        khachHang.setQuocGia(quocGia.getText().toString());
-        khachHang.setSdt(sdt.getText().toString());
-        khachHang.setFax(fax.getText().toString());
-        khachHang.setMaBuuChinh(maBuuChinh.getText().toString());
+        if(btnSua.getText().equals("Lưu")) {
+            khachHang.setTenKH(tenKH.getText().toString());
+            khachHang.setTenCT(tenCT.getText().toString());
+            khachHang.setTieuDe(tieuDe.getText().toString());
+            khachHang.setDiaChi(diaChi.getText().toString());
+            khachHang.setThanhPho(thanhPho.getText().toString());
+            khachHang.setVung(vung.getText().toString());
+            khachHang.setQuocGia(quocGia.getText().toString());
+            khachHang.setSdt(sdt.getText().toString());
+            khachHang.setFax(fax.getText().toString());
+            khachHang.setMaBuuChinh(maBuuChinh.getText().toString());
 
-        APIKhachHang.suaKhachHang(position, khachHang, this, intent);
+            APIKhachHang.suaKhachHang(position, khachHang, this, intent);
+        }
+
+        else if(btnSua.getText().equals("Sửa")) {
+            tenKH.setEnabled(true);
+            tenCT.setEnabled(true);
+            tieuDe.setEnabled(true);
+            diaChi.setEnabled(true);
+            thanhPho.setEnabled(true);
+            vung.setEnabled(true);
+            quocGia.setEnabled(true);
+            sdt.setEnabled(true);
+            fax.setEnabled(true);
+            maBuuChinh.setEnabled(true);
+            btnSua.setText("Lưu");
+            btnXoa.setVisibility(View.INVISIBLE);
+        }
+
+
     }
 
     public void xoaKhachHang(View view) {
-        APIKhachHang.xoaKhachHang(position, khachHang, this, intent);
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog);
+        TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
+        TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
+        Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
+        Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
+
+        btnOk.setText("Có");
+        btnCancel.setText("Không");
+
+        title.setText("Xóa khách hàng");
+        textView.setText("Bạn có muốn xóa khách hàng không?");
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                APIKhachHang.xoaKhachHang(position, khachHang, XemChiTietKhachHangActivity.this, intent);
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
+
 }

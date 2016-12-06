@@ -30,17 +30,17 @@ public class DonHangAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return 0;
+        return listDH.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return listDH.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override

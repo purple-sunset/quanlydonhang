@@ -41,7 +41,7 @@
                     android:layout_gravity="center_vertical"
                     />
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_ten_kh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                     android:layout_gravity="center_vertical"
                     />
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_ten_ct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_tieu_de"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_dia_chi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                     android:layout_gravity="center_vertical"
                     />
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_thanh_pho"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_vung"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_quoc_gia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_sdt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_fax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -223,7 +223,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"/>
                 <EditText
-
+                    android:enabled="false"
                     android:id="@+id/ctkh_ma_buu_chinh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -237,24 +237,29 @@
     </ScrollView>
 
     <Button
-        android:onClick="suaTTKhachHang"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Sửa"
-        style="@style/button"
-        android:layout_weight="5"
-        android:drawableLeft="@drawable/edit1"
-        />
-
-    <Button
+        android:id="@+id/ctkh_xoa"
         android:onClick="xoaKhachHang"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Xóa"
         style="@style/button"
-        android:layout_weight="5"
+        android:layout_weight="7"
         android:drawableLeft="@drawable/delete1"
         />
+
+    <Button
+        android:id="@+id/ctkh_sua"
+        android:onClick="suaTTKhachHang"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Sửa"
+        style="@style/button"
+        android:layout_weight="7"
+        android:drawableLeft="@drawable/edit1"
+        />
+
+
 
 </LinearLayout>
