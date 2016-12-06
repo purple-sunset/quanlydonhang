@@ -59,6 +59,10 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         setResult(RESULT_CODE_BACK, intent);
         finish();
     }
+    public void xemHangHoa(View view){
+        Intent intent = new Intent();
+    }
+
     public void suaTTKhachHang(View view){
 
     }

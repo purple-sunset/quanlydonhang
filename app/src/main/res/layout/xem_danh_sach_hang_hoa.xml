@@ -4,11 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/suong_mat_ong">
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_dark"
-        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,7 +17,7 @@
                 android:gravity="center"
                 android:text="Danh sách hàng hóa" />
         </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+
 
     <ExpandableListView
         android:id="@+id/list_hang_hoa"

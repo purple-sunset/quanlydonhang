@@ -14,13 +14,15 @@
                 android:layout_width="match_parent">
 
                 <TextView
-                    android:id="@+id/TV_ten_san_pham"
+                    android:id="@+id/item_hhcdh_ten_hang_hoa"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:text="@string/ten_hang_hoa"
+                    android:layout_width="130dp"
+                    android:text="ádjkshdakjshdkajshdkjahsdjhaskjdhahksd"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     style="@style/Tieu_de_2"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:inputType="textMultiLine"/>
 
                 <TableLayout
                     android:layout_width="match_parent"
@@ -33,11 +35,11 @@
 
                             android:layout_height="wrap_content"
                             android:layout_width="match_parent"
-                            android:text="Don gia: "
+                            android:text="Đơn giá: "
                             style="@style/thuong"
                             android:layout_weight="1"/>
                         <TextView
-                            android:id="@+id/don_gia"
+                            android:id="@+id/item_hhcdh_don_gia"
                             android:layout_weight="4"
                             android:text="@string/don_gia"
                             style="@style/thuong"/>
@@ -53,18 +55,18 @@
 
                             android:layout_height="wrap_content"
                             android:layout_width="match_parent"
-                            android:text="So luong: "
+                            android:text="Số lượng: "
                             style="@style/thuong"
                             android:layout_weight="1"/>
                         <TextView
-                            android:id="@+id/so_luong"
+                            android:id="@+id/item_hhcdh_so_luong"
                             android:layout_weight="4"
                             android:text="10"
                             style="@style/thuong"/>
                         <TextView
                             android:id="@+id/don_vi"
                             android:layout_weight="1"
-                            android:text="chiec"
+                            android:text="đơn vị"
                             style="@style/thuong"/>
 
                     </TableRow>
@@ -75,11 +77,11 @@
 
                             android:layout_height="wrap_content"
                             android:layout_width="match_parent"
-                            android:text="Thanh tien: "
+                            android:text="Thành tiền: "
                             style="@style/thuong"
                             android:layout_weight="1"/>
                         <TextView
-                            android:id="@+id/thanh_tien"
+                            android:id="@+id/item_hhcdh_thanh_tien"
                             android:layout_weight="4"
                             android:text="500000"
                             style="@style/thuong"/>

@@ -103,8 +103,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_ID_DH + " INT PRIMARY KEY," + COLUMN_ID_NV + " INT NOT NULL," + COLUMN_NG + " TEXT NOT NULL,"
                 + COLUMN_CP + " FLOAT NOT NULL," + COLUMN_TCH + " TEXT," +  COLUMN_DC + " TEXT,"
                 + COLUMN_TP + " TEXT," + COLUMN_V + " TEXT," + COLUMN_QG + " TEXT," + COLUMN_MBC + " TEXT,"
-                + COLUMN_ID_KH + " TEXT NOT NULL," + COLUMN_SV + " INT NOT NULL,"
-                +" FOREIGN KEY ("+ COLUMN_ID_KH +") REFERENCES "+ TABLE_KH +"("+ COLUMN_ID_KH + ") )";
+                + COLUMN_SV + " INT NOT NULL," + COLUMN_ID_KH + " TEXT NOT NULL,"
+                + " FOREIGN KEY ("+ COLUMN_ID_KH +") REFERENCES "+ TABLE_KH +"("+ COLUMN_ID_KH + ") )";
 
         String taoBangKH = "CREATE TABLE " + TABLE_KH + "("
                 + COLUMN_ID_KH + " TEXT PRIMARY KEY," + COLUMN_TKH + " TEXT NOT NULL,"
@@ -200,8 +200,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor c = db.query(TABLE_DH, new String[] { COLUMN_ID_DH,
-                        COLUMN_NG, COLUMN_CP, COLUMN_TCH, COLUMN_ID_KH }, COLUMN_ID_DH + "=?",
+        Cursor c = db.query(TABLE_DH, new String[] { COLUMN_ID_DH, COLUMN_ID_NV, COLUMN_NG, COLUMN_CP,
+                        COLUMN_TCH, COLUMN_DC, COLUMN_TP, COLUMN_V, COLUMN_QG, COLUMN_MBC, COLUMN_SV, COLUMN_ID_KH }, COLUMN_ID_DH + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (c != null)
             c.moveToFirst();
@@ -222,9 +222,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         dh.setVungGiaoHang(c.getString(c.getColumnIndex(COLUMN_V)));
         dh.setQuocGiaGiaoHang(c.getString(c.getColumnIndex(COLUMN_QG)));
         dh.setMbcGiaoHang(c.getString(c.getColumnIndex(COLUMN_MBC)));
-        dh.setKhachHang(layKhachHang(c.getString(c.getColumnIndex(COLUMN_ID_KH))));
-        dh.setDsHang(layDSChiTietDonHang(dh.getId()));
         dh.setShipVia(c.getInt(c.getColumnIndex(COLUMN_SV)));
+        dh.setIdKhachHang(c.getString(c.getColumnIndex(COLUMN_ID_KH)));
+        dh.setShipVia(c.getInt(c.getColumnIndex(COLUMN_SV)));
+        dh.setKhachHang(layKhachHang(dh.getIdKhachHang()));
+        dh.setDsHang(layDSChiTietDonHang(dh.getId()));
 
         // return Don Hang
         return dh;
@@ -260,9 +262,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 dh.setVungGiaoHang(c.getString(c.getColumnIndex(COLUMN_V)));
                 dh.setQuocGiaGiaoHang(c.getString(c.getColumnIndex(COLUMN_QG)));
                 dh.setMbcGiaoHang(c.getString(c.getColumnIndex(COLUMN_MBC)));
-                dh.setKhachHang(layKhachHang(c.getString(c.getColumnIndex(COLUMN_ID_KH))));
-                dh.setDsHang(layDSChiTietDonHang(dh.getId()));
                 dh.setShipVia(c.getInt(c.getColumnIndex(COLUMN_SV)));
+                dh.setIdKhachHang(c.getString(c.getColumnIndex(COLUMN_ID_KH)));
+                dh.setShipVia(c.getInt(c.getColumnIndex(COLUMN_SV)));
+                dh.setKhachHang(layKhachHang(dh.getIdKhachHang()));
+                dh.setDsHang(layDSChiTietDonHang(dh.getId()));
 
                 // Thêm vào danh sách.
                 dsDonHang.add(dh);
@@ -369,7 +373,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_KH;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
 
 
