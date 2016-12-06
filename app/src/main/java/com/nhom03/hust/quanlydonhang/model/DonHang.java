@@ -193,7 +193,7 @@ public class DonHang implements Serializable{
 
         for (ChiTietDonHang i: this.dsHang
              ) {
-            TongTien += i.getDonGia()*i.getSoLuong()*(1-i.getGiamGia());
+            TongTien += i.thanhTien();
         }
 
         return TongTien;

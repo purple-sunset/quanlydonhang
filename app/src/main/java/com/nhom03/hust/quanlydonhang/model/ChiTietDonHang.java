@@ -40,6 +40,14 @@ public class ChiTietDonHang {
         this.giamGia = giamGia;
     }
 
+    public float thanhTien(){
+        float thanhTien = 0;
+
+        thanhTien = this.donGia*this.getSoLuong()*(1- this.getGiamGia());
+
+        return thanhTien;
+    }
+
     public int getIdDonHang() {
         return idDonHang;
     }
