@@ -1,12 +1,15 @@
 package com.nhom03.hust.quanlydonhang.view;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.adapter.KhachHangAdapter;
@@ -45,21 +48,49 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
         adapter = new KhachHangAdapter(this, dsKH);
         listViewKH = (ListView) findViewById(R.id.list_khach_hang);
         listViewKH.setAdapter(adapter);
-        listViewKH.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listViewKH.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                KhachHang kh = dsKH.get(i);
-                if(intent != null) {
+                final KhachHang kh = dsKH.get(i);
+                if (intent == null) {
                     Intent intent2 = new Intent(DanhSachKhachHangActivity.this, XemChiTietKhachHangActivity.class);
                     intent2.putExtra("KH", kh);
                     intent2.putExtra("Position", i);
                     startActivityForResult(intent2, REQUEST_CODE_DETAIL);
-                }
-                else {
-                    intent.putExtra("Return_KH", kh);
-                    setResult(RESULT_CODE_CHON_KHACHHANG, intent);
-                    finish();
+                } else {
+                    final Dialog dialog = new Dialog(DanhSachKhachHangActivity.this);
+                    dialog.setContentView(R.layout.dialog);
+                    TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
+                    TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
+                    Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
+                    Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
+
+                    btnOk.setText("OK");
+                    btnCancel.setText("Cancel");
+
+
+                    title.setText("Thành công");
+                    textView.setText("Quay về trang trước?");
+                    btnOk.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent.putExtra("Return_KH", kh);
+                            setResult(RESULT_CODE_CHON_KHACHHANG, intent);
+                            dialog.dismiss();
+                            finish();
+                        }
+                    });
+
+                    btnCancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
                 }
 
             }
@@ -70,7 +101,7 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
+        switch (requestCode) {
             case REQUEST_CODE_DETAIL: {
                 Log.d("Return From", "ChiTiet");
                 switch (resultCode) {

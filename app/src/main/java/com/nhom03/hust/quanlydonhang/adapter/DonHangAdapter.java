@@ -22,7 +22,7 @@ public class DonHangAdapter extends BaseAdapter{
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public DonHangAdapter(Context context, ArrayList<DonHang> listDh){
+    public DonHangAdapter(Context context, ArrayList<DonHang> listDH){
         this.context = context;
         this.listDH = listDH;
         this.layoutInflater = LayoutInflater.from(context);

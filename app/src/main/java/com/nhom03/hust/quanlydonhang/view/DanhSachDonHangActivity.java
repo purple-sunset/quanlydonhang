@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class DanhSachDonHangActivity extends AppCompatActivity {
     private ArrayList<DonHang> dsDH;
+    private DonHangAdapter adapter;
     private ListView listViewDH;
     private static final int REQUEST_CODE_DETAIL = 111;
     private static final int REQUEST_CODE_ADD = 112;
@@ -34,8 +35,9 @@ public class DanhSachDonHangActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_danh_sach_don_hang);
         dsDH = DatabaseHelper.getInstance().layDSDonHang();
-        listViewDH = (ListView) findViewById(R.id.list_don_hang);
-        listViewDH.setAdapter(new DonHangAdapter(this, dsDH));
+        listViewDH = (ListView) findViewById (R.id.list_don_hang);
+        adapter = new DonHangAdapter(this, dsDH);
+        listViewDH.setAdapter(adapter);
         listViewDH.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override

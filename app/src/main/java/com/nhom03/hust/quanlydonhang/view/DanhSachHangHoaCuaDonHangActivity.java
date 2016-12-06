@@ -24,7 +24,7 @@ public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
     private ArrayList<ChiTietDonHang> dsChiTietDonHang;
 
 
-    protected void onCreate(Bundle savedInstanceState)
+    /*protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_danh_sach_hang_hoa);
@@ -67,5 +67,5 @@ public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 }
