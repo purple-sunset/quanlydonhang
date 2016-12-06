@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.nhom03.hust.quanlydonhang.R;
@@ -36,7 +37,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     private int position;
 
 
-    private EditText tenKH;
+    private Button tenKH;
     private EditText ngayDatHang;
     private EditText diaChiGiaoHang;
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         donHang = (DonHang) intent.getExtras().getSerializable("DH");
         position = intent.getExtras().getInt("Position");
 
-        tenKH = (EditText) findViewById(R.id.xttdh_ten_khach_hang);
+        tenKH = (Button) findViewById(R.id.xttdh_ten_khach_hang);
         tenKH.setText(donHang.getKhachHang().getTenKH());
 
         ngayDatHang = (EditText) findViewById(R.id.xttdh_ngay_dat_hang);
