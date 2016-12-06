@@ -7,7 +7,7 @@
     <TextView
         style="@style/thuong"
         android:gravity="center"
-        android:id="@+id/text_id_kh"
+        android:id="@+id/dskh_id_kh"
         android:text="id"
         android:layout_width="100dp"
         android:layout_height="40dp" />
@@ -15,7 +15,7 @@
     <TextView
         style="@style/thuong"
         android:gravity="center"
-        android:id="@+id/text_ten_kh"
+        android:id="@+id/dskh_ten_kh"
         android:text="ten"
         android:layout_height="40dp"
         android:layout_width="match_parent" />

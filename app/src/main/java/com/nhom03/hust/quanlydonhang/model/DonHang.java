@@ -3,6 +3,7 @@ package com.nhom03.hust.quanlydonhang.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import java.util.Date;
  * Created by Admin on 30/11/2016.
  */
 
-public class DonHang {
+public class DonHang implements Serializable{
 
     @SerializedName("OrderID")
     private int id;
@@ -185,5 +186,16 @@ public class DonHang {
 
     public void setDsHang(ArrayList<ChiTietDonHang> dsHang) {
         this.dsHang = dsHang;
+    }
+
+    public float getTongTien(){
+        float TongTien =0;
+
+        for (ChiTietDonHang i: this.dsHang
+             ) {
+            TongTien += i.getDonGia()*i.getSoLuong()*(1-i.getGiamGia());
+        }
+
+        return TongTien;
     }
 }

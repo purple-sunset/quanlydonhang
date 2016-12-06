@@ -26,4 +26,10 @@
     <string name="cancel">Hủy bỏ</string>
     <string name="dialog_success_title">Thành công</string>
     <string name="title_activity_main2">Main2Activity</string>
+
+    <!-- Spinner-->
+    <string-array name="trang_thai">
+        <item>Đang bán</item>
+        <item>Đã hủy bán</item>
+    </string-array>
 </resources>

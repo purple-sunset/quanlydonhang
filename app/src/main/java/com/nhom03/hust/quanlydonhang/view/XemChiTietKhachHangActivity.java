@@ -23,7 +23,7 @@ import retrofit2.Response;
 
 public class XemChiTietKhachHangActivity extends AppCompatActivity {
 
-    private static final int RESULT_CODE_BACK = 320;
+    private static final int RESULT_CODE_BACK = 220;
 
     private Intent intent;
     private KhachHang khachHang;

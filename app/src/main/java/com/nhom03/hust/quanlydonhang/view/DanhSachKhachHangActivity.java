@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.adapter.KhachHangAdapter;
+import com.nhom03.hust.quanlydonhang.adapter.TheLoaiAdapter;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
 
@@ -22,21 +23,23 @@ import java.util.ArrayList;
 public class DanhSachKhachHangActivity extends AppCompatActivity {
 
     private ArrayList<KhachHang> dsKH;
+    private KhachHangAdapter adapter;
     private ListView listViewKH;
-    private static final int REQUEST_CODE_DETAIL = 311;
-    private static final int REQUEST_CODE_ADD = 312;
+    private static final int REQUEST_CODE_DETAIL = 211;
+    private static final int REQUEST_CODE_ADD = 212;
 
-    private static final int RESULT_CODE_ADD = 321;
-    private static final int RESULT_CODE_EDIT = 322;
-    private static final int RESULT_CODE_DELETE = 323;
+    private static final int RESULT_CODE_ADD = 221;
+    private static final int RESULT_CODE_EDIT = 222;
+    private static final int RESULT_CODE_DELETE = 223;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_danh_sach_khach_hang);
         dsKH = DatabaseHelper.getInstance().layDSKhachHang();
+        adapter = new KhachHangAdapter(this, dsKH);
         listViewKH = (ListView) findViewById(R.id.list_khach_hang);
-        listViewKH.setAdapter(new KhachHangAdapter(this, dsKH));
+        listViewKH.setAdapter(adapter);
         listViewKH.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
@@ -63,14 +66,14 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
                         int i = data.getExtras().getInt("Return_Position");
                         dsKH.remove(i);
                         dsKH.add(0, kh);
-                        ((KhachHangAdapter) listViewKH.getAdapter()).notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                         break;
                     }
 
                     case RESULT_CODE_DELETE: {
                         int i = data.getExtras().getInt("Return_Position");
                         dsKH.remove(i);
-                        ((KhachHangAdapter) listViewKH.getAdapter()).notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                         break;
                     }
 
@@ -84,7 +87,7 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
                     case RESULT_CODE_ADD: {
                         KhachHang kh = (KhachHang) data.getExtras().getSerializable("Return_KH");
                         dsKH.add(0, kh);
-                        ((KhachHangAdapter) listViewKH.getAdapter()).notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                         break;
                     }
                 }

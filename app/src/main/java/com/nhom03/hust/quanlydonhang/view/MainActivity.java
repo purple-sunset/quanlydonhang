@@ -78,9 +78,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void layDSHangHoa(View view){
-
-        //APIChiTietDonHang.layDSChiTietDonHang(10287);
-        //Log.d("Test", "OK");
+        Intent intent = new Intent(this, DanhSachHangHoaActivity.class);
+        startActivity(intent);
 
     }
 }

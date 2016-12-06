@@ -3,11 +3,13 @@ package com.nhom03.hust.quanlydonhang.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Admin on 30/11/2016.
  */
 
-public class HangHoa {
+public class HangHoa implements Serializable {
 
     @SerializedName("ProductID")
     private int id;
@@ -38,9 +40,6 @@ public class HangHoa {
 
     @SerializedName("CategoryID")
     private int idTheLoai;
-
-    @Expose
-    private TheLoai theLoai;
 
     public HangHoa(){}
 
@@ -113,15 +112,6 @@ public class HangHoa {
 
     public void setChiTiet(String chiTiet) {
         this.chiTiet = chiTiet;
-    }
-
-    public TheLoai getTheLoai() {
-        return theLoai;
-    }
-
-    public void setTheLoai(TheLoai theLoai) {
-        this.theLoai = theLoai;
-        //this.idTheLoai = theLoai.getId();
     }
 
     public int getIdTheLoai() {

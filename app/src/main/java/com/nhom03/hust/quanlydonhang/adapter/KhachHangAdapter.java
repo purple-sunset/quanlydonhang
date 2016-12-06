@@ -57,27 +57,19 @@ public class KhachHangAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder holder;
-        if (view == null) {
+        if (view == null)
             view = layoutInflater.inflate(R.layout.item_khach_hang, null);
-            holder = new ViewHolder();
-            holder.textID = (TextView) view.findViewById(R.id.text_id_kh);
-            holder.textTenKH = (TextView) view.findViewById(R.id.text_ten_kh);
-            view.setTag(holder);
-        } else {
-            holder = (ViewHolder) view.getTag();
-        }
 
         KhachHang kh = this.listKH.get(i);
-        holder.textID.setText(kh.getId());
-        holder.textTenKH.setText(kh.getTenKH());
+
+        TextView textID = (TextView) view.findViewById(R.id.dskh_id_kh);
+        TextView textTenKH = (TextView) view.findViewById(R.id.dskh_ten_kh);
+
+        textID.setText(kh.getId());
+        textTenKH.setText(kh.getTenKH());
 
         return view;
     }
 
-    class ViewHolder{
-        TextView textID;
-        TextView textTenKH;
-    }
 }
 

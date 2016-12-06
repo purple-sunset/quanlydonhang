@@ -476,7 +476,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         hh.setSlTon(c.getInt(c.getColumnIndex(COLUMN_SLT)));
         hh.setSlDat(c.getInt(c.getColumnIndex(COLUMN_SLD)));
         hh.setChiTiet(c.getString(c.getColumnIndex(COLUMN_CT)));
-        hh.setTheLoai(layTheLoai(c.getInt(c.getColumnIndex(COLUMN_ID_TL))));
+        hh.setIdTheLoai(c.getInt(c.getColumnIndex(COLUMN_ID_TL)));
         hh.setSupplierId(c.getInt(c.getColumnIndex(COLUMN_SP_ID)));
 
         // return Hang Hoa
@@ -491,7 +491,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_HH;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
 
 
@@ -507,7 +507,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 hh.setSlTon(c.getInt(c.getColumnIndex(COLUMN_SLT)));
                 hh.setSlDat(c.getInt(c.getColumnIndex(COLUMN_SLD)));
                 hh.setChiTiet(c.getString(c.getColumnIndex(COLUMN_CT)));
-                hh.setTheLoai(layTheLoai(c.getInt(c.getColumnIndex(COLUMN_ID_TL))));
+                hh.setIdTheLoai(c.getInt(c.getColumnIndex(COLUMN_ID_TL)));
+                hh.setSupplierId(c.getInt(c.getColumnIndex(COLUMN_SP_ID)));
+
+                // Thêm vào danh sách.
+                dsHangHoa.add(hh);
+            } while (c.moveToNext());
+        }
+
+        // return ds Hang Hoa
+        return dsHangHoa;
+    }
+
+    public ArrayList<HangHoa> layDSHangHoa(int idTheLoai) {
+        Log.i(TAG, "MyDatabaseHelper.layDSHangHoa ... " + idTheLoai );
+
+        ArrayList<HangHoa> dsHangHoa = new ArrayList<HangHoa>();
+        // Select All Query
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.query(TABLE_HH, new String[] { COLUMN_ID_HH,
+                        COLUMN_TH, COLUMN_HB, COLUMN_ROL, COLUMN_DG, COLUMN_SLT, COLUMN_SLD, COLUMN_CT, COLUMN_ID_TL, COLUMN_SP_ID }
+                , COLUMN_ID_TL + "=?",
+                new String[] { String.valueOf(idTheLoai) }, null, null, null, null);
+
+        // Duyệt trên con trỏ, và thêm vào danh sách.
+        if (c.moveToFirst()) {
+            do {
+                HangHoa hh = new HangHoa();
+                hh.setId(c.getInt(c.getColumnIndex(COLUMN_ID_HH)));
+                hh.setTen(c.getString(c.getColumnIndex(COLUMN_TH)));
+                hh.setHuyBan(c.getInt(c.getColumnIndex(COLUMN_HB)) != 0);
+                hh.setReOrderLevel(c.getInt(c.getColumnIndex(COLUMN_ROL)));
+                hh.setDonGia(c.getFloat(c.getColumnIndex(COLUMN_DG)));
+                hh.setSlTon(c.getInt(c.getColumnIndex(COLUMN_SLT)));
+                hh.setSlDat(c.getInt(c.getColumnIndex(COLUMN_SLD)));
+                hh.setChiTiet(c.getString(c.getColumnIndex(COLUMN_CT)));
+                hh.setIdTheLoai(c.getInt(c.getColumnIndex(COLUMN_ID_TL)));
                 hh.setSupplierId(c.getInt(c.getColumnIndex(COLUMN_SP_ID)));
 
                 // Thêm vào danh sách.
@@ -605,7 +640,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + " FROM " + TABLE_CTDH + ", " + TABLE_HH + " WHERE " + TABLE_CTDH + "." + COLUMN_ID_DH + "=" + id
                 + " AND " + TABLE_HH + "." + COLUMN_ID_HH + "=" + TABLE_CTDH + "." + COLUMN_ID_HH;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
 
 
@@ -688,6 +723,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         tl.setId(c.getInt(c.getColumnIndex(COLUMN_ID_TL)));
         tl.setTen(c.getString(c.getColumnIndex(COLUMN_TTL)));
         tl.setMoTa(c.getString(c.getColumnIndex(COLUMN_MT)));
+        tl.setDsHangHoa(layDSHangHoa(tl.getId()));
+
 
         // return The Loai
         return tl;
@@ -701,7 +738,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_TL;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
 
 
@@ -712,6 +749,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 tl.setId(c.getInt(c.getColumnIndex(COLUMN_ID_TL)));
                 tl.setTen(c.getString(c.getColumnIndex(COLUMN_TTL)));
                 tl.setMoTa(c.getString(c.getColumnIndex(COLUMN_MT)));
+                tl.setDsHangHoa(layDSHangHoa(tl.getId()));
 
                 // Thêm vào danh sách.
                 dsTheLoai.add(tl);

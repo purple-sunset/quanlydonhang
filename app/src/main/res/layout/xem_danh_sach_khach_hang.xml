@@ -2,17 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_dark"
-        android:theme="@style/AppTheme.AppBarOverlay">
+    android:orientation="vertical"
+    android:background="@color/suong_mat_ong">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
+
             android:layout_height="40dp">
 
             <TextView
@@ -25,12 +21,12 @@
             <Button
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:foreground="@drawable/add"
+
+                android:foreground="@drawable/add1"
                 android:gravity="right"
                 android:onClick="themKhachHang" />
         </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
+
 
     <ListView
         android:id="@+id/list_khach_hang"

@@ -11,6 +11,12 @@
         android:layout_height="50dp"
         style="@style/Tieu_de_1"
         android:text="Danh sách đơn hàng"/>
+    <ListView
+        android:id="@+id/list_don_hang"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="@drawable/list_selector">
 
+    </ListView>
 
 </LinearLayout>

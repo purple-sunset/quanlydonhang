@@ -1,6 +1,9 @@
 package com.nhom03.hust.quanlydonhang.model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
 
 /**
  * Created by Admin on 01/12/2016.
@@ -16,6 +19,9 @@ public class TheLoai {
 
     @SerializedName("Description")
     private String moTa;
+
+    @Expose
+    private ArrayList<HangHoa> dsHangHoa;
 
     public TheLoai(){}
 
@@ -47,5 +53,13 @@ public class TheLoai {
 
     public void setMoTa(String moTa) {
         this.moTa = moTa;
+    }
+
+    public ArrayList<HangHoa> getDsHangHoa() {
+        return dsHangHoa;
+    }
+
+    public void setDsHangHoa(ArrayList<HangHoa> dsHangHoa) {
+        this.dsHangHoa = dsHangHoa;
     }
 }
