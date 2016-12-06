@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
+
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
-        android:layout_gravity="center"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="2dp"
+        android:layout_gravity="center"
         android:layout_margin="5dp"
-        >
-    <TextView
-        style="@style/thuong"
-        android:gravity="center"
-        android:id="@+id/dskh_id_kh"
-        android:text="id"
-        android:layout_width="100dp"
-        android:layout_height="40dp" />
+        card_view:cardCornerRadius="2dp">
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/dskh_ten_kh"
+                style="@style/thuong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:gravity="center_vertical"
+                android:text="id" />
 
-    <TextView
-        style="@style/thuong"
-        android:gravity="center"
-        android:id="@+id/dskh_ten_kh"
-        android:text="ten"
-        android:layout_height="40dp"
-        android:layout_width="match_parent" />
-</android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/dskh_dia_chi"
+                style="@style/thuong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:gravity="center_vertical"
+                android:text="ten" />
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
 </LinearLayout>

@@ -35,7 +35,6 @@
                 android:id="@+id/BT_xem_danh_sach_hang_hoa"
                 android:layout_height="match_parent"
                 android:text="Ao so mi nam"
-                style="@style/button"
                 android:layout_weight="5"/>
         </TableRow>
         <TableRow

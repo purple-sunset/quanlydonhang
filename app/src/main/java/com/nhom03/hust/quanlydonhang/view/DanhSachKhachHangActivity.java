@@ -48,28 +48,33 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
         adapter = new KhachHangAdapter(this, dsKH);
         listViewKH = (ListView) findViewById(R.id.list_khach_hang);
         listViewKH.setAdapter(adapter);
-        listViewKH.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final KhachHang kh = dsKH.get(i);
-                if (intent == null) {
+        if (getCallingActivity() == null) {
+            listViewKH.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    final KhachHang kh = dsKH.get(i);
                     Intent intent2 = new Intent(DanhSachKhachHangActivity.this, XemChiTietKhachHangActivity.class);
                     intent2.putExtra("KH", kh);
                     intent2.putExtra("Position", i);
                     startActivityForResult(intent2, REQUEST_CODE_DETAIL);
-                } else {
+
+
+                }
+            });
+        }
+        else {
+            listViewKH.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    final KhachHang kh = dsKH.get(i);
                     final Dialog dialog = new Dialog(DanhSachKhachHangActivity.this);
                     dialog.setContentView(R.layout.dialog);
                     TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
                     TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
                     Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
                     Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
-
                     btnOk.setText("OK");
                     btnCancel.setText("Cancel");
-
-
                     title.setText("Thành công");
                     textView.setText("Quay về trang trước?");
                     btnOk.setOnClickListener(new View.OnClickListener() {
@@ -90,12 +95,9 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
                     });
 
                     dialog.show();
-
                 }
-
-            }
-        });
-
+            });
+        }
     }
 
     @Override
@@ -144,7 +146,7 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
     }
 
     public void themKhachHang(View view) {
-        Intent intent = new Intent(this, ThemMoiKhachHangActivity.class);
+        Intent intent2 = new Intent(this, ThemMoiKhachHangActivity.class);
         startActivityForResult(intent, REQUEST_CODE_ADD);
     }
 

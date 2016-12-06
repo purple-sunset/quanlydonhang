@@ -62,10 +62,11 @@ public class KhachHangAdapter extends BaseAdapter {
 
         KhachHang kh = this.listKH.get(i);
 
-        TextView textID = (TextView) view.findViewById(R.id.dskh_id_kh);
-        TextView textTenKH = (TextView) view.findViewById(R.id.dskh_ten_kh);
 
-        textID.setText(kh.getId());
+        TextView textTenKH = (TextView) view.findViewById(R.id.dskh_ten_kh);
+        TextView textDiaChi = (TextView) view.findViewById(R.id.dskh_dia_chi);
+
+        textDiaChi.setText(kh.getDiaChi() +", " + kh.getThanhPho());
         textTenKH.setText(kh.getTenKH());
 
         return view;
