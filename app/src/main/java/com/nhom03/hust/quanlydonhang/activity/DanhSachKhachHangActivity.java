@@ -1,4 +1,4 @@
-package com.nhom03.hust.quanlydonhang.view;
+package com.nhom03.hust.quanlydonhang.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.adapter.KhachHangAdapter;
-import com.nhom03.hust.quanlydonhang.adapter.TheLoaiAdapter;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
 

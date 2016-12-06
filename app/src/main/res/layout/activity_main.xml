@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.nhom03.hust.quanlydonhang.view.MainActivity"
+    tools:context="com.nhom03.hust.quanlydonhang.activity.MainActivity"
     android:background="@color/suong_mat_ong">
 
     <TextView

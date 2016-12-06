@@ -1,4 +1,4 @@
-package com.nhom03.hust.quanlydonhang.view;
+package com.nhom03.hust.quanlydonhang.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,8 @@ import android.widget.ListView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.adapter.DonHangAdapter;
-import com.nhom03.hust.quanlydonhang.adapter.KhachHangAdapter;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.DonHang;
-import com.nhom03.hust.quanlydonhang.model.KhachHang;
 
 import java.util.ArrayList;
 

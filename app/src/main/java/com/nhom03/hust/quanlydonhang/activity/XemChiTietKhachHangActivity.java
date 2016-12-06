@@ -1,4 +1,4 @@
-package com.nhom03.hust.quanlydonhang.view;
+package com.nhom03.hust.quanlydonhang.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -11,13 +11,7 @@ import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
-import com.nhom03.hust.quanlydonhang.model.NguoiDung;
-import com.nhom03.hust.quanlydonhang.rest.APIInterface;
 import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by sakura on 01/12/2016.

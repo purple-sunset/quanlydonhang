@@ -15,24 +15,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".activity.MainActivity">
 
         </activity>
-        <activity android:name=".view.DangNhapActivity">
+        <activity android:name=".activity.DangNhapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.TestActivity" />
-        <activity android:name=".view.DanhSachKhachHangActivity" />
-        <activity android:name=".view.ThemMoiKhachHangActivity" />
-        <activity android:name=".view.XemChiTietKhachHangActivity" />
-        <activity android:name=".view.DanhSachHangHoaActivity"/>
-        <activity android:name=".view.XemChiTietHangHoaActivity"/>
-        <activity android:name=".view.DanhSachDonHangActivity"/>
-        <activity android:name=".view.XemChiTietDonHangActivity"/>
+        <activity android:name=".activity.TestActivity" />
+        <activity android:name=".activity.DanhSachKhachHangActivity" />
+        <activity android:name=".activity.ThemMoiKhachHangActivity" />
+        <activity android:name=".activity.XemChiTietKhachHangActivity" />
+        <activity android:name=".activity.DanhSachHangHoaActivity"/>
+        <activity android:name=".activity.XemChiTietHangHoaActivity"/>
+        <activity android:name=".activity.DanhSachDonHangActivity"/>
+        <activity android:name=".activity.XemChiTietDonHangActivity"/>
     </application>
 
 </manifest>

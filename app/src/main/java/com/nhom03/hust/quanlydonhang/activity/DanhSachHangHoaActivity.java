@@ -1,20 +1,15 @@
-package com.nhom03.hust.quanlydonhang.view;
+package com.nhom03.hust.quanlydonhang.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 
 import com.nhom03.hust.quanlydonhang.R;
-import com.nhom03.hust.quanlydonhang.adapter.KhachHangAdapter;
 import com.nhom03.hust.quanlydonhang.adapter.TheLoaiAdapter;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.HangHoa;
-import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.model.TheLoai;
 
 import java.util.ArrayList;
