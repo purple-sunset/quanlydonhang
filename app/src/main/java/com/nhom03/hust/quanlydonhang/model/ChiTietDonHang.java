@@ -6,11 +6,13 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.nhom03.hust.quanlydonhang.rest.APIChiTietDonHang;
 
+import java.io.Serializable;
+
 /**
  * Created by Admin on 30/11/2016.
  */
 
-public class ChiTietDonHang {
+public class ChiTietDonHang implements Serializable {
 
     @SerializedName("OrderID")
     private int idDonHang;
