@@ -23,6 +23,12 @@ public class ChiTietDonHangAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private Context context;
 
+    public ChiTietDonHangAdapter(ArrayList<ChiTietDonHang> listCTDH, Context context) {
+        this.listCTDH = listCTDH;
+        this.context = context;
+        this.layoutInflater = LayoutInflater.from(context);
+    }
+
     @Override
     public int getCount() {
         return listCTDH.size();
