@@ -31,6 +31,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     private static final int RESULT_CODE_BACK = 120;
     private static final int RESULT_CODE_CHON_KHACHHANG = 121;
 
+    private static final int RESULT_CODE_HANGHOA = 999;
 
     private Intent intent;
     private DonHang donHang;
@@ -40,6 +41,11 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     private Button tenKH;
     private EditText ngayDatHang;
     private EditText diaChiGiaoHang;
+
+    private Button hangHoaList;
+    private Button xoaDonhang;
+    private Button suaDonHang;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_thong_tin_don_hang);
@@ -56,8 +62,38 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
 
         diaChiGiaoHang = (EditText) findViewById(R.id.xttdh_dia_chi_giao_hang);
         diaChiGiaoHang.setText(donHang.getDiaChiGiaoHang());
+
+
+        hangHoaList = (Button) findViewById(R.id.xttdh_BT_xem_hang_hoa_cua_don_hang);
+        xoaDonhang = (Button) findViewById(R.id.xttdh_BT_xoa_don_hang);
+        suaDonHang = (Button) findViewById(R.id.BT_sua_don_hang);
+
+        hangHoaList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DanhSachHangHoaCuaDonHangActivity.class);
+                intent.putExtra("dshanghoa", donHang.getDsHang());
+                startActivityForResult(intent, RESULT_CODE_HANGHOA);
+            }
+        });
+        xoaDonhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                xoaDonHang(view);
+            }
+        });
+
+        suaDonHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                suaTTDonHang(view);
+            }
+        });
     }
 
+//    Intent intent = new Intent();
+//    ArrayList<HangHoa> list = (ArrayList<HangHoa>) intent.getExtras().get("dshanghoa");
+//    listHangHoa.setAdapter(new HangHoaCuaDonHangAdapter(this, list));
     @Override
     public void onBackPressed() {
 
@@ -91,9 +127,9 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
 
     }
 
-    /*public void xoaDonHang(View view) {
-        APIDonHang.xoaDonHang(DonHang);
-    }*/
+    public void xoaDonHang(View view) {
+        APIDonHang.xoaDonHang(position, donHang, true, this, intent);
+    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
