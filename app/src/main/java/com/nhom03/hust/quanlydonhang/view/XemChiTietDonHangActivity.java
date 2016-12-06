@@ -3,7 +3,9 @@ package com.nhom03.hust.quanlydonhang.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.nhom03.hust.quanlydonhang.R;
@@ -60,7 +62,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
 
         diaChiGiaoHang = (EditText) findViewById(R.id.xttdh_dia_chi_giao_hang);
         diaChiGiaoHang.setText(donHang.getDiaChiGiaoHang());
-    }
+
 
         hangHoaList = (Button) findViewById(R.id.xttdh_BT_xem_hang_hoa_cua_don_hang);
         xoaDonhang = (Button) findViewById(R.id.xttdh_BT_xoa_don_hang);
@@ -70,7 +72,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DanhSachHangHoaCuaDonHangActivity.class);
-                intent.putExtra("dshanghoa", DonHang.getDsHang());
+                intent.putExtra("dshanghoa", donHang.getDsHang());
                 startActivityForResult(intent, RESULT_CODE_HANGHOA);
             }
         });
@@ -126,11 +128,8 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     }
 
     public void xoaDonHang(View view) {
-
-        APIDonHang.xoaDonHang(position, DonHang, true, this, intent);
-    /*public void xoaDonHang(View view) {
-        APIDonHang.xoaDonHang(DonHang);
-    }*/
+        APIDonHang.xoaDonHang(position, donHang, true, this, intent);
+    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
