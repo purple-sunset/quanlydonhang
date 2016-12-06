@@ -19,6 +19,10 @@ import java.util.ArrayList;
  * Created by longs on 06/12/2016.
  */
 public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
+
+    private static final int REQUEST_CODE_DETAIL = 500;
+    private static final int RESULT_CODE_CHON_HANG_HOA_CUA_DON_HAN = 600;
+
     private ChiTietDonHangAdapter adapter;
     private ArrayList<ChiTietDonHang> dsChiTietDonHang;
     private ListView listViewChiTietDonHang;
@@ -38,13 +42,13 @@ public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
                 ChiTietDonHang chiTietDonHang = dsChiTietDonHang.get(i);
                 if(intent != null) {
                     Intent intent2 = new Intent(DanhSachHangHoaCuaDonHangActivity.this, XemChiTietHangHoaCuaDonHangActivity.class);
-                    intent2.putExtra("HH", kh);
+                    intent2.putExtra("HH", chiTietDonHang );
                     intent2.putExtra("Position", i);
                     startActivityForResult(intent2, REQUEST_CODE_DETAIL);
                 }
                 else {
-                    intent.putExtra("Return_KH", kh);
-                    setResult(RESULT_CODE_CHON_KHACHHANG, intent);
+                    intent.putExtra("Return_KH", chiTietDonHang);
+                    //setResult(RESULT_CODE_CHON_HANG_HOA_CUA_DON_HANG, intent);
                     finish();
                 }
             }
