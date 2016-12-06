@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 
 import com.nhom03.hust.quanlydonhang.R;
+import com.nhom03.hust.quanlydonhang.adapter.ChiTietDonHangAdapter;
 import com.nhom03.hust.quanlydonhang.adapter.TheLoaiAdapter;
 import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
@@ -22,15 +24,21 @@ public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
 
     private Intent intent;
     private ArrayList<ChiTietDonHang> dsChiTietDonHang;
+    private ListView listHangHoa;
 
 
-    /*protected void onCreate(Bundle savedInstanceState)
+    protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_danh_sach_hang_hoa);
-        intent=getIntent();
-        dsChiTietDonHang=intent.getExtras().get("dsChiTietDonHang");
-        dsChiTietDonHang = DatabaseHelper.getInstance().layDSTheLoai();
+
+        listHangHoa = (ListView) findViewById(R.id.list_hang_hoa_cua_don_hang);
+        Intent intent = new Intent();
+        ArrayList<ChiTietDonHang> list = (ArrayList<ChiTietDonHang>) intent.getExtras().get("dshanghoa");
+
+        listHangHoa.setAdapter(new ChiTietDonHangAdapter(this, list));
+
+    /*
         adapter = new TheLoaiAdapter(this, dsTL);
         listViewTL = (ExpandableListView) findViewById(R.id.list_hang_hoa);
         listViewTL.setAdapter(adapter);
@@ -66,6 +74,6 @@ public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
             public void onGroupExpand(int groupPosition) {
 
             }
-        });
-    }*/
+        });*/
+    }
 }

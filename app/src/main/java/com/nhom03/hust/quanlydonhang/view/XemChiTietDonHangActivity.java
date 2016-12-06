@@ -93,9 +93,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         });
     }
 
-//    Intent intent = new Intent();
-//    ArrayList<HangHoa> list = (ArrayList<HangHoa>) intent.getExtras().get("dshanghoa");
-//    listHangHoa.setAdapter(new HangHoaCuaDonHangAdapter(this, list));
+
     @Override
     public void onBackPressed() {
 
