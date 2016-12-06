@@ -3,6 +3,7 @@ package com.nhom03.hust.quanlydonhang.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,10 +25,14 @@ import java.util.Locale;
 
 public class XemChiTietDonHangActivity extends AppCompatActivity {
 
+    private static final int REQUEST_CODE_KHACHHANG = 111;
+
     private static final int RESULT_CODE_BACK = 120;
+    private static final int RESULT_CODE_CHON_KHACHHANG = 121;
+
 
     private Intent intent;
-    private DonHang DonHang;
+    private DonHang donHang;
     private int position;
 
 
@@ -39,17 +44,17 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         setContentView(R.layout.xem_thong_tin_don_hang);
 
         intent = getIntent();
-        DonHang = (DonHang) intent.getExtras().getSerializable("H");
+        donHang = (DonHang) intent.getExtras().getSerializable("H");
         position = intent.getExtras().getInt("Position");
 
         tenKH = (EditText) findViewById(R.id.xttdh_ten_khach_hang);
-        tenKH.setText(DonHang.getKhachHang().getTenKH());
+        tenKH.setText(donHang.getKhachHang().getTenKH());
 
         ngayDatHang = (EditText) findViewById(R.id.xttdh_ngay_dat_hang);
-        ngayDatHang.setText(DonHang.getNgayGio().toString());
+        ngayDatHang.setText(donHang.getNgayGio().toString());
 
         diaChiGiaoHang = (EditText) findViewById(R.id.xttdh_dia_chi_giao_hang);
-        diaChiGiaoHang.setText(DonHang.getDiaChiGiaoHang());
+        diaChiGiaoHang.setText(donHang.getDiaChiGiaoHang());
     }
 
     @Override
@@ -64,7 +69,9 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     }
 
     public void suaTTKhachHang(View view){
-
+        Intent intent2 = new Intent(this, DanhSachKhachHangActivity.class);
+        intent2.putExtra("KH", donHang.getKhachHang());
+        startActivityForResult(intent2, REQUEST_CODE_KHACHHANG);
     }
 
 
@@ -73,18 +80,40 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         diaChiGiaoHang.setEnabled(true);
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a", Locale.US);
 
-        DonHang.setDiaChiGiaoHang(diaChiGiaoHang.getText().toString());
+        donHang.setDiaChiGiaoHang(diaChiGiaoHang.getText().toString());
         try {
             Date date = df.parse(ngayDatHang.getText().toString());
-            DonHang.setNgayGio(date);
+            donHang.setNgayGio(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
     }
 
-    public void xoaDonHang(View view) {
+    /*public void xoaDonHang(View view) {
         APIDonHang.xoaDonHang(DonHang);
+    }*/
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case REQUEST_CODE_KHACHHANG: {
+                Log.d("Return From", "Khach Hang");
+                switch (resultCode) {
+                    case RESULT_CODE_CHON_KHACHHANG: {
+                        KhachHang kh = (KhachHang) data.getExtras().getSerializable("Return_KH");
+                        donHang.setKhachHang(kh);
+                        break;
+                    }
+
+                }
+                break;
+            }
+
+
+
+        }
+
     }
 
 }

@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class DanhSachKhachHangActivity extends AppCompatActivity {
 
+    private Intent intent;
     private ArrayList<KhachHang> dsKH;
     private KhachHangAdapter adapter;
     private ListView listViewKH;
@@ -32,10 +33,14 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
     private static final int RESULT_CODE_EDIT = 222;
     private static final int RESULT_CODE_DELETE = 223;
 
+    private static final int RESULT_CODE_CHON_KHACHHANG = 121;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_danh_sach_khach_hang);
+
+        intent = getIntent();
         dsKH = DatabaseHelper.getInstance().layDSKhachHang();
         adapter = new KhachHangAdapter(this, dsKH);
         listViewKH = (ListView) findViewById(R.id.list_khach_hang);
@@ -45,10 +50,18 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 KhachHang kh = dsKH.get(i);
-                Intent intent = new Intent(DanhSachKhachHangActivity.this, XemChiTietKhachHangActivity.class);
-                intent.putExtra("KH", kh);
-                intent.putExtra("Position", i);
-                startActivityForResult(intent, REQUEST_CODE_DETAIL);
+                if(intent != null) {
+                    Intent intent2 = new Intent(DanhSachKhachHangActivity.this, XemChiTietKhachHangActivity.class);
+                    intent2.putExtra("KH", kh);
+                    intent2.putExtra("Position", i);
+                    startActivityForResult(intent2, REQUEST_CODE_DETAIL);
+                }
+                else {
+                    intent.putExtra("Return_KH", kh);
+                    setResult(RESULT_CODE_CHON_KHACHHANG, intent);
+                    finish();
+                }
+
             }
         });
 
