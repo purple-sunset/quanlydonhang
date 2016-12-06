@@ -1,4 +1,4 @@
-package com.nhom03.hust.quanlydonhang.view;
+package com.nhom03.hust.quanlydonhang.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -14,7 +14,6 @@ import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.DonHang;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
-import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
 
 import java.text.DateFormat;
 import java.text.ParseException;

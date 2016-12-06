@@ -1,16 +1,13 @@
-package com.nhom03.hust.quanlydonhang.view;
+package com.nhom03.hust.quanlydonhang.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
-import com.nhom03.hust.quanlydonhang.model.HangHoa;
 
 /**
  * Created by longs on 06/12/2016.

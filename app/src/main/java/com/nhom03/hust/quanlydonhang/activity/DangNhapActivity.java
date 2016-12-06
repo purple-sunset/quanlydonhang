@@ -1,4 +1,4 @@
-package com.nhom03.hust.quanlydonhang.view;
+package com.nhom03.hust.quanlydonhang.activity;
 
 import android.content.Intent;
 import android.os.StrictMode;
@@ -11,21 +11,13 @@ import android.widget.EditText;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
-import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
-import com.nhom03.hust.quanlydonhang.rest.APIHangHoa;
-import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
-import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.KvmSerializable;
-import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
-import org.kxml2.kdom.Element;
-import org.kxml2.kdom.Node;
 
 import java.net.SocketException;
 import java.util.ArrayList;

@@ -1,28 +1,16 @@
 package com.nhom03.hust.quanlydonhang.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.provider.SyncStateContract;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
-import com.nhom03.hust.quanlydonhang.view.DangNhapActivity;
-import com.nhom03.hust.quanlydonhang.view.DanhSachKhachHangActivity;
-import com.nhom03.hust.quanlydonhang.view.XemChiTietKhachHangActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by sakura on 01/12/2016.

@@ -2,19 +2,15 @@ package com.nhom03.hust.quanlydonhang.rest;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.nhom03.hust.quanlydonhang.MyApplication;
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
-import com.nhom03.hust.quanlydonhang.model.DonHang;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
-import com.nhom03.hust.quanlydonhang.view.MainActivity;
 
 import java.util.HashMap;
 import java.util.List;
