@@ -24,12 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_weight="1"
-        android:visibility="visible"
-        android:background="@color/suong_mat_ong">
+        android:visibility="visible">
         <TableLayout
+            android:layout_weight="1"
             android:weightSum="7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp">
             <TableRow
@@ -66,6 +66,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical" />
                 <Spinner
+                    android:clickable="false"
                     android:enabled="false"
                     android:entries="@array/trang_thai"
                     android:id="@+id/cthh_trang_thai"

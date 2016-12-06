@@ -87,7 +87,7 @@ public class TheLoaiAdapter extends BaseExpandableListAdapter {
         TextView giaHangHoa = (TextView) view.findViewById(R.id.dshh_gia_hang_hoa);
 
         tenHangHoa.setText(hangHoa.getTen());
-        giaHangHoa.setText(String.valueOf(hangHoa.getDonGia()) + " đ");
+        giaHangHoa.setText(String.valueOf((long) hangHoa.getDonGia() * 10000));
 
         return view;
     }
