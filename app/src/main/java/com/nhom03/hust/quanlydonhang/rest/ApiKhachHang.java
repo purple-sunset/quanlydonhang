@@ -31,9 +31,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class APIKhachHang {
-    private static final int RESULT_CODE_ADD = 321;
-    private static final int RESULT_CODE_EDIT = 322;
-    private static final int RESULT_CODE_DELETE = 323;
+    private static final int RESULT_CODE_ADD = 221;
+    private static final int RESULT_CODE_EDIT = 222;
+    private static final int RESULT_CODE_DELETE = 223;
 
     public static final String BASE_URL = "http://daotao.misa.com.vn/services/CustomerService.svc/rest/";
     private static Retrofit retrofit = null;
