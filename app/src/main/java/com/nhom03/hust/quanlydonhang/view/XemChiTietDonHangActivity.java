@@ -1,5 +1,6 @@
 package com.nhom03.hust.quanlydonhang.view;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.DonHang;
@@ -128,7 +130,34 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     }
 
     public void xoaDonHang(View view) {
-        APIDonHang.xoaDonHang(position, donHang, true, this, intent);
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog);
+        TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
+        TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
+        Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
+        Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
+
+        btnOk.setText("Có");
+        btnCancel.setText("Không");
+
+        title.setText("Xóa đơn hàng");
+        textView.setText("Bạn có muốn xóa đơn hàng không?");
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                APIDonHang.xoaDonHang(position, donHang, true, XemChiTietDonHangActivity.this, intent);
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+        //APIDonHang.xoaDonHang(position, donHang, true, this, intent);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
