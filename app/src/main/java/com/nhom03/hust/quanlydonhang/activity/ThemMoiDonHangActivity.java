@@ -3,7 +3,6 @@ package com.nhom03.hust.quanlydonhang.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -11,35 +10,30 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TabHost;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.DonHang;
-import com.nhom03.hust.quanlydonhang.model.HangHoa;
 import com.nhom03.hust.quanlydonhang.model.HangHoaCuaDonHang;
 import com.nhom03.hust.quanlydonhang.model.KhachHang;
 import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
 import com.nhom03.hust.quanlydonhang.rest.APIHangHoaCuaDonHang;
-import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 
 /**
- * Created by longs on 06/12/2016.
+ * Created by Admin on 07/12/2016.
  */
 
-public class XemChiTietDonHangActivity extends AppCompatActivity {
+public class ThemMoiDonHangActivity extends AppCompatActivity {
+
 
     private static final int REQUEST_CODE_KHACHHANG = 111;
     private static final int REQUEST_CODE_HANGHOA = 112;
+    private static final int REQUEST_CODE_ADD = 012;
 
     private static final int RESULT_CODE_BACK = 120;
     private static final int RESULT_CODE_CHON_KHACHHANG = 121;
@@ -52,8 +46,8 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     private int position;
     private boolean editable = false;
 
-    private ArrayList<HangHoaCuaDonHang> dsHH;
-    private ArrayList<HangHoaCuaDonHang> dsThem = new ArrayList<>();
+    private ArrayList<HangHoaCuaDonHang> dsHH= new ArrayList<>();
+    private ArrayList<HangHoaCuaDonHang> dsThem= new ArrayList<>();
     private ArrayList<HangHoaCuaDonHang> dsSua= new ArrayList<>();
     private ArrayList<HangHoaCuaDonHang> dsXoa= new ArrayList<>();
     private ArrayList<Integer> vtSua= new ArrayList<>();
@@ -63,29 +57,22 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
     private Button ngayDatHang;
     private EditText diaChiGiaoHang;
 
-    private Button xoaDonhang;
-    private Button suaDonHang;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.xem_thong_tin_don_hang);
+        setContentView(R.layout.them_moi_don_hang);
 
         intent = getIntent();
-        donHang = (DonHang) intent.getExtras().getSerializable("DH");
-        position = intent.getExtras().getInt("Position");
-        dsHH = donHang.getDsHang();
+        donHang = new DonHang();
 
-        tenKH = (Button) findViewById(R.id.xttdh_ten_khach_hang);
-        tenKH.setText(donHang.getKhachHang().getTenKH());
+        tenKH = (Button) findViewById(R.id.tdh_ten_khach_hang);
 
-        ngayDatHang = (Button) findViewById(R.id.xttdh_ngay_dat_hang);
-        ngayDatHang.setText(donHang.getNgayGio().toLocaleString());
 
-        diaChiGiaoHang = (EditText) findViewById(R.id.xttdh_dia_chi_giao_hang);
-        diaChiGiaoHang.setText(diaChi());
+        ngayDatHang = (Button) findViewById(R.id.tdh_ngay_dat_hang);
 
-        xoaDonhang = (Button) findViewById(R.id.xttdh_BT_xoa_don_hang);
-        suaDonHang = (Button) findViewById(R.id.BT_sua_don_hang);
+
+        diaChiGiaoHang = (EditText) findViewById(R.id.tdh_dia_chi);
+
 
     }
 
@@ -104,15 +91,14 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         finish();
     }
 
-
-    public void suaTTKhachHang(View view) {
+    public void suaTTKhachHang2(View view) {
         Intent intent2 = new Intent(this, DanhSachKhachHangActivity.class);
         intent2.putExtra("Calling_Activity", "DonHangActivity");
         intent2.putExtra("KH", donHang.getKhachHang());
         startActivityForResult(intent2, REQUEST_CODE_KHACHHANG);
     }
 
-    public void suaNgayGio(View view) {
+    public void suaNgayGio2(View view) {
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.date_time_picker);
 
@@ -148,89 +134,23 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void xemTTHangHoa(View view) {
+    public void themHangHoa2(View view) {
         Intent intent3 = new Intent(this, DanhSachHangHoaCuaDonHangActivity.class);
-        intent3.putExtra("Calling_Activity", "ChiTietDonHangActivity");
-        intent3.putExtra("DSHH", dsHH);
+        intent3.putExtra("Calling_Activity", "ThemDonHangActivity");
+        intent3.putExtra("DSHH", donHang.getDsHang());
         intent3.putExtra("IDDH", donHang.getId());
-        intent3.putExtra("Editable", editable);
+        intent3.putExtra("Editable", true);
         startActivityForResult(intent3, REQUEST_CODE_HANGHOA);
     }
 
-
-    public void suaTTDonHang(View view) {
-        if (suaDonHang.getText().equals("Lưu")) {
-            if (dsXoa != null)
-                for (HangHoaCuaDonHang hhdh : dsXoa
-                        ) {
-                    APIHangHoaCuaDonHang.xoaHangHoaCuaDonHang(donHang, 0, hhdh, this, intent);
-                }
-
-            if (dsSua != null)
-                for (HangHoaCuaDonHang hhdh : dsSua
-                        ) {
-                    APIHangHoaCuaDonHang.suaHangHoaCuaDonHang(donHang, 0, hhdh, this, intent);
-                }
-
-            if (dsThem != null)
-                for (HangHoaCuaDonHang hhdh : dsThem
-                        ) {
-                    APIHangHoaCuaDonHang.themHangHoaCuaDonHang(donHang, hhdh, this, intent);
-                }
-
-
-            ngayDatHang.setEnabled(true);
-            diaChiGiaoHang.setEnabled(true);
-
-            donHang.setDiaChiGiaoHang(diaChiGiaoHang.getText().toString());
-            donHang.setThanhPhoGiaoHang(donHang.getKhachHang().getThanhPho());
-            donHang.setVungGiaoHang(donHang.getKhachHang().getVung());
-            donHang.setQuocGiaGiaoHang(donHang.getKhachHang().getQuocGia());
-            donHang.setMbcGiaoHang(donHang.getKhachHang().getMaBuuChinh());
-            APIDonHang.suaDonHang(position, donHang, this, intent);
-        } else if (suaDonHang.getText().equals("Sửa")) {
-            editable = true;
-            tenKH.setEnabled(true);
-            ngayDatHang.setEnabled(true);
-            diaChiGiaoHang.setEnabled(true);
-            suaDonHang.setText("Lưu");
-            xoaDonhang.setVisibility(View.INVISIBLE);
-        }
-
-
-    }
-
-    public void xoaDonHang(View view) {
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog);
-        TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
-        TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
-        Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
-        Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
-
-        btnOk.setText("Có");
-        btnCancel.setText("Không");
-
-        title.setText("Xóa đơn hàng");
-        textView.setText("Bạn có muốn xóa đơn hàng không?");
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-                if (donHang.getDsHang().size() > 0)
-                    APIHangHoaCuaDonHang.xoaDonHang(donHang, position, XemChiTietDonHangActivity.this, intent);
-                else
-                    APIDonHang.xoaDonHang(position, donHang, XemChiTietDonHangActivity.this, intent);
-            }
-        });
-
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
+    public void themDonHang2(View view) {
+        donHang.setDsHang(dsHH);
+        donHang.setDiaChiGiaoHang(diaChiGiaoHang.getText().toString());
+        donHang.setThanhPhoGiaoHang(donHang.getKhachHang().getThanhPho());
+        donHang.setVungGiaoHang(donHang.getKhachHang().getVung());
+        donHang.setQuocGiaGiaoHang(donHang.getKhachHang().getQuocGia());
+        donHang.setMbcGiaoHang(donHang.getKhachHang().getMaBuuChinh());
+        APIDonHang.themDonHang(donHang, dsHH, this, intent);
     }
 
     @Override
@@ -254,8 +174,8 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
             case REQUEST_CODE_HANGHOA: {
                 switch (resultCode) {
                     case RESULT_CODE_DONE: {
-                        if(data.getExtras().get("DS_Them") != null) {
-                            dsThem.addAll((ArrayList<HangHoaCuaDonHang>)data.getExtras().get("DS_Them"));
+                        if (data.getExtras().get("DS_Them") != null) {
+                            dsThem.addAll((ArrayList<HangHoaCuaDonHang>) data.getExtras().get("DS_Them"));
                             if (dsThem.size() > 0)
                                 for (HangHoaCuaDonHang hhdh : dsThem
                                         ) {
@@ -263,7 +183,7 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
                                 }
                         }
 
-                        if(data.getExtras().get("DS_Sua") != null){
+                        if (data.getExtras().get("DS_Sua") != null) {
                             dsSua.addAll((ArrayList<HangHoaCuaDonHang>) data.getExtras().get("DS_Sua"));
                             vtSua.addAll((ArrayList<Integer>) data.getExtras().get("VT_Sua"));
                             if (dsSua.size() > 0)
@@ -273,9 +193,9 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
                                     dsHH.add(i, dsSua.get(i));
                                 }
 
-                    }
+                        }
 
-                        if(data.getExtras().get("DS_Xoa") != null) {
+                        if (data.getExtras().get("DS_Xoa") != null) {
                             dsXoa.addAll((ArrayList<HangHoaCuaDonHang>) data.getExtras().get("DS_Xoa"));
                             vtXoa.addAll((ArrayList<Integer>) data.getExtras().get("VT_Xoa"));
                             if (dsXoa.size() > 0)
@@ -284,14 +204,14 @@ public class XemChiTietDonHangActivity extends AppCompatActivity {
                                     dsHH.remove(i);
                                 }
                         }
-
+                        break;
                     }
                 }
+                break;
             }
 
 
         }
 
     }
-
 }

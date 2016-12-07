@@ -32,9 +32,10 @@
                 style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <Button
-                android:id="@+id/BT_xem_danh_sach_hang_hoa"
+                android:id = "@+id/tmhh_th"
+                android:onClick="chonHangHoa"
                 android:layout_height="match_parent"
-                android:text="Ao so mi nam"
+
                 android:layout_weight="5"/>
         </TableRow>
         <TableRow
@@ -48,10 +49,10 @@
                 android:gravity="center"
                 />
             <EditText
-                android:id="@+id/ET_so_luong"
+                android:id="@+id/tmhh_sl"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
-                android:text="10"
+
                 style="@style/thuong"
                 android:gravity="right"/>
 
@@ -67,10 +68,10 @@
                 android:gravity="center"
                 />
             <EditText
-                android:id="@+id/ET_don_gia"
+                android:id="@+id/tmhh_dg"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
-                android:text="18.000"
+
                 style="@style/thuong"
                 android:gravity="right"/>
 
@@ -86,17 +87,18 @@
                 android:gravity="center"
                 />
             <EditText
-                android:id="@+id/ET_thanh_tien"
+                android:enabled="false"
+                android:id="@+id/tmhh_tt"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
-                android:text="180.000"
+
                 style="@style/thuong"
                 android:gravity="right"/>
 
         </TableRow>
     </TableLayout>
     <Button
-        android:id="@+id/BT_them_moi_hang_hoa_vao_don_hang"
+        android:onClick="themHangHoaVaoDonHang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cất"

@@ -24,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView txtUserName = (TextView) findViewById(R.id.txt_user);
-        /*Intent dangNhap = getIntent();
+        Intent dangNhap = getIntent();
         nguoiDung = (NguoiDung) dangNhap.getExtras().getSerializable("NGUOI_DUNG");
-        txtUserName.setText(nguoiDung.getTen());*/
+        txtUserName.setText(nguoiDung.getTen());
     }
 
     public void updateDB(View view){
-        DatabaseHelper.remove();
+        DatabaseHelper.getInstance().update();
 
         APIKhachHang.layDSKhachHang();
         APITheLoai.layDSTheLoai();
@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     public void layDSKhachHang(View view){
         Intent intent = new Intent(this, DanhSachKhachHangActivity.class);
         startActivity(intent);
-        //finish();
     }
 
     public void layDSHangHoa(View view){

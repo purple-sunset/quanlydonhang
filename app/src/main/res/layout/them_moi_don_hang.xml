@@ -26,7 +26,6 @@
             <TextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:id="@+id/TV_ten_khach_hang"
                 android:text="Khách hàng: "
                 android:gravity="center"
                 style="@style/Tieu_de_2"
@@ -36,19 +35,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-                <EditText
-                    android:id="@+id/ET_ten_khach_hang"
+                <Button
+                    android:onClick="suaTTKhachHang2"
+                    android:id="@+id/tdh_ten_khach_hang"
                     android:layout_height="match_parent"
                     android:layout_width="fill_parent"
-                    android:text=" Cong ty co phan Misa"
-                    style="@style/thuong"
                     android:gravity="center"
-                    android:layout_weight="20"/>
-                <Button
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:background="@color/suong_mat_ong"
-                    android:drawableRight="@drawable/next1"/>
+                    android:layout_gravity="bottom"
+                    android:layout_weight="20"
+                    />
+
             </LinearLayout>>
         </TableRow>
         <TableRow
@@ -57,19 +53,18 @@
             <TextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:id="@+id/TV_ngay_thang"
                 android:text="Ngày đặt hàng: "
                 style="@style/Tieu_de_2"
                 android:gravity="center"
                 android:layout_weight="1"/>
-            <EditText
-                android:id="@+id/ET_ngay_thang"
+            <Button
+                android:onClick="suaNgayGio2"
+                android:id="@+id/tdh_ngay_dat_hang"
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
-                android:text=" 07/11/2016"
                 style="@style/thuong"
                 android:gravity="center"
-                android:layout_weight="20"/>
+                android:layout_weight="20" />
         </TableRow>
         <TableRow
             android:id="@+id/TableRow3"
@@ -77,31 +72,31 @@
             <TextView
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:id="@+id/TV_dia_chi_giao_hang"
                 android:text="Địa chỉ giao hàng: "
                 style="@style/Tieu_de_2"
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
-                android:id="@+id/ET_dia_chi_giao_hang"
+                android:id="@+id/tdh_dia_chi"
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
-                android:text=" VIet Nam"
                 style="@style/thuong"
                 android:gravity="center"
                 android:layout_weight="20"/>
         </TableRow>
     </TableLayout>>
     <Button
-        android:id="@+id/BT_xem_hang_hoa_cua_don_hang"
+        android:onClick="themHangHoa2"
+        android:id="@+id/tdh_hang_hoa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/button"
         android:drawableLeft="@drawable/shopping1"
         android:text="Thông tin hàng hóa"/>
     <Button
-        android:layout_marginTop="250dp"
-        android:id="@+id/BT_them_don_hang"
+        android:onClick="themDonHang2"
+        android:layout_marginTop="220dp"
+        android:id="@+id/tdh_them"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thêm"

@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:minHeight="40dp">
 
-    <TextView
-        android:layout_marginLeft="10dp"
-        style="@style/Tieu_de_2"
-        android:gravity="center_vertical"
-        android:text="The loai"
-        android:id="@+id/dshh_ten_the_loai"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dshh_ten_the_loai"
+            style="@style/Tieu_de_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:gravity="center_vertical"
+            android:text="The loai" />
+
+        <ImageView
+            android:id="@+id/dshh_expansed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/suong_mat_ong"
+            android:src="@drawable/ic_expand_more_black" />
+    </LinearLayout>
 
 </LinearLayout>

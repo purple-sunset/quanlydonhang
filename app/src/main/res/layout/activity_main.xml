@@ -4,72 +4,103 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/suong_mat_ong"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.nhom03.hust.quanlydonhang.activity.MainActivity"
-    android:background="@color/suong_mat_ong">
+    tools:context="com.nhom03.hust.quanlydonhang.activity.MainActivity">
 
-    <TextView
-        android:id="@+id/txt_xin_chao"
-        android:text="@string/xin_chao"
-        style="@style/Header"
-        android:gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:textColor="#ff0004"
-        />
-
-    <TextView
-        android:id="@+id/txt_user"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        style="@style/Header"
-        android:gravity="center"
-        android:layout_toEndOf="@+id/txt_xin_chao"
-        android:textColor="#ff0004"/>
-
-    <Button
-        android:id="@+id/btn_don_hang"
-        android:text="@string/don_hang"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/txt_xin_chao"
-        android:onClick="layDSDonHang"
-        style="@style/button"
-        />
+        android:layout_height="50dp">
 
-    <Button
-        android:id="@+id/btn_khach_hang"
-        android:text="@string/khach_hang"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/btn_don_hang"
-        android:onClick="layDSKhachHang"
-        style="@style/button"
-        />
+        <TextView
+            style="@style/Tieu_de_1"
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/button"
+            android:gravity="center"
+            android:text="Quản lý đơn hàng" />
 
-    <Button
-        android:id="@+id/btn_hang_hoa"
-        android:text="@string/hang_hoa"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/btn_khach_hang"
-        android:layout_marginTop="20dp"
-        android:onClick="layDSHangHoa"
-        style="@style/button"/>
+        <Button
+            android:id="@+id/button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle"
+            android:foreground="@drawable/ic_autorenew_white"
+            android:foregroundTint="#F705DE"
+            android:foregroundTintMode="src_atop"
+            android:onClick="updateDB" />
+    </android.support.v7.widget.Toolbar>
 
-    <Button
-        android:text="Cập nhật CSDL"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/btn_hang_hoa"
-        android:layout_marginTop="20dp"
-        android:onClick="updateDB"
-        style="@style/button"
-        />
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="60dp">
+
+            <TextView
+                android:layout_marginLeft="30dp"
+                android:id="@+id/txt_xin_chao"
+                style="@style/Header"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minHeight="50dp"
+                android:gravity="center"
+                android:text="@string/xin_chao"
+                android:textColor="#ff0004" />
+
+            <TextView
+                android:text="Duc"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/txt_user"
+                style="@style/Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:layout_toEndOf="@+id/txt_xin_chao"
+                android:gravity="center"
+                android:textColor="#ff0004" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_don_hang"
+            style="@style/button"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/txt_xin_chao"
+            android:onClick="layDSDonHang"
+            android:text="@string/don_hang" />
+
+        <Button
+            android:id="@+id/btn_khach_hang"
+            style="@style/button"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/btn_don_hang"
+            android:layout_marginTop="20dp"
+            android:onClick="layDSKhachHang"
+            android:text="@string/khach_hang" />
+
+        <Button
+            android:id="@+id/btn_hang_hoa"
+            style="@style/button"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/btn_khach_hang"
+            android:layout_marginTop="20dp"
+            android:onClick="layDSHangHoa"
+            android:text="@string/hang_hoa" />
+    </LinearLayout>
 
 
 </RelativeLayout>

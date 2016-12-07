@@ -4,13 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/suong_mat_ong">
-    <TextView
-        android:id="@+id/xem_danh_sach_hang_hoa"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="50dp"
-        style="@style/Tieu_de_1"
-        android:text="Danh sách đơn hàng"/>
+
+        android:layout_height="50dp">
+
+        <TextView
+            style="@style/Tieu_de_1"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Danh sách đơn hàng" />
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/circle"
+            android:foreground="@drawable/add1"
+            android:gravity="right"
+            android:onClick="themDonHang" />
+    </android.support.v7.widget.Toolbar>
+
     <ListView
         android:id="@+id/list_don_hang"
         android:layout_width="match_parent"

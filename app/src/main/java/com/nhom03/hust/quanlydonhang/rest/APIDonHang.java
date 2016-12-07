@@ -11,10 +11,11 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.nhom03.hust.quanlydonhang.R;
-import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
 import com.nhom03.hust.quanlydonhang.model.DatabaseHelper;
 import com.nhom03.hust.quanlydonhang.model.DonHang;
+import com.nhom03.hust.quanlydonhang.model.HangHoaCuaDonHang;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,7 +66,7 @@ public class APIDonHang {
                         if ((dh.getIdKhachHang() == null) || (dh.getIdKhachHang() == ""))
                             dh.setIdKhachHang("0x222");
                         DatabaseHelper.getInstance().themDonHang(dh);
-                        APIChiTietDonHang.layDSChiTietDonHang(dh.getId());
+                        APIHangHoaCuaDonHang.layDSHangHoaCuaDonHang(dh.getId());
                     }
                 }
                 else
@@ -80,7 +81,7 @@ public class APIDonHang {
 
     }
 
-    public static void themDonHang(final DonHang dh, boolean result, final Activity activity, final Intent intent) {
+    public static void themDonHang(final DonHang dh, final Activity activity, final Intent intent) {
         Map<String, Object> map = new HashMap<>();
         map.put("order", dh);
         APIInterface apiService = APIDonHang.get().create(APIInterface.class);
@@ -112,7 +113,46 @@ public class APIDonHang {
 
     }
 
-    public static void suaDonHang(final int position, final DonHang dh, boolean result, final Activity activity, final Intent intent) {
+    public static void themDonHang(final DonHang dh, final ArrayList<HangHoaCuaDonHang> dsHang, final Activity activity, final Intent intent) {
+        Map<String, Object> map = new HashMap<>();
+        DatabaseHelper.getInstance().themDonHangNoID(dh);
+
+        map.put("order", dh);
+        APIInterface apiService = APIDonHang.get().create(APIInterface.class);
+        Call<KetQuaThem> call = apiService.addOrder(map);
+        call.enqueue(new Callback<KetQuaThem>() {
+            @Override
+            public void onResponse(Call<KetQuaThem> call, Response<KetQuaThem> response) {
+                boolean result = false;
+                if(response.isSuccessful()){
+                    Log.d("API", "Success");
+                    Log.d("Ket qua", response.body().getMessageJson().getMessage());
+                    if(response.body().getMessageJson().getMessage().equals("Success")) {
+                        result = true;
+
+                        for (HangHoaCuaDonHang hhdh: dsHang
+                             ) {
+                            hhdh.setIdDonHang(dh.getId());
+                            APIHangHoaCuaDonHang.themHangHoaCuaDonHang(dh, hhdh, activity, intent);
+                        }
+                    }
+                }
+                else
+                    Log.d("API", "Fail");
+
+                hienKetQua(RESULT_CODE_ADD, 0, dh, result, activity, intent);
+            }
+
+            @Override
+            public void onFailure(Call<KetQuaThem> call, Throwable t) {
+                Log.d("API", "Fail");
+                hienKetQua(RESULT_CODE_ADD, 0, dh, false, activity, intent);
+            }
+        });
+
+    }
+
+    public static void suaDonHang(final int position, final DonHang dh, final Activity activity, final Intent intent) {
         Map<String, Object> map = new HashMap<>();
         map.put("order", dh);
         APIInterface apiService = APIDonHang.get().create(APIInterface.class);
@@ -144,7 +184,7 @@ public class APIDonHang {
 
     }
 
-    public static void xoaDonHang(final int position, final DonHang dh, boolean result, final Activity activity, final Intent intent) {
+    public static void xoaDonHang(final int position, final DonHang dh, final Activity activity, final Intent intent) {
         Map<String, Object> map = new HashMap<>();
         map.put("orderId", dh.getId());
         APIInterface apiService = APIDonHang.get().create(APIInterface.class);

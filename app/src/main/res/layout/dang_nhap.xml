@@ -23,7 +23,7 @@
             android:layout_height="50dp"
             android:src="@drawable/user1"/>
         <EditText
-            android:text="demo"
+
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/ten_nguoi_dung"
@@ -42,7 +42,8 @@
             android:layout_height="50dp"
             android:src="@drawable/password1"/>
         <EditText
-            android:text="12345678"
+            android:inputType="textPassword"
+
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/mat_khau"

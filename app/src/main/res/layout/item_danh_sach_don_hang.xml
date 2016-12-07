@@ -2,66 +2,72 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp">
+
         <TableRow
             android:id="@+id/TableRow1"
             android:layout_width="match_parent">
+
             <TextView
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:text="Khách hàng: "
                 style="@style/Tieu_de_2"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Khách hàng: " />
+
             <TextView
                 android:id="@+id/ten_khach_hang"
-                android:layout_height="match_parent"
+                style="@style/Tieu_de_2"
                 android:layout_width="wrap_content"
-                android:layout_weight="4"
-                style="@style/Tieu_de_2"/>
+                android:layout_height="match_parent"
+                android:layout_weight="4" />
         </TableRow>
+
         <TableRow
             android:id="@+id/TableRow2"
             android:layout_width="match_parent">
+
             <TextView
-                android:layout_height="match_parent"
+                style="@style/thuong"
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Ngày đặt hàng: "
-                style="@style/thuong"
 
                 />
+
             <TextView
                 android:id="@+id/ngay_dat_hang"
-                android:layout_height="match_parent"
+                style="@style/thuong"
                 android:layout_width="wrap_content"
-                android:layout_weight="4"
-                style="@style/thuong"/>
+                android:layout_height="match_parent"
+                android:layout_weight="4" />
         </TableRow>
+
         <TableRow
             android:id="@+id/TableRow3"
             android:layout_width="match_parent">
+
             <TextView
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:text="Tổng tiền hàng: "
                 style="@style/thuong"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Tổng tiền hàng: " />
+
             <TextView
                 android:id="@+id/tong_tien_hang"
-                android:layout_height="match_parent"
+                style="@style/thuong"
                 android:layout_width="wrap_content"
-                android:layout_weight="4"
-                style="@style/thuong"/>
+                android:layout_height="match_parent"
+                android:layout_weight="4" />
         </TableRow>
 
     </TableLayout>
-
 </LinearLayout>

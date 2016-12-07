@@ -10,16 +10,6 @@ public class NguoiDung implements Serializable {
     private String ten;
     private String matKhau;
 
-    public String getCookie() {
-        return cookie;
-    }
-
-    public void setCookie(String cookie) {
-        this.cookie = cookie;
-    }
-
-    private String cookie;
-
     public NguoiDung(){}
 
     public NguoiDung(String ten, String matKhau) {

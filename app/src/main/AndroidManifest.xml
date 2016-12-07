@@ -25,7 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.DanhSachKhachHangActivity" />
         <activity android:name=".activity.ThemMoiKhachHangActivity" />
         <activity android:name=".activity.XemChiTietKhachHangActivity" />
@@ -33,6 +32,10 @@
         <activity android:name=".activity.XemChiTietHangHoaActivity"/>
         <activity android:name=".activity.DanhSachDonHangActivity"/>
         <activity android:name=".activity.XemChiTietDonHangActivity"/>
+        <activity android:name=".activity.DanhSachHangHoaCuaDonHangActivity"/>
+        <activity android:name=".activity.ThemMoiHangHoaVaoDonHangActivity"/>
+        <activity android:name=".activity.XemChiTietHangHoaCuaDonHangActivity"/>
+        <activity android:name=".activity.ThemMoiDonHangActivity"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.nhom03.hust.quanlydonhang.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.nhom03.hust.quanlydonhang.R;
 import com.nhom03.hust.quanlydonhang.model.NguoiDung;
+import com.nhom03.hust.quanlydonhang.rest.APIDonHang;
+import com.nhom03.hust.quanlydonhang.rest.APIHangHoa;
+import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
+import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
 
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
@@ -64,20 +70,15 @@ public class DangNhapActivity extends AppCompatActivity {
         request.addProperty("customCredential"," ");
         request.addProperty("isPersistent","true");
 
-        //Element[] header = new Element[1];
-        //header[0] = new Element().createElement(NAMESPACE, "Set-Cookie");
-        List<HeaderProperty> headerIn = new ArrayList<HeaderProperty>();
-
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
         envelope.dotNet = true;
         envelope.setOutputSoapObject(request);
-        //envelope.headerOut = header;
 
         System.out.println(request);
 
         HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
         try {
-            List headerOut = androidHttpTransport.call(SOAP_ACTION, envelope, headerIn);
+            androidHttpTransport.call(SOAP_ACTION, envelope);
             SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
 
             Log.i("myApp", response.toString());
@@ -85,10 +86,40 @@ public class DangNhapActivity extends AppCompatActivity {
 
             if(response.toString().equalsIgnoreCase("true"))
             {
+                Log.d("Login", "Success");
                 result = true;
-                nd.setCookie(((HeaderProperty) headerOut.get(7)).getValue());
-
+                /*APIKhachHang.layDSKhachHang();
+                APITheLoai.layDSTheLoai();
+                APIHangHoa.layDSHangHoa();
+                APIDonHang.layDSDonHang();*/
+                Intent dangNhap = new Intent(this, MainActivity.class);
+                dangNhap.putExtra("NGUOI_DUNG", nd);
+                startActivity(dangNhap);
+                finish();
             }
+            else {
+                Log.d("Login", "Fail");
+                final Dialog dialog = new Dialog(this);
+                dialog.setContentView(R.layout.dialog);
+                TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
+                TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
+                Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
+                Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
+                btnCancel.setVisibility(View.INVISIBLE);
+                btnOk.setText("OK");
+
+                title.setText("Lỗi");
+                textView.setText("Không thể đăng nhập!");
+                btnOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+            }
+
 
 
         } catch(SocketException ex)
@@ -100,26 +131,6 @@ public class DangNhapActivity extends AppCompatActivity {
             Log.e("Error : " , "Error on soapPrimitiveData() " + e.getMessage());
             e.printStackTrace();
         }
-
-        if(result)
-        {
-            Log.d("Login", "Success");
-            Log.d("Login", nd.getCookie());
-
-            /*APIKhachHang.layDSKhachHang();
-            APITheLoai.layDSTheLoai();
-            APIHangHoa.layDSHangHoa();
-            APIDonHang.layDSDonHang();*/
-
-            Intent dangNhap = new Intent(this, MainActivity.class);
-            dangNhap.putExtra("NGUOI_DUNG", nd);
-            startActivity(dangNhap);
-            finish();
-        }
-
-        else
-            Log.d("Login", "Fail");
-
     }
 
 }

@@ -38,6 +38,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
         <Button
+            android:enabled="false"
             android:onClick="suaTTKhachHang"
             android:id="@+id/xttdh_ten_khach_hang"
             android:layout_height="match_parent"
@@ -61,15 +62,16 @@
                 style="@style/Tieu_de_2"
                 android:gravity="center"
                 android:layout_weight="1"/>
-            <EditText
+            <Button
+                android:enabled="false"
+                android:onClick="suaNgayGio"
                 android:id="@+id/xttdh_ngay_dat_hang"
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
                 android:text=" 07/11/2016"
                 style="@style/thuong"
                 android:gravity="center"
-                android:layout_weight="20"
-                android:enabled="false"/>
+                android:layout_weight="20" />
         </TableRow>
         <TableRow
             android:id="@+id/TableRow3"
@@ -83,24 +85,27 @@
                 android:gravity="center"
                 android:layout_weight="1"/>
             <EditText
+                android:enabled="false"
                 android:id="@+id/xttdh_dia_chi_giao_hang"
                 android:layout_height="match_parent"
                 android:layout_width="fill_parent"
                 android:text=" VIet Nam"
                 style="@style/thuong"
                 android:gravity="center"
-                android:layout_weight="20"
-                android:enabled="false"/>
+                android:layout_weight="20" />
         </TableRow>
     </TableLayout>>
     <Button
+        android:onClick="xemTTHangHoa"
         android:id="@+id/xttdh_BT_xem_hang_hoa_cua_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thông tin hàng hóa"
         android:drawableLeft="@drawable/shopping1"
         style="@style/button"/>
+
     <Button
+        android:onClick="xoaDonHang"
         android:id="@+id/xttdh_BT_xoa_don_hang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,6 +115,7 @@
         style="@style/button"
         android:drawableLeft="@drawable/delete1"
         />
+
     <Button
         android:onClick="suaTTDonHang"
         android:id="@+id/BT_sua_don_hang"

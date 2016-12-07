@@ -32,10 +32,10 @@
                 android:text="Tên"
                 android:gravity="center"/>
             <Button
+                android:enabled="false"
                 android:id="@+id/xcthh_cua_dh_ten"
                 android:layout_height="match_parent"
-                android:text="Ao so mi nam"
-                style="@style/button"
+
                 android:layout_weight="5"
                 />
         </TableRow>
@@ -49,10 +49,11 @@
                 style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <EditText
+                android:enabled="false"
                 android:id="@+id/xcthh_cua_dh_so_luong"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
-                android:text="10"
+
                 style="@style/thuong"
                 android:gravity="right"/>
 
@@ -68,10 +69,11 @@
                 style="@style/Tieu_de_2"
                 android:gravity="center"/>
             <EditText
+                android:enabled="false"
                 android:id="@+id/xcthh_cua_dh_don_gia"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
-                android:text="18.000"
+
                 style="@style/thuong"
                 android:gravity="right"/>
 
@@ -89,11 +91,35 @@
                 android:id="@+id/xcthh_cua_dh_thanh_tien"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
-                android:text="180.000"
+
                 style="@style/thuong"
                 android:gravity="right"/>
 
         </TableRow>
     </TableLayout>
+
+    <Button
+        android:enabled="false"
+        android:onClick="xoaHangHoa"
+        android:id="@+id/xcthh_sua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:text="Xóa"
+        android:layout_marginBottom="10dp"
+        style="@style/button"
+        android:drawableLeft="@drawable/delete1"
+        />
+
+    <Button
+        android:enabled="false"
+        android:onClick="suaHangHoa"
+        android:id="@+id/xcthh_xoa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sửa"
+        android:layout_marginBottom="0dp"
+        style="@style/button"
+        android:drawableLeft="@drawable/edit1"/>
 
 </LinearLayout>

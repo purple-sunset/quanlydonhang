@@ -55,8 +55,8 @@ public class DonHangAdapter extends BaseAdapter{
         TextView textTongTienHang = (TextView) view.findViewById(R.id.tong_tien_hang);
 
         textTenKH.setText(dh.getKhachHang().getTenKH());
-        textNgayDatHang.setText(dh.getNgayGio().toString());
-        textTongTienHang.setText(String.valueOf(dh.getTongTien()*10000));
+        textNgayDatHang.setText(dh.getNgayGio().toLocaleString());
+        textTongTienHang.setText(String.valueOf((long) dh.getTongTien()*10000));
         return view;
     }
 }

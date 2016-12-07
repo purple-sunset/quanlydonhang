@@ -58,7 +58,7 @@ public class ThemMoiKhachHangActivity extends AppCompatActivity {
         finish();
     }
 
-    public void themKhachHang(View view) {
+    public void themKhachHang2(View view) {
 
         Log.d("ID", taoID());
         KhachHang khachHang = new KhachHang();

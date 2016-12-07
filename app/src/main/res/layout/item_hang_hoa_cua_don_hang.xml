@@ -1,103 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <ScrollView
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-            <TableRow
-                android:id="@+id/TableRow1"
-                android:layout_width="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/item_hhcdh_ten_hang_hoa"
-                    android:layout_height="wrap_content"
-                    android:layout_width="130dp"
-                    android:text="ádjkshdakjshdkajshdkjahsdjhaskjdhahksd"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    style="@style/Tieu_de_2"
-                    android:gravity="center"
-                    android:inputType="textMultiLine"/>
+        <TableRow
+            android:id="@+id/TableRow1"
+            android:layout_width="match_parent">
 
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="5">
-                    <TableRow
-                        android:layout_width="match_parent">
-                        <TextView
+            <TextView
+                android:id="@+id/item_hhcdh_ten_hang_hoa"
+                style="@style/Tieu_de_2"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="ádjkshdakjshdkajshdkjahsdjhaskjdhahksd" />
 
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:text="Đơn giá: "
-                            style="@style/thuong"
-                            android:layout_weight="1"/>
-                        <TextView
-                            android:id="@+id/item_hhcdh_don_gia"
-                            android:layout_weight="4"
-                            android:text="@string/don_gia"
-                            style="@style/thuong"/>
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="VND"
-                            style="@style/thuong"/>
-                    </TableRow>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:orientation="vertical">
 
-                    <TableRow
-                        android:layout_width="match_parent">
-                        <TextView
+                <TableRow android:layout_width="match_parent">
 
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:text="Số lượng: "
-                            style="@style/thuong"
-                            android:layout_weight="1"/>
-                        <TextView
-                            android:id="@+id/item_hhcdh_so_luong"
-                            android:layout_weight="4"
-                            android:text="10"
-                            style="@style/thuong"/>
-                        <TextView
-                            android:id="@+id/don_vi"
-                            android:layout_weight="1"
-                            android:text="đơn vị"
-                            style="@style/thuong"/>
+                    <TextView
 
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent">
+                        style="@style/thuong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Đơn giá: " />
 
-                        <TextView
+                    <TextView
+                        android:id="@+id/item_hhcdh_don_gia"
+                        style="@style/thuong"
+                        android:layout_weight="4"
+                        android:text="@string/don_gia" />
 
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:text="Thành tiền: "
-                            style="@style/thuong"
-                            android:layout_weight="1"/>
-                        <TextView
-                            android:id="@+id/item_hhcdh_thanh_tien"
-                            android:layout_weight="4"
-                            android:text="500000"
-                            style="@style/thuong"/>
-                        <TextView
-                            android:layout_weight="1"
-                            android:text="VND"
-                            style="@style/thuong"/>
-                    </TableRow>
+                    <TextView
+                        style="@style/thuong"
+                        android:layout_weight="1"
+                        android:text="VND" />
+                </TableRow>
 
-                </TableLayout>
-            </TableRow>
+                <TableRow android:layout_width="match_parent">
 
-        </TableLayout>
+                    <TextView
 
-    </ScrollView>
+                        style="@style/thuong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Số lượng: " />
 
+                    <TextView
+                        android:id="@+id/item_hhcdh_so_luong"
+                        style="@style/thuong"
+                        android:layout_weight="4"
+                        android:text="10" />
+
+                    <TextView
+                        android:id="@+id/don_vi"
+                        style="@style/thuong"
+                        android:layout_weight="1"
+                        android:text="đơn vị" />
+
+                </TableRow>
+
+                <TableRow android:layout_width="match_parent">
+
+                    <TextView
+
+                        style="@style/thuong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Thành tiền: " />
+
+                    <TextView
+                        android:id="@+id/item_hhcdh_thanh_tien"
+                        style="@style/thuong"
+                        android:layout_weight="4"
+                        android:text="500000" />
+
+                    <TextView
+                        style="@style/thuong"
+                        android:layout_weight="1"
+                        android:text="VND" />
+                </TableRow>
+
+            </TableLayout>
+        </TableRow>
+
+    </TableLayout>
 </LinearLayout>

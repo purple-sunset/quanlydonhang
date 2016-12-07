@@ -1,17 +1,10 @@
 package com.nhom03.hust.quanlydonhang.rest;
 
-import com.nhom03.hust.quanlydonhang.model.ChiTietDonHang;
-import com.nhom03.hust.quanlydonhang.model.KhachHang;
-
-import org.json.JSONObject;
-
-import java.util.HashMap;
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -34,7 +27,7 @@ public interface APIInterface {
     Call<ListDonHang> getListOrder();
 
     @GET("GetAllOrderDetail")
-    Call<ListChiTietDonHang> getListDetail(@Query("orderId") int id);
+    Call<ListHangHoaCuaDonHang> getListDetail(@Query("orderId") long id);
 
 
     @POST("AddCustomer")

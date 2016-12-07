@@ -1,10 +1,7 @@
 package com.nhom03.hust.quanlydonhang.model;
 
-import android.util.Log;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.nhom03.hust.quanlydonhang.rest.APIChiTietDonHang;
 
 import java.io.Serializable;
 
@@ -12,10 +9,10 @@ import java.io.Serializable;
  * Created by Admin on 30/11/2016.
  */
 
-public class ChiTietDonHang implements Serializable {
+public class HangHoaCuaDonHang implements Serializable {
 
     @SerializedName("OrderID")
-    private int idDonHang;
+    private long idDonHang;
 
     @SerializedName("ProductID")
     private int idHangHoa;
@@ -32,9 +29,9 @@ public class ChiTietDonHang implements Serializable {
     @SerializedName("Discount")
     private float giamGia;
 
-    public ChiTietDonHang(){}
+    public HangHoaCuaDonHang(){}
 
-    public ChiTietDonHang(int idDonHang, int idHangHoa, int soLuong, float donGia, float giamGia) {
+    public HangHoaCuaDonHang(long idDonHang, int idHangHoa, int soLuong, float donGia, float giamGia) {
         this.idDonHang = idDonHang;
         this.idHangHoa = idHangHoa;
         this.soLuong = soLuong;
@@ -50,11 +47,11 @@ public class ChiTietDonHang implements Serializable {
         return thanhTien;
     }
 
-    public int getIdDonHang() {
+    public long getIdDonHang() {
         return idDonHang;
     }
 
-    public void setIdDonHang(int idDonHang) {
+    public void setIdDonHang(long idDonHang) {
         this.idDonHang = idDonHang;
     }
 

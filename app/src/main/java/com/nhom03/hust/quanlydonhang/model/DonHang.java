@@ -14,7 +14,7 @@ import java.util.Date;
 public class DonHang implements Serializable{
 
     @SerializedName("OrderID")
-    private int id;
+    private long id;
 
     @SerializedName("EmployeeID")
     private int idNhanVien = 1;
@@ -53,13 +53,13 @@ public class DonHang implements Serializable{
     private KhachHang khachHang;
 
     @Expose
-    private ArrayList<ChiTietDonHang> dsHang;
+    private ArrayList<HangHoaCuaDonHang> dsHang;
 
     public DonHang() {
 
     }
 
-    public DonHang(int id, int idNhanVien, Date ngayGio, float cuocPhi, String tenChuyenHang,
+    public DonHang(long id, int idNhanVien, Date ngayGio, float cuocPhi, String tenChuyenHang,
                    String idKhachHang, String diaChiGiaoHang, String thanhPhoGiaoHang, String mbcGiaoHang, String vungGiaoHang, String quocGiaGiaoHang, int shipVia) {
         this.id = id;
         this.idNhanVien = idNhanVien;
@@ -75,11 +75,11 @@ public class DonHang implements Serializable{
         this.shipVia = shipVia;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -180,18 +180,31 @@ public class DonHang implements Serializable{
         this.idKhachHang = khachHang.getId();
     }
 
-    public ArrayList<ChiTietDonHang> getDsHang() {
+    public ArrayList<HangHoaCuaDonHang> getDsHang() {
         return dsHang;
     }
 
-    public void setDsHang(ArrayList<ChiTietDonHang> dsHang) {
+    public void setDsHang(ArrayList<HangHoaCuaDonHang> dsHang) {
         this.dsHang = dsHang;
+    }
+
+    public void themHang(HangHoaCuaDonHang hhdh){
+        this.dsHang.add(hhdh);
+    }
+
+    public void suaHang(int i, HangHoaCuaDonHang hhdh) {
+        this.dsHang.remove(i);
+        this.dsHang.add(i, hhdh);
+    }
+
+    public void xoaHang(int i){
+        this.dsHang.remove(i);
     }
 
     public float getTongTien(){
         float TongTien =0;
 
-        for (ChiTietDonHang i: this.dsHang
+        for (HangHoaCuaDonHang i: this.dsHang
              ) {
             TongTien += i.thanhTien();
         }
