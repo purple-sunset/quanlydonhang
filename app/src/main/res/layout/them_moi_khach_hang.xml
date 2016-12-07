@@ -44,7 +44,7 @@
                     android:id="@+id/tmkh_ten_kh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"
@@ -66,7 +66,7 @@
                     android:id="@+id/tmkh_ten_ct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"
@@ -87,7 +87,7 @@
                     android:id="@+id/tmkh_tieu_de"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
@@ -107,7 +107,7 @@
                     android:id="@+id/tmkh_dia_chi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical">
@@ -130,7 +130,7 @@
                     android:id="@+id/tmkh_thanh_pho"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere d"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"
@@ -150,7 +150,7 @@
                     android:id="@+id/tmkh_vung"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
@@ -169,7 +169,7 @@
                     android:id="@+id/tmkh_quoc_gia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
@@ -188,7 +188,7 @@
                     android:id="@+id/tmkh_sdt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
@@ -207,7 +207,7 @@
                     android:id="@+id/tmkh_fax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Obere Str.57"
+
                     style="@style/thuong"
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
@@ -227,7 +227,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/thuong"
-                    android:text="0000"
+
                     android:layout_weight="10"
                     android:layout_gravity="center_vertical"/>
             </TableRow>
