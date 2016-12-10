@@ -122,15 +122,33 @@ public class DangNhapActivity extends AppCompatActivity {
 
 
 
-        } catch(SocketException ex)
+        } catch(Exception ex)
         {
             Log.e("Error : " , "Error on soapPrimitiveData() " + ex.getMessage());
             ex.printStackTrace();
+            Log.d("Login", "Fail");
+            final Dialog dialog = new Dialog(this);
+            dialog.setContentView(R.layout.dialog);
+            TextView title = (TextView) dialog.findViewById(R.id.dialog_title);
+            TextView textView = (TextView) dialog.findViewById(R.id.dialog_text);
+            Button btnOk = (Button) dialog.findViewById(R.id.dialog_ok);
+            Button btnCancel = (Button) dialog.findViewById(R.id.dialog_cancel);
+            btnCancel.setVisibility(View.INVISIBLE);
+            btnOk.setText("OK");
+
+            title.setText("Lỗi");
+            textView.setText("Không có kết nối Internet!");
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
         }
-        catch (Exception e) {
-            Log.e("Error : " , "Error on soapPrimitiveData() " + e.getMessage());
-            e.printStackTrace();
-        }
+
+
     }
 
 }

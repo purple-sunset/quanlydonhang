@@ -175,7 +175,10 @@ public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
             btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    intent.putExtra("Return", "Back Success");
+                    setResult(RESULT_CODE_BACK, intent);
                     dialog.dismiss();
+                    finish();
                 }
             });
 

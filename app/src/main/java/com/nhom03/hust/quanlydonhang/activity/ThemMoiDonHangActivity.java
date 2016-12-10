@@ -164,6 +164,7 @@ public class ThemMoiDonHangActivity extends AppCompatActivity {
                         KhachHang kh = (KhachHang) data.getExtras().getSerializable("Return_KH");
                         donHang.setKhachHang(kh);
                         tenKH.setText(donHang.getKhachHang().getTenKH());
+                        diaChiGiaoHang.setText(donHang.getKhachHang().getDiaChi());
                         break;
                     }
 
