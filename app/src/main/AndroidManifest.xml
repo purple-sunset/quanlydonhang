@@ -71,7 +71,15 @@
             android:label="Chi tiết đơn hàng"/>
 
         <activity android:name=".activity.DanhSachHangHoaCuaDonHangActivity"
-            android:label="Hàng hóa trong đơn hàng"/>
+            android:label="Hàng hóa trong đơn hàng">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
 
         <activity android:name=".activity.ThemMoiHangHoaVaoDonHangActivity"
             android:label="Thêm hàng hóa vào đơn hàng"/>

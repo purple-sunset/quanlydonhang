@@ -195,7 +195,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public long themDonHangNoID(DonHang dh) {
-        Log.i(TAG, "DatabaseHelper.themDonHang ... " + dh.getId());
+        Log.i(TAG, "DatabaseHelper.themDonHang ... ");
 
         SQLiteDatabase db = this.getWritableDatabase();
 

@@ -14,21 +14,22 @@
             android:layout_width="match_parent">
 
             <TextView
-                style="@style/thuong"
+                android:layout_weight="0"
+                style="@style/nho"
+                android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:layout_weight="1"
                 android:text="Tên: " />
 
             <TextView
+                android:layout_weight="4"
                 android:id="@+id/dshh_ten_hang_hoa"
                 style="@style/thuong"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="10"
                 android:gravity="center_vertical"
-                android:text="Quan ao aaaaaaaaaaaaaaaaa" />
+                android:text="Quan ao aaaaaaaaaaaaaaaaaaaaaab" />
         </TableRow>
 
         <TableRow
@@ -36,19 +37,20 @@
             android:layout_width="match_parent">
 
             <TextView
+                android:layout_weight="0"
                 style="@style/nho"
+                android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:text="Trạng thái: "
                 android:gravity="center_vertical" />
 
             <TextView
+                android:layout_weight="4"
                 android:id="@+id/dshh_trang_thai"
                 style="@style/thuong"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="10"
                 android:gravity="center_vertical"
                 android:text="Đang bán" />
         </TableRow>
@@ -58,21 +60,22 @@
             android:layout_width="match_parent">
 
             <TextView
+                android:layout_weight="0"
                 style="@style/nho"
+                android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:text="Giá: "
                 android:gravity="center_vertical" />
 
             <TextView
+                android:layout_weight="4"
                 android:id="@+id/dshh_gia_hang_hoa"
                 style="@style/thuong"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="40000 đ"
-                android:layout_weight="10"/>
+                android:text="40000 đ"/>
         </TableRow>
 
     </TableLayout>

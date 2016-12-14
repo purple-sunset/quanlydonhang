@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -52,6 +53,7 @@ public class DanhSachHangHoaCuaDonHangActivity extends ActionBarActivity {
     private HangHoaCuaDonHangAdapter adapter;
     private ArrayList<HangHoaCuaDonHang> dsHangHoaCuaDonHang;
     private ListView listViewHangHoaDonHang;
+    private SearchView searchView;
 
     private ArrayList<HangHoaCuaDonHang> dsThem;
     private ArrayList<HangHoaCuaDonHang> dsSua;
@@ -61,7 +63,7 @@ public class DanhSachHangHoaCuaDonHangActivity extends ActionBarActivity {
     private ArrayList<Integer> vtXoa;
 
     private TextView tongTien;
-    private Button themHangHoa;
+    private MenuItem themHangHoa;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,14 +90,11 @@ public class DanhSachHangHoaCuaDonHangActivity extends ActionBarActivity {
         tongTien = (TextView) findViewById(R.id.dshhdh_tong_tien);
         tinhTien();
 
-        themHangHoa = (Button) findViewById(R.id.dshhdh_them);
-
         adapter = new HangHoaCuaDonHangAdapter(dsHangHoaCuaDonHang, this);
         listViewHangHoaDonHang = (ListView) findViewById(R.id.list_hang_hoa_cua_don_hang);
         listViewHangHoaDonHang.setAdapter(adapter);
 
         if (editable) {
-            themHangHoa.setEnabled(true);
             listViewHangHoaDonHang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -197,7 +196,7 @@ public class DanhSachHangHoaCuaDonHangActivity extends ActionBarActivity {
 
     }
 
-    public void themHangHoa(View view) {
+    public void themHangHoa(MenuItem item) {
         Intent intent3 = new Intent(this, ThemMoiHangHoaVaoDonHangActivity.class);
         intent3.putExtra("IDDH", idDH);
         startActivityForResult(intent3, REQUEST_CODE_ADD);
@@ -255,7 +254,32 @@ public class DanhSachHangHoaCuaDonHangActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_ds_khachhang, menu);
+        getMenuInflater().inflate(R.menu.menu_ds_hhdh, menu);
+        themHangHoa = menu.findItem(R.id.action_them_hhdh);
+        if(editable)
+            themHangHoa.setVisible(true);
+
+        searchView = (SearchView) menu.findItem(R.id.action_timkiem_hhdh).getActionView();
+        searchView.setFocusable(false);
+        searchView.setQueryHint("Tìm kiếm hàng hóa");
+        //set OnQueryTextListener cho search view để thực hiện search theo text
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (s.equals("")){
+                    adapter.getFilter().filter("");
+                    listViewHangHoaDonHang.clearTextFilter();
+                }else {
+                    adapter.getFilter().filter(s);
+                }
+                return true;
+            }
+        });
 
         return true;
     }

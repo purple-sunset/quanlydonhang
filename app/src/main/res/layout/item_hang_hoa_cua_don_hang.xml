@@ -5,8 +5,7 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_height="wrap_content">
 
         <TableRow
             android:id="@+id/TableRow1"
@@ -16,10 +15,11 @@
                 android:id="@+id/item_hhcdh_ten_hang_hoa"
                 style="@style/Tieu_de_2"
                 android:layout_width="130dp"
+                android:minHeight="70dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:text="ádjkshdakjshdkajshdkjahsdjhaskjdhahksd" />
 
             <TableLayout

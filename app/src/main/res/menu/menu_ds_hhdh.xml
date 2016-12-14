@@ -3,8 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_timkiem_hhdh"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:title="search"/>
+
+    <item
+        android:visible="false"
         android:onClick="themHangHoa"
-        android:id="@+id/action_them_hanghoadonhang"
+        android:id="@+id/action_them_hhdh"
         android:icon="@android:drawable/ic_input_add"
         app:showAsAction="ifRoom"
         android:title="add"/>

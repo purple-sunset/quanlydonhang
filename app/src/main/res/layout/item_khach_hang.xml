@@ -14,22 +14,23 @@
             android:layout_width="match_parent">
 
             <TextView
-                style="@style/thuong"
+                android:layout_weight="0"
+                style="@style/nho"
+                android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:layout_weight="1"
                 android:text="Tên: " />
 
             <TextView
+                android:layout_weight="4"
                 android:id="@+id/dskh_ten_kh"
                 style="@style/thuong"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:minHeight="40dp"
                 android:gravity="center_vertical"
-                android:text="ten"
-                android:layout_weight="20"/>
+                android:text="ten"/>
         </TableRow>
 
         <TableRow
@@ -37,22 +38,23 @@
             android:layout_width="match_parent">
 
             <TextView
+                android:layout_weight="0"
                 style="@style/nho"
+                android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:text="Địa chỉ: "
                 android:gravity="center_vertical" />
 
             <TextView
+                android:layout_weight="4"
                 android:id="@+id/dskh_dia_chi"
                 style="@style/nho"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:minHeight="40dp"
                 android:gravity="center_vertical"
-                android:text="dia chi"
-                android:layout_weight="20"/>
+                android:text="dia chi"/>
         </TableRow>
 
 

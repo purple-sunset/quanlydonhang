@@ -108,7 +108,6 @@ public class TheLoaiAdapter extends BaseExpandableListAdapter implements Filtera
     public View getChildView(int groupPosition, int childPosition, boolean b, View view, ViewGroup viewGroup) {
         final HangHoaViewHolder holder;
         final HangHoa hangHoa = (HangHoa) getChild(groupPosition, childPosition);
-        final String[] trangThaiArray = view.getResources().getStringArray(R.array.trang_thai);
 
         if (view == null) {
             view = layoutInflater.inflate(R.layout.item_hang_hoa, viewGroup, false);
@@ -121,6 +120,8 @@ public class TheLoaiAdapter extends BaseExpandableListAdapter implements Filtera
         else {
             holder = (HangHoaViewHolder) view.getTag();
         }
+
+        final String[] trangThaiArray = view.getResources().getStringArray(R.array.trang_thai);
 
         holder.tenHangHoa.setText(hangHoa.getTen());
         holder.giaHangHoa.setText(String.valueOf((long) hangHoa.getDonGia() * 10000));

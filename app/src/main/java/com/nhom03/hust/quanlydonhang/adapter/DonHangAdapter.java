@@ -79,7 +79,11 @@ public class DonHangAdapter extends BaseAdapter implements Filterable{
 
     @Override
     public Filter getFilter() {
-        return null;
+        if (filter == null) {
+            filter = new DonHangFilter();
+        }
+
+        return filter;
     }
 
     private class DonHangFilter extends Filter {
@@ -92,7 +96,7 @@ public class DonHangAdapter extends BaseAdapter implements Filterable{
 
                 // search content in friend list
                 for (DonHang dh : listDH) {
-                    if ((dh.getKhachHang().getTenKH() + " " + dh.getDiaChiGiaoHang() + " " + dh.getTongTien()).toLowerCase().contains(constraint.toString().toLowerCase())) {
+                    if ((dh.getKhachHang().getTenKH() + " " + dh.getDiaChiGiaoHang() + " " + dh.getTongTien() + " " + dh.getNgayGio().toLocaleString()).toLowerCase().contains(constraint.toString().toLowerCase())) {
                         tempList.add(dh);
                     }
                 }
