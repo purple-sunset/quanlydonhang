@@ -95,8 +95,8 @@ public class KhachHangAdapter extends BaseAdapter implements Filterable {
 
                 // search content in friend list
                 for (KhachHang kh : listKH) {
-                    if ((kh.getTenKH() + "" + kh.getTenCT() + "" + kh.getTieuDe() + "" + kh.getDiaChi() + "" + kh.getThanhPho()
-                            + "" + kh.getVung() + "" + kh.getQuocGia() + "" + kh.getSdt()).toLowerCase().contains(constraint.toString().toLowerCase())) {
+                    if ((kh.getTenKH() + "" + kh.getTenCT() + " " + kh.getTieuDe() + "  " + kh.getDiaChi() + " " + kh.getThanhPho()
+                            + " " + kh.getVung() + " " + kh.getQuocGia() + " " + kh.getSdt()).toLowerCase().contains(constraint.toString().toLowerCase())) {
                         tempList.add(kh);
                     }
                 }
