@@ -3,6 +3,7 @@ package com.nhom03.hust.quanlydonhang.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -36,7 +37,7 @@ import java.util.Locale;
  * Created by longs on 06/12/2016.
  */
 
-public class XemChiTietDonHangActivity extends AppCompatActivity {
+public class XemChiTietDonHangActivity extends ActionBarActivity {
 
     private static final int REQUEST_CODE_KHACHHANG = 111;
     private static final int REQUEST_CODE_HANGHOA = 112;

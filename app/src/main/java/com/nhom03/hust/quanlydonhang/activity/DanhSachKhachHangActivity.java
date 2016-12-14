@@ -3,8 +3,12 @@ package com.nhom03.hust.quanlydonhang.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -22,7 +26,7 @@ import java.util.ArrayList;
  * Created by sakura on 01/12/2016.
  */
 
-public class DanhSachKhachHangActivity extends AppCompatActivity {
+public class DanhSachKhachHangActivity extends ActionBarActivity {
 
     private Intent intent;
     private String callingActivity = "";
@@ -30,6 +34,8 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
     private ArrayList<KhachHang> dsKH;
     private KhachHangAdapter adapter;
     private ListView listViewKH;
+    private SearchView searchView;
+
     private static final int REQUEST_CODE_DETAIL = 211;
     private static final int REQUEST_CODE_ADD = 212;
 
@@ -43,6 +49,9 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xem_danh_sach_khach_hang);
+
+        //ActionBar actionBar = getSupportActionBar();
+        //actionBar.setDisplayHomeAsUpEnabled(true);
 
         intent = getIntent();
         if(intent.getExtras() != null)
@@ -155,10 +164,41 @@ public class DanhSachKhachHangActivity extends AppCompatActivity {
 
     }
 
-    public void themKhachHang(View view) {
+    public void themKhachHang(MenuItem item) {
         Log.d("a","NN");
         Intent intent2 = new Intent(this, ThemMoiKhachHangActivity.class);
         startActivityForResult(intent2, REQUEST_CODE_ADD);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_ds_khachhang, menu);
+
+
+        searchView = (SearchView) menu.findItem(R.id.action_timkiem_khachhang).getActionView();
+        searchView.setFocusable(false);
+        searchView.setQueryHint("Tìm kiếm khách hàng");
+        //set OnQueryTextListener cho search view để thực hiện search theo text
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (s.equals("")){
+                    adapter.getFilter().filter("");
+                    listViewKH.clearTextFilter();
+                }else {
+                    adapter.getFilter().filter(s);
+                }
+                return true;
+            }
+        });
+
+        return true;
     }
 
 }

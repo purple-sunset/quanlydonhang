@@ -1,6 +1,7 @@
 package com.nhom03.hust.quanlydonhang.activity;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +14,7 @@ import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
 
 import java.util.Random;
 
-public class ThemMoiKhachHangActivity extends AppCompatActivity {
+public class ThemMoiKhachHangActivity extends ActionBarActivity {
 
     private static final int RESULT_CODE_BACK = 220;
 

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IntegerRes;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,7 +21,7 @@ import com.nhom03.hust.quanlydonhang.model.HangHoaCuaDonHang;
  * Created by Admin on 07/12/2016.
  */
 
-public class ThemMoiHangHoaVaoDonHangActivity extends AppCompatActivity {
+public class ThemMoiHangHoaVaoDonHangActivity extends ActionBarActivity {
 
     private static final int REQUEST_CODE_HANGHOA = 611;
 

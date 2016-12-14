@@ -27,6 +27,8 @@
     <string name="dialog_success_title">Thành công</string>
     <string name="title_activity_main2">Main2Activity</string>
 
+    <string name="search_hint">Tìm kiếm</string>
+
     <!-- Spinner-->
     <string-array name="trang_thai">
         <item>Đang bán</item>

@@ -3,6 +3,7 @@ package com.nhom03.hust.quanlydonhang.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,7 +29,7 @@ import java.util.GregorianCalendar;
  * Created by Admin on 07/12/2016.
  */
 
-public class ThemMoiDonHangActivity extends AppCompatActivity {
+public class ThemMoiDonHangActivity extends ActionBarActivity {
 
 
     private static final int REQUEST_CODE_KHACHHANG = 111;

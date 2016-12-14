@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/suong_mat_ong"
@@ -11,35 +12,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.nhom03.hust.quanlydonhang.activity.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp">
-
-        <TextView
-            style="@style/Tieu_de_1"
-            android:layout_width="280dp"
-            android:layout_height="match_parent"
-            android:layout_toStartOf="@+id/button"
-            android:gravity="center"
-            android:text="Quản lý đơn hàng" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/circle"
-            android:foreground="@drawable/ic_autorenew_white"
-            android:foregroundTint="#F705DE"
-            android:foregroundTintMode="src_atop"
-            android:onClick="updateDB" />
-    </android.support.v7.widget.Toolbar>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,7 +72,7 @@
             android:layout_marginTop="20dp"
             android:onClick="layDSHangHoa"
             android:text="@string/hang_hoa" />
-    </LinearLayout>
 
 
-</RelativeLayout>
+
+</LinearLayout>

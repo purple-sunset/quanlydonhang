@@ -5,29 +5,57 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:id="@+id/TableRow1"
+            android:layout_width="match_parent">
+
+            <TextView
+                style="@style/thuong"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Tên: " />
+
             <TextView
                 android:id="@+id/dskh_ten_kh"
                 style="@style/thuong"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:minHeight="40dp"
                 android:gravity="center_vertical"
-                android:text="ten" />
+                android:text="ten"
+                android:layout_weight="20"/>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TableRow2"
+            android:layout_width="match_parent">
+
+            <TextView
+                style="@style/nho"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Địa chỉ: "
+                android:gravity="center_vertical" />
 
             <TextView
                 android:id="@+id/dskh_dia_chi"
-                style="@style/thuong"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/nho"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:minHeight="40dp"
                 android:gravity="center_vertical"
-                android:text="dia chi" />
-        </LinearLayout>
+                android:text="dia chi"
+                android:layout_weight="20"/>
+        </TableRow>
 
+
+    </TableLayout>
 
 </LinearLayout>

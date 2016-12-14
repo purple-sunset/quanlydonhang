@@ -3,6 +3,7 @@ package com.nhom03.hust.quanlydonhang.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,7 +20,7 @@ import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
  * Created by longs on 06/12/2016.
  */
 
-public class XemChiTietHangHoaCuaDonHangActivity extends AppCompatActivity {
+public class XemChiTietHangHoaCuaDonHangActivity extends ActionBarActivity {
 
     private static final int RESULT_CODE_BACK = 520;
     private static final int RESULT_CODE_EDIT = 522;

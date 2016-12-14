@@ -3,6 +3,7 @@ package com.nhom03.hust.quanlydonhang.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.StrictMode;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +30,7 @@ import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DangNhapActivity extends AppCompatActivity {
+public class DangNhapActivity extends ActionBarActivity {
 
     private static final String NAMESPACE = "http://asp.net/ApplicationServices/v200";
     private static final String METHOD_NAME = "Login";
@@ -122,8 +123,7 @@ public class DangNhapActivity extends AppCompatActivity {
 
 
 
-        } catch(Exception ex)
-        {
+        } catch(Exception ex) {
             Log.e("Error : " , "Error on soapPrimitiveData() " + ex.getMessage());
             ex.printStackTrace();
             Log.d("Login", "Fail");

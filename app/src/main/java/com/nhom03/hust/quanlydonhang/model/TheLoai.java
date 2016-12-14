@@ -62,4 +62,17 @@ public class TheLoai {
     public void setDsHangHoa(ArrayList<HangHoa> dsHangHoa) {
         this.dsHangHoa = dsHangHoa;
     }
+
+    public void themHangHoa(HangHoa hh){
+        this.dsHangHoa.add(0, hh);
+    }
+
+    public void xoaHangHoa(int i){
+        this.dsHangHoa.remove(i);
+    }
+
+    public void suaHangHoa(int i, HangHoa hh){
+        this.dsHangHoa.remove(i);
+        this.dsHangHoa.add(0, hh);
+    }
 }

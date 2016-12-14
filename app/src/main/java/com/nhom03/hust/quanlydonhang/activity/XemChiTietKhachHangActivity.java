@@ -3,6 +3,7 @@ package com.nhom03.hust.quanlydonhang.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
  * Created by sakura on 01/12/2016.
  */
 
-public class XemChiTietKhachHangActivity extends AppCompatActivity {
+public class XemChiTietKhachHangActivity extends ActionBarActivity {
 
     private static final int RESULT_CODE_BACK = 220;
 

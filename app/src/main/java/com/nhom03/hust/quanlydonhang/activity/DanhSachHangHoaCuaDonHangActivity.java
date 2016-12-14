@@ -4,8 +4,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IntegerRes;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -25,7 +28,7 @@ import java.util.HashMap;
 /**
  * Created by longs on 06/12/2016.
  */
-public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
+public class DanhSachHangHoaCuaDonHangActivity extends ActionBarActivity {
 
     private static final int REQUEST_CODE_DETAIL = 511;
     private static final int REQUEST_CODE_ADD = 512;
@@ -247,5 +250,13 @@ public class DanhSachHangHoaCuaDonHangActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_ds_khachhang, menu);
+
+        return true;
     }
 }

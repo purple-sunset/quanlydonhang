@@ -3,7 +3,10 @@ package com.nhom03.hust.quanlydonhang.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
@@ -23,7 +26,7 @@ import java.util.ArrayList;
  * Created by Admin on 06/12/2016.
  */
 
-public class DanhSachHangHoaActivity extends AppCompatActivity {
+public class DanhSachHangHoaActivity extends ActionBarActivity {
 
     private Intent intent;
     private String callingActivity = "";
@@ -31,6 +34,7 @@ public class DanhSachHangHoaActivity extends AppCompatActivity {
     private ArrayList<TheLoai> dsTL;
     private TheLoaiAdapter adapter;
     private ExpandableListView listViewTL;
+    private SearchView searchView;
 
     private static final int REQUEST_CODE_DETAIL = 311;
     private static final int REQUEST_CODE_ADD = 312;
@@ -149,5 +153,36 @@ public class DanhSachHangHoaActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_ds_hanghoa, menu);
+
+
+        searchView = (SearchView) menu.findItem(R.id.action_timkiem_hanghoa).getActionView();
+        searchView.setFocusable(false);
+        searchView.setQueryHint("Tìm kiếm hàng hóa");
+        //set OnQueryTextListener cho search view để thực hiện search theo text
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if (s.equals("")){
+                    adapter.getFilter().filter("");
+                    listViewTL.clearTextFilter();
+                }else {
+                    adapter.getFilter().filter(s);
+                }
+                return true;
+            }
+        });
+
+        return true;
     }
 }

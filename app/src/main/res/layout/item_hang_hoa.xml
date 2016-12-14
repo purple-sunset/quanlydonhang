@@ -4,42 +4,78 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="30dp">
 
-        <TextView
-            android:id="@+id/dshh_ten_hang_hoa"
-            style="@style/thuong"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="8"
-            android:gravity="center_vertical"
+        <TableRow
+            android:id="@+id/TableRow1"
+            android:layout_width="match_parent">
 
-            android:paddingRight="5dp"
-            android:text="Quan ao aaaaaaaaaaaaaaaaa" />
+            <TextView
+                style="@style/thuong"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="Tên: " />
 
-        <TextView
-            android:id="@+id/dshh_trang_thai"
-            style="@style/thuong"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:layout_weight="5"
-            android:gravity="center_vertical"
-            android:paddingRight="5dp"
-            android:text="Đang bán" />
+            <TextView
+                android:id="@+id/dshh_ten_hang_hoa"
+                style="@style/thuong"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:text="Quan ao aaaaaaaaaaaaaaaaa" />
+        </TableRow>
 
-        <TextView
-            android:id="@+id/dshh_gia_hang_hoa"
-            style="@style/thuong"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:gravity="center_vertical"
-            android:paddingRight="10dp"
-            android:text="40000 đ" />
-    </LinearLayout>
+        <TableRow
+            android:id="@+id/TableRow2"
+            android:layout_width="match_parent">
+
+            <TextView
+                style="@style/nho"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Trạng thái: "
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/dshh_trang_thai"
+                style="@style/thuong"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:text="Đang bán" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TableRow3"
+            android:layout_width="match_parent">
+
+            <TextView
+                style="@style/nho"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Giá: "
+                android:gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/dshh_gia_hang_hoa"
+                style="@style/thuong"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="40000 đ"
+                android:layout_weight="10"/>
+        </TableRow>
+
+    </TableLayout>
+
 
 </LinearLayout>

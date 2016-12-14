@@ -1,8 +1,11 @@
 package com.nhom03.hust.quanlydonhang.activity;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,9 +17,9 @@ import com.nhom03.hust.quanlydonhang.rest.APIHangHoa;
 import com.nhom03.hust.quanlydonhang.rest.APIKhachHang;
 import com.nhom03.hust.quanlydonhang.rest.APITheLoai;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ActionBarActivity {
 
-    private NguoiDung nguoiDung;
+    private static NguoiDung nguoiDung = new NguoiDung();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +27,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView txtUserName = (TextView) findViewById(R.id.txt_user);
-        Intent dangNhap = getIntent();
-        nguoiDung = (NguoiDung) dangNhap.getExtras().getSerializable("NGUOI_DUNG");
+        Intent intent = getIntent();
+        if(intent.getExtras() != null) {
+            nguoiDung.setTen(((NguoiDung) intent.getExtras().getSerializable("NGUOI_DUNG")).getTen());
+            nguoiDung.setMatKhau(((NguoiDung) intent.getExtras().getSerializable("NGUOI_DUNG")).getMatKhau());
+        }
         txtUserName.setText(nguoiDung.getTen());
     }
 
-    public void updateDB(View view){
+    public void updateDB(MenuItem item){
         DatabaseHelper.getInstance().update();
 
         APIKhachHang.layDSKhachHang();
@@ -41,19 +47,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void layDSDonHang(View view){
-        Intent intent = new Intent(this, DanhSachDonHangActivity.class);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, DanhSachDonHangActivity.class);
+        startActivity(intent2);
 
     }
 
     public void layDSKhachHang(View view){
-        Intent intent = new Intent(this, DanhSachKhachHangActivity.class);
-        startActivity(intent);
+        Intent intent3 = new Intent(this, DanhSachKhachHangActivity.class);
+        startActivity(intent3);
     }
 
     public void layDSHangHoa(View view){
-        Intent intent = new Intent(this, DanhSachHangHoaActivity.class);
-        startActivity(intent);
+        Intent intent4 = new Intent(this, DanhSachHangHoaActivity.class);
+        startActivity(intent4);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 }

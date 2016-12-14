@@ -2,6 +2,7 @@ package com.nhom03.hust.quanlydonhang.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -14,7 +15,7 @@ import com.nhom03.hust.quanlydonhang.model.HangHoa;
  * Created by Admin on 06/12/2016.
  */
 
-public class XemChiTietHangHoaActivity extends AppCompatActivity {
+public class XemChiTietHangHoaActivity extends ActionBarActivity {
     private static final int RESULT_CODE_BACK = 320;
 
     private Intent intent;

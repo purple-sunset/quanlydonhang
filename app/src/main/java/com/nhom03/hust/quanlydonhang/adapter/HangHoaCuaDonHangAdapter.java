@@ -45,21 +45,34 @@ public class HangHoaCuaDonHangAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if (view == null)
+        final ViewHolder holder;
+        final HangHoaCuaDonHang hhdh = (HangHoaCuaDonHang) getItem(i);
+
+        if (view == null) {
             view = layoutInflater.inflate(R.layout.item_hang_hoa_cua_don_hang, null);
+            holder = new ViewHolder();
+            holder.textTenHH = (TextView) view.findViewById(R.id.item_hhcdh_ten_hang_hoa);
+            holder.textDonGia = (TextView) view.findViewById(R.id.item_hhcdh_don_gia);
+            holder.textSoLuong = (TextView) view.findViewById(R.id.item_hhcdh_so_luong);
+            holder.textThanhTien = (TextView) view.findViewById(R.id.item_hhcdh_thanh_tien);
+            view.setTag(holder);
+        }
+        else {
+            holder = (ViewHolder) view.getTag();
+        }
 
-        HangHoaCuaDonHang hhdh = this.listHHDH.get(i);
-
-        TextView textTenHH = (TextView) view.findViewById(R.id.item_hhcdh_ten_hang_hoa);
-        TextView textDonGia = (TextView) view.findViewById(R.id.item_hhcdh_don_gia);
-        TextView textSoLuong = (TextView) view.findViewById(R.id.item_hhcdh_so_luong);
-        TextView textThanhTien = (TextView) view.findViewById(R.id.item_hhcdh_thanh_tien);
-
-        textTenHH.setText(hhdh.getTen());
-        textDonGia.setText(String.valueOf((long) hhdh.getDonGia()*10000));
-        textSoLuong.setText(String.valueOf(hhdh.getSoLuong()));
-        textThanhTien.setText(String.valueOf((long) hhdh.thanhTien()*10000));
+        holder.textTenHH.setText(hhdh.getTen());
+        holder.textDonGia.setText(String.valueOf((long) hhdh.getDonGia()*10000));
+        holder.textSoLuong.setText(String.valueOf(hhdh.getSoLuong()));
+        holder.textThanhTien.setText(String.valueOf((long) hhdh.thanhTien()*10000));
 
         return view;
+    }
+
+    static class ViewHolder{
+        TextView textTenHH;
+        TextView textDonGia;
+        TextView textSoLuong;
+        TextView textThanhTien;
     }
 }
